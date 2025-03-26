@@ -46,16 +46,16 @@ int main()
                 fin = 1;
                 break;
             case 'z': //haut
-                pos_joueur_x--; 
+                if (pos_joueur_x > 0) pos_joueur_x--; 
                 break;
             case 's': //bas
-                pos_joueur_x++; 
+                if (pos_joueur_x < LIGNE - 1) pos_joueur_x++; 
                 break;
             case 'q': //gauche
-                pos_joueur_y--; 
+            if (pos_joueur_y > 0) pos_joueur_y--; 
                 break;
             case 'd': //droite
-                pos_joueur_y++; 
+            if (pos_joueur_y < COLONNE - 1) pos_joueur_y++; 
                 break;
         }
 
