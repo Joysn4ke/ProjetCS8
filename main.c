@@ -4,18 +4,31 @@
 #include "Grille.h"
 #include "Getch.h"
 #include "Treasure.h"
+#include "Map.h"
+#include "Player.h"
 
 #define COLONNE 10
 #define LIGNE 10
 
 int main()
 {
-    char car ;
+    char car;
     int fin = 0;
     char **test_grille;
     int pos_joueur_x = 0;
     int pos_joueur_y = 0;
-    
+
+
+    Map *mapTest = newMap();  //Test Leak Memmory
+    freeMap(mapTest);
+
+    Player *PlayerTest = newPlayer();  //Test Leak Memmory
+    freePlayer(PlayerTest);
+
+    Treasure *TreasureTest = newTreasure();  //Test Leak Memmory
+    freeTreasure(TreasureTest);
+
+
     //Allouer memoire pour le tableau
     test_grille = (char **)malloc(LIGNE * sizeof(char *));
     for (int i = 0; i < LIGNE; i++) {

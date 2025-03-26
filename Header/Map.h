@@ -1,14 +1,13 @@
-//
-// Created by matthieu on 26/03/25.
-//
-
 #ifndef MAP_H
 #define MAP_H
 
-typedef struct map_s Map;
+#define LINE 10
+#define COLUMN 10
 
-extern Map* Map_new();
-extern void Map_initialisation(Map* this);
-extern void Map_free(Map* this);
+typedef struct Map_s Map;
+
+Map* newMap();
+void mapInitialisation(Map* this);
+void freeMap(Map* this);
 
 #endif //MAP_H

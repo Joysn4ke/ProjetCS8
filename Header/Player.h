@@ -1,13 +1,10 @@
-//
-// Created by matthieu on 26/03/25.
-//
-
 #ifndef PLAYER_H
 #define PLAYER_H
 
-static int position_x;
-static int position_y;
+typedef struct Player_s Player;
 
-
+Player* newPlayer();
+void playerInitialisation(Player* this);
+void freePlayer(Player* this);
 
 #endif //PLAYER_H
