@@ -3,8 +3,8 @@
 // #include "Header/grille.h"
 // #include "Header/getch.h"
 
-#include "../Header/grille.h"
-#include "../Header/getch.h"
+#include "../Header/Grille.h"
+#include "../Header/Getch.h"
 
 #define COLONNE 5
 #define LIGNE 4
