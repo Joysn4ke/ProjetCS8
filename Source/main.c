@@ -1,6 +1,10 @@
 #include <stdlib.h>
-#include "grille.h"
-#include "getch.h"
+
+// #include "Header/grille.h"
+// #include "Header/getch.h"
+
+#include "../Header/grille.h"
+#include "../Header/getch.h"
 
 #define COLONNE 5
 #define LIGNE 4
@@ -12,9 +16,6 @@ int main()
     char **test_grille;
     int pos_joueur_x = 0;
     int pos_joueur_y = 0;
-    
-
-
 
     //Allouer memoire pour le tableau
     test_grille = (char **)malloc(LIGNE * sizeof(char *));
@@ -70,4 +71,6 @@ int main()
     }
     free(test_grille);
 
+
+    return 0;
 }
