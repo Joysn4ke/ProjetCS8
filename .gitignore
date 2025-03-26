@@ -5,6 +5,8 @@
 *.so
 *.exe
 *.dll
+*.elf
+*.d
 
 # Ignore les fichiers de sauvegarde
 *~
