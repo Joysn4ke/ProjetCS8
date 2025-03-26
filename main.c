@@ -1,57 +1,47 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "Game.h"
 #include "Grille.h"
 #include "Getch.h"
 #include "Treasure.h"
 #include "Map.h"
 #include "Player.h"
 
+
 #define COLONNE 10
 #define LIGNE 10
+
+const int LINE = 10;
+const int COLUMN = 10;
 
 int main()
 {
     char car;
     int fin = 0;
-    char **test_grille;
-    int pos_joueur_x = 0;
-    int pos_joueur_y = 0;
+
+    // Map *mapTest = newMap();  //Test Leak Memmory
+    // freeMap(mapTest);
+
+    // Player *PlayerTest = newPlayer();  //Test Leak Memmory
+    // freePlayer(PlayerTest);
+
+    // Treasure *TreasureTest = newTreasure();  //Test Leak Memmory
+    // freeTreasure(TreasureTest);
+
+    // Game *GameTest = newGame();  //Test Leak Memmory
+    // freeGame(GameTest);
 
 
-    Map *mapTest = newMap();  //Test Leak Memmory
-    freeMap(mapTest);
+    Game *game = newGame();  //Test Leak Memmory
+    
 
-    Player *PlayerTest = newPlayer();  //Test Leak Memmory
-    freePlayer(PlayerTest);
-
-    Treasure *TreasureTest = newTreasure();  //Test Leak Memmory
-    freeTreasure(TreasureTest);
-
-
-    //Allouer memoire pour le tableau
-    test_grille = (char **)malloc(LIGNE * sizeof(char *));
-    for (int i = 0; i < LIGNE; i++) {
-        test_grille[i] = (char *)malloc(COLONNE * sizeof(char));
-    }
-
-    //Remplissage du tableau
-    for(int i=0; i< LIGNE; i++)
-    {
-        for(int j=0; j<COLONNE; j++)
-        {
-            test_grille[i][j] = ' ';
-        }
-    }
-    test_grille[pos_joueur_x][pos_joueur_y] = 'j';
-
-    //Affichage du tableau
-    grille_print(test_grille, COLONNE, LIGNE);
+    grille_print(game->map->grid, COLUMN, LINE);
 
     while(!fin)
     {
         car = getch();
-        test_grille[pos_joueur_x][pos_joueur_y] = ' ';
+        game->map->grid[game->player->position_x][game->player->position_y] = ' ';
         switch(car)
         {
             case 'l':   //l = leave
@@ -59,33 +49,29 @@ int main()
                 break;
             case 65:    //flèche du haut
             case 'z':   //haut
-                if (pos_joueur_x > 0) pos_joueur_x--; 
+                if (game->player->position_x > 0) game->player->position_x--; 
                 break;
             case 66:    //lèche du bas
             case 's':   //bas
-                if (pos_joueur_x < LIGNE - 1) pos_joueur_x++; 
+                if (game->player->position_x < LINE - 1) game->player->position_x++; 
                 break;
             case 67:    //flèche de droite
             case 'd':   //droite
-                if (pos_joueur_y < COLONNE - 1) pos_joueur_y++; 
+                if (game->player->position_y < COLUMN - 1) game->player->position_y++; 
                 break;
             case 68:    //flèche de gauche
             case 'q':   //gauche
-                if (pos_joueur_y > 0) pos_joueur_y--; 
+                if (game->player->position_y > 0) game->player->position_y--; 
                 break;
         }
 
-        test_grille[pos_joueur_x][pos_joueur_y] = 'j';
+        game->map->grid[game->player->position_x][game->player->position_y] = 'j';
         system("clear");
-        grille_print(test_grille, COLONNE, LIGNE);
+        grille_print(game->map->grid, COLUMN, LINE);
 
     }
   
-    //Liberation de la memoire pour le tableau
-    for (int i = 0; i < LIGNE; i++) {
-        free(test_grille[i]);
-    }
-    free(test_grille);
+    freeGame(game);
 
     return 0;
 }

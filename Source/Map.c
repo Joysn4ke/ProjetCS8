@@ -1,12 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "assert.h"
+
+#include "Common.h"
 #include "Map.h"
 #include "Grille.h"
 
-struct Map_s{
-    char **grid;
-};
+// struct Map_s{
+//     char **grid;
+// };
 
 
 Map* newMap() {
