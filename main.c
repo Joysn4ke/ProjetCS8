@@ -1,10 +1,9 @@
 #include <stdlib.h>
+#include <stdio.h>
 
-// #include "Header/grille.h"
-// #include "Header/getch.h"
-
-#include "../Header/Grille.h"
-#include "../Header/Getch.h"
+#include "Grille.h"
+#include "Getch.h"
+#include "Treasure.h"
 
 #define COLONNE 10
 #define LIGNE 10
@@ -16,7 +15,7 @@ int main()
     char **test_grille;
     int pos_joueur_x = 0;
     int pos_joueur_y = 0;
-
+    
     //Allouer memoire pour le tableau
     test_grille = (char **)malloc(LIGNE * sizeof(char *));
     for (int i = 0; i < LIGNE; i++) {
@@ -68,14 +67,12 @@ int main()
         grille_print(test_grille, COLONNE, LIGNE);
 
     }
-
   
     //Liberation de la memoire pour le tableau
     for (int i = 0; i < LIGNE; i++) {
         free(test_grille[i]);
     }
     free(test_grille);
-
 
     return 0;
 }
