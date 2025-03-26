@@ -41,3 +41,4 @@ obj/
 # Ignore les fichiers générés par des outils comme CMake, Makefile, etc.
 CMakeCache.txt
 Makefile
+game
