@@ -42,22 +42,23 @@ int main()
         test_grille[pos_joueur_x][pos_joueur_y] = ' ';
         switch(car)
         {
-            case 'q':
+            case 'l': //l = leave
                 fin = 1;
                 break;
-            case 'i':
+            case 'z': //haut
                 pos_joueur_x--; 
                 break;
-            case 'k':
+            case 's': //bas
                 pos_joueur_x++; 
                 break;
-            case 'j':
+            case 'q': //gauche
                 pos_joueur_y--; 
                 break;
-            case 'l':
+            case 'd': //droite
                 pos_joueur_y++; 
                 break;
         }
+
         test_grille[pos_joueur_x][pos_joueur_y] = 'j';
         system("clear");
         grille_print(test_grille, COLONNE, LIGNE);
