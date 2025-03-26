@@ -7,9 +7,9 @@
 
 typedef struct treasure_s Treasure;
 
-extern Treasure* Counter_new();
-extern void Counter_increment(Treasure* this, int a);
-extern int Counter_query(Treasure* this);
-extern void Counter_free(Treasure* this);
+extern Treasure* Treasure_new();
+extern void Treasure_increment(Treasure* this, int a);
+extern int Treasure_query(Treasure* this);
+extern void Treasure_free(Treasure* this);
 
 #endif
