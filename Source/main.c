@@ -6,8 +6,8 @@
 #include "../Header/Grille.h"
 #include "../Header/Getch.h"
 
-#define COLONNE 5
-#define LIGNE 4
+#define COLONNE 10
+#define LIGNE 10
 
 int main()
 {
@@ -42,20 +42,24 @@ int main()
         test_grille[pos_joueur_x][pos_joueur_y] = ' ';
         switch(car)
         {
-            case 'l': //l = leave
+            case 'l':   //l = leave
                 fin = 1;
                 break;
-            case 'z': //haut
+            case 65:    //flèche du haut
+            case 'z':   //haut
                 if (pos_joueur_x > 0) pos_joueur_x--; 
                 break;
-            case 's': //bas
+            case 66:    //lèche du bas
+            case 's':   //bas
                 if (pos_joueur_x < LIGNE - 1) pos_joueur_x++; 
                 break;
-            case 'q': //gauche
-            if (pos_joueur_y > 0) pos_joueur_y--; 
+            case 67:    //flèche de droite
+            case 'd':   //droite
+                if (pos_joueur_y < COLONNE - 1) pos_joueur_y++; 
                 break;
-            case 'd': //droite
-            if (pos_joueur_y < COLONNE - 1) pos_joueur_y++; 
+            case 68:    //flèche de gauche
+            case 'q':   //gauche
+                if (pos_joueur_y > 0) pos_joueur_y--; 
                 break;
         }
 
