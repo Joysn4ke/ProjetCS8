@@ -8,8 +8,8 @@
 typedef struct treasure_s Treasure;
 
 extern Treasure* Treasure_new();
-extern void Treasure_increment(Treasure* this, int a);
-extern int Treasure_query(Treasure* this);
+extern void Initialisation(Treasure* this, int position_x, int position_y);
+extern void get_pos(Treasure* this);
 extern void Treasure_free(Treasure* this);
 
 #endif
