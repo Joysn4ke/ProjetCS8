@@ -18,7 +18,7 @@ Player* newPlayer() {
 
 void playerInitialisation(Player* this, int localX, int localY) {
     assert(this != NULL);  //Valid object's verification
-    if (0 <= localX < LINE && 0 <= localY < COLUMN) {
+    if (0 <= localX && localX < LINE && 0 <= localY && localY < COLUMN) {
         this->position_x = localX;
         this->position_y = localY;
     } else {

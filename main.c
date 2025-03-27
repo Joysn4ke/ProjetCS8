@@ -7,13 +7,13 @@
 #include "Treasure.h"
 #include "Map.h"
 #include "Player.h"
+#include "Common.h"
 
+// #define COLONNE 10
+// #define LIGNE 10
 
-#define COLONNE 10
-#define LIGNE 10
-
-const int LINE = 10;
-const int COLUMN = 10;
+// const int LINE = 10;
+// const int COLUMN = 10;
 
 int main()
 {
@@ -33,8 +33,8 @@ int main()
     // freeGame(GameTest);
 
 
-    Game *game = newGame();  //Test Leak Memmory
-    
+    Game *game = newGame();
+    gameInitialisation(game);
 
     grille_print(game->map->grid, COLUMN, LINE);
 

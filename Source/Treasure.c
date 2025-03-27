@@ -10,13 +10,13 @@
 //     int position_y;;
 // };
 
-extern Treasure* newTreasure() {
+Treasure* newTreasure() {
     Treasure* this = (Treasure*)calloc(1, sizeof(Treasure));
     assert(this != NULL);  //Memory allocation's verification
     return this;
 }
 
-extern void treasureInitialisation(Treasure* this, int localX, int localY) {
+void treasureInitialisation(Treasure* this, int localX, int localY) {
     assert(this != NULL);  //Valid object's verification
     if (0 <= localX < LINE && 0 <= localY < COLUMN) {
         this->position_x = localX;
@@ -27,7 +27,7 @@ extern void treasureInitialisation(Treasure* this, int localX, int localY) {
     }
 }
 
-extern void freeTreasure(Treasure* this) {
+void freeTreasure(Treasure* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         free(this);
     }

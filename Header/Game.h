@@ -1,7 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
-//typedef struct Game_s Game;
+#include "Map.h"
+#include "Player.h"
+#include "Treasure.h"
+
+typedef struct Game_s Game;
 
 typedef struct Game_s {
     Map *map;
