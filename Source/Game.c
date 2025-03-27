@@ -29,6 +29,7 @@ Game* newGame() {
 void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
 
+    srand(time(NULL));
     //rand() % (MAX - MIN + 1) + MIN;
     int playerX = rand() % (LINE - 0 + 1) + 0;
     int playerY = rand() % (COLUMN - 0 + 1) + 0;
@@ -42,10 +43,18 @@ void gameInitialisation(Game* this) {
     } while (treasureX == playerX || treasureY == playerY);
 
 
+    // printf("playerX : %d\n", playerX);
+    // printf("playerY : %d\n", playerY);
+
+    // printf("treasureX : %d\n", treasureX);
+    // printf("treasureY : %d\n", treasureY);
+
+
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
     mapInitialisation(this->map);
     this->map->grid[this->player->position_x][this->player->position_y] = 'j';
+    //this->map->grid[this->player->position_x][this->player->position_y] = 't';
 }
 
 void freeGame(Game* this) {

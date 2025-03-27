@@ -71,6 +71,7 @@ int main()
 
     }
   
+    
     freeGame(game);
 
     return 0;
