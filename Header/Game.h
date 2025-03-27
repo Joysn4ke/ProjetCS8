@@ -7,17 +7,9 @@
 
 typedef struct Game_s Game;
 
-// typedef struct Game_s {
-//     Map *map;
-//     Player *player;
-//     Treasure *treasure;
-// }  Game;
-
 Game* newGame();
 void gameInitialisation(Game* this);
 void freeGame(Game* this);
-
-
 
 // Getter & Setter
 Map* getMapGame(Game* game);

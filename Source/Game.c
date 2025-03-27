@@ -54,9 +54,7 @@ void gameInitialisation(Game* this) {
     treasureInitialisation(this->treasure, treasureX, treasureY);
     mapInitialisation(this->map);
 
-    //this->map->grid[this->player->position_x][this->player->position_y] = 'j';
-    //this->map->grid[this->player->position_x][this->player->position_y] = 't';
-
+    
     setGridCellMap(getMapGame(this), 
                getPlayerX(this->player), 
                getPlayerY(this->player), 
