@@ -9,11 +9,11 @@
 #include "Treasure.h"
 #include "Common.h"
 
-// struct Game_s{
-//     Map *map;
-//     Player *player;
-//     Treasure *treasure;
-// };
+struct Game_s{
+    Map *map;
+    Player *player;
+    Treasure *treasure;
+};
 
 Game* newGame() {
     Game* this = (Game*)calloc(1, sizeof(Game));
@@ -53,8 +53,14 @@ void gameInitialisation(Game* this) {
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
     mapInitialisation(this->map);
-    this->map->grid[this->player->position_x][this->player->position_y] = 'j';
+
+    //this->map->grid[this->player->position_x][this->player->position_y] = 'j';
     //this->map->grid[this->player->position_x][this->player->position_y] = 't';
+
+    setGridCellMap(getMapGame(this), 
+               getPlayerX(this->player), 
+               getPlayerY(this->player), 
+               'j');
 }
 
 void freeGame(Game* this) {
@@ -65,4 +71,26 @@ void freeGame(Game* this) {
 
         free(this);
     }
+}
+
+
+// Getter & Setter
+Map* getMapGame(Game* game) {
+    assert(game != NULL);
+    return game->map;
+}
+
+Player* getPlayerGame(Game* game) {
+    assert(game != NULL);
+    return game->player;
+}
+
+Treasure* getTreasureGame(Game* game) {
+    assert(game != NULL);
+    return game->treasure;
+}
+
+char** getGridGame(Game* game) {
+    assert(game != NULL);
+    return getGridMap(game->map);
 }

@@ -36,12 +36,19 @@ int main()
     Game *game = newGame();
     gameInitialisation(game);
 
-    grille_print(game->map->grid, COLUMN, LINE);
+    //grille_print(game->map->grid, COLUMN, LINE);
+    //grille_print(getGridGame(game), COLUMN, LINE);
+    //grille_print(getGridMap(game->map), COLUMN, LINE);
+    grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
 
     while(!fin)
     {
         car = getch();
-        game->map->grid[game->player->position_x][game->player->position_y] = ' ';
+        //game->map->grid[game->player->position_x][game->player->position_y] = ' ';
+        setGridCellMap(getMapGame(game), 
+               getPlayerX(getPlayerGame(game)), 
+               getPlayerY(getPlayerGame(game)), 
+               ' ');
         switch(car)
         {
             case 'l':   //l = leave
@@ -49,29 +56,40 @@ int main()
                 break;
             case 65:    //flèche du haut
             case 'z':   //haut
-                if (game->player->position_x > 0) game->player->position_x--; 
+                //if (game->player->position_x > 0) game->player->position_x--;
+                if (getPlayerX(getPlayerGame(game)) > 0) setPlayerX(getPlayerGame(game), getPlayerX(getPlayerGame(game)) - 1); 
                 break;
             case 66:    //lèche du bas
             case 's':   //bas
-                if (game->player->position_x < LINE - 1) game->player->position_x++; 
+                //if (game->player->position_x < LINE - 1) game->player->position_x++;
+                if (getPlayerX(getPlayerGame(game)) < LINE - 1) setPlayerX(getPlayerGame(game), getPlayerX(getPlayerGame(game)) + 1);
                 break;
             case 67:    //flèche de droite
             case 'd':   //droite
-                if (game->player->position_y < COLUMN - 1) game->player->position_y++; 
+                //if (game->player->position_y < COLUMN - 1) game->player->position_y++;
+                if (getPlayerY(getPlayerGame(game)) < COLUMN - 1) setPlayerY(getPlayerGame(game), getPlayerY(getPlayerGame(game)) + 1); 
                 break;
             case 68:    //flèche de gauche
             case 'q':   //gauche
-                if (game->player->position_y > 0) game->player->position_y--; 
+                //if (game->player->position_y > 0) game->player->position_y--;
+                if (getPlayerY(getPlayerGame(game)) > 0) setPlayerY(getPlayerGame(game), getPlayerY(getPlayerGame(game)) - 1); 
                 break;
         }
 
-        game->map->grid[game->player->position_x][game->player->position_y] = 'j';
+        //game->map->grid[game->player->position_x][game->player->position_y] = 'j';
+        setGridCellMap(getMapGame(game), 
+               getPlayerX(getPlayerGame(game)), 
+               getPlayerY(getPlayerGame(game)), 
+               'j');
         system("clear");
-        grille_print(game->map->grid, COLUMN, LINE);
+
+        //grille_print(game->map->grid, COLUMN, LINE);
+        //grille_print(getGridGame(game), COLUMN, LINE);
+        //grille_print(getGridMap(game->map), COLUMN, LINE);
+        grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
 
     }
   
-    
     freeGame(game);
 
     return 0;

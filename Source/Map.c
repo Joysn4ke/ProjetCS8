@@ -6,9 +6,9 @@
 #include "Map.h"
 #include "Grille.h"
 
-// struct Map_s{
-//     char **grid;
-// };
+struct Map_s{
+    char **grid;
+};
 
 
 Map* newMap() {
@@ -46,4 +46,25 @@ void freeMap(Map* this) {
 
         free(this);
     }
+}
+
+
+// Getter & Setter
+char** getGridMap(Map* map) {
+    assert(map != NULL);
+    return map->grid;
+}
+
+void setGridCellMap(Map* map, int x, int y, char value) {
+    assert(map != NULL);
+    assert(x >= 0 && x < LINE);
+    assert(y >= 0 && y < COLUMN);
+    map->grid[x][y] = value;
+}
+
+char getGridCellMap(Map* map, int x, int y) {
+    assert(map != NULL);
+    assert(x >= 0 && x < LINE);
+    assert(y >= 0 && y < COLUMN);
+    return map->grid[x][y];
 }

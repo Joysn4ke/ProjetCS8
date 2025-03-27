@@ -5,10 +5,10 @@
 #include "Common.h"
 #include "Treasure.h"
 
-// struct Treasure_s{
-//     int position_x;
-//     int position_y;;
-// };
+struct Treasure_s{
+    int position_x;
+    int position_y;;
+};
 
 Treasure* newTreasure() {
     Treasure* this = (Treasure*)calloc(1, sizeof(Treasure));
