@@ -19,6 +19,6 @@ extern Map* getMapGame(Game* game);
 extern Player* getPlayerGame(Game* game);
 extern Treasure* getTreasureGame(Game* game);
 extern char** getGridGame(Game* game);
-extern Trap* getTrapGame(Game* game);
+extern Trap** getTrapGame(Game* game);
 
 #endif //GAME_H

@@ -130,7 +130,7 @@ extern Player* getPlayerGame(Game* game) {
     return game->player;
 }
 
-extern Trap* getTrapGame(Game* game) {
+extern Trap** getTrapGame(Game* game) {
     assert(game != NULL);
     return game->trap;
 }
