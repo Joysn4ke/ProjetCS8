@@ -8,7 +8,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Common.h"
-
+#include "Trap.h"
 
 
 typedef enum {
@@ -28,6 +28,7 @@ int main()
 {
     char car;
     int fin = 0;
+    int vie = 3;
     Etat etat = INIT_A;
 
     Game *game = newGame();
@@ -100,8 +101,26 @@ int main()
                     fin = 1;
                     etat = INIT_A;
                     }
+                else if (getPosPlayerX(getPlayerGame(game)) == getPosTrapX(getTrapGame(game)) &&
+                    getPosPlayerY(getPlayerGame(game)) == getPosTrapY(getTrapGame(game))) {
+                    printf("\nTu es tombé sur un trap, tu perds une vie\n");
+                    vie  = vie - 1;
+                    if (vie == 0) {
+                        printf("\ntu n'as plus de vie !!! LOOOSER\n");
+                        fin = 1;
+                        etat = INIT_A;
+                    } else {
+                        printf("\nIl te reste %d vies.\n", vie);
+                        system("clear");
+                        setGridCellMap(getMapGame(game),
+                               getPosPlayerX(getPlayerGame(game)),
+                               getPosPlayerY(getPlayerGame(game)),
+                               'j');
 
-                else {
+                        grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
+                        etat = ACQUISITION_CLAVIER;
+                    }
+                } else {
                     system("clear");
                     setGridCellMap(getMapGame(game),
                            getPosPlayerX(getPlayerGame(game)),
@@ -119,3 +138,6 @@ int main()
     freeGame(game);
     return 0;
 }
+
+
+
