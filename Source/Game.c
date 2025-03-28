@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "Treasure.h"
 #include "Common.h"
+#include "Grille.h"
+
 
 struct Game_s{
     Map *map;
@@ -69,6 +71,16 @@ extern void freeGame(Game* this) {
 
         free(this);
     }
+}
+
+
+extern void gamePrint(Game* this) {
+    setGridCellMap(this->map, 
+        getPosPlayerX(this->player),
+        getPosPlayerY(this->player),
+        'j');
+    
+    grille_print(getGridMap(this->map), COLUMN, LINE);
 }
 
 

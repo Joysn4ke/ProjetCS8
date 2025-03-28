@@ -11,6 +11,8 @@ extern Game* newGame();
 extern void gameInitialisation(Game* this);
 extern void freeGame(Game* this);
 
+extern void gamePrint(Game* this);
+
 // Getter & Setter
 extern Map* getMapGame(Game* game);
 extern Player* getPlayerGame(Game* game);

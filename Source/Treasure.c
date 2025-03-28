@@ -32,3 +32,27 @@ extern void freeTreasure(Treasure* this) {
         free(this);
     }
 }
+
+
+// Getter & Setter
+extern int getPosTreasureX(Treasure* Treasure) {
+    assert(Treasure != NULL);
+    return Treasure->position_x;
+}
+
+extern int getPosTreasureY(Treasure* Treasure) {
+    assert(Treasure != NULL);
+    return Treasure->position_y;
+}
+
+extern void setPosTreasureX(Treasure* Treasure, int x) {
+    assert(Treasure != NULL);
+    assert(x >= 0 && x < LINE);
+    Treasure->position_x = x;
+}
+
+extern void setPosTreasureY(Treasure* Treasure, int y) {
+    assert(Treasure != NULL);
+    assert(y >= 0 && y < COLUMN);
+    Treasure->position_y = y;
+}

@@ -55,7 +55,7 @@ extern char** getGridMap(Map* map) {
     return map->grid;
 }
 
- extern void setGridCellMap(Map* map, int x, int y, char value) {
+extern void setGridCellMap(Map* map, int x, int y, char value) {
     assert(map != NULL);
     assert(x >= 0 && x < LINE);
     assert(y >= 0 && y < COLUMN);
