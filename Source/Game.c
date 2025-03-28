@@ -73,22 +73,22 @@ extern void freeGame(Game* this) {
 
 
 // Getter & Setter
-Map* getMapGame(Game* game) {
+extern Map* getMapGame(Game* game) {
     assert(game != NULL);
     return game->map;
 }
 
-Player* getPlayerGame(Game* game) {
+extern Player* getPlayerGame(Game* game) {
     assert(game != NULL);
     return game->player;
 }
 
-Treasure* getTreasureGame(Game* game) {
+extern Treasure* getTreasureGame(Game* game) {
     assert(game != NULL);
     return game->treasure;
 }
 
-char** getGridGame(Game* game) {
+extern char** getGridGame(Game* game) {
     assert(game != NULL);
     return getGridMap(game->map);
 }
