@@ -56,8 +56,8 @@ void gameInitialisation(Game* this) {
 
     
     setGridCellMap(getMapGame(this), 
-               getPlayerX(this->player), 
-               getPlayerY(this->player), 
+               getPosPlayerX(this->player),
+               getPosPlayerY(this->player),
                'j');
 }
 

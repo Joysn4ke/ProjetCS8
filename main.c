@@ -24,8 +24,8 @@ int main()
     {
         car = getch();
         setGridCellMap(getMapGame(game), 
-               getPlayerX(getPlayerGame(game)), 
-               getPlayerY(getPlayerGame(game)), 
+               getPosPlayerX(getPlayerGame(game)),
+               getPosPlayerY(getPlayerGame(game)),
                ' ');
         switch(car)
         {
@@ -34,25 +34,25 @@ int main()
                 break;
             case 65:    //flèche du haut
             case 'z':   //haut
-                if (getPlayerX(getPlayerGame(game)) > 0) setPlayerX(getPlayerGame(game), getPlayerX(getPlayerGame(game)) - 1); 
+                if (getPosPlayerX(getPlayerGame(game)) > 0) setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) - 1);
                 break;
             case 66:    //lèche du bas
             case 's':   //bas
-                if (getPlayerX(getPlayerGame(game)) < LINE - 1) setPlayerX(getPlayerGame(game), getPlayerX(getPlayerGame(game)) + 1);
+                if (getPosPlayerX(getPlayerGame(game)) < LINE - 1) setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) + 1);
                 break;
             case 67:    //flèche de droite
             case 'd':   //droite
-                if (getPlayerY(getPlayerGame(game)) < COLUMN - 1) setPlayerY(getPlayerGame(game), getPlayerY(getPlayerGame(game)) + 1); 
+                if (getPosPlayerY(getPlayerGame(game)) < COLUMN - 1) setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) + 1);
                 break;
             case 68:    //flèche de gauche
             case 'q':   //gauche
-                if (getPlayerY(getPlayerGame(game)) > 0) setPlayerY(getPlayerGame(game), getPlayerY(getPlayerGame(game)) - 1); 
+                if (getPosPlayerY(getPlayerGame(game)) > 0) setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) - 1);
                 break;
         }
 
         setGridCellMap(getMapGame(game), 
-               getPlayerX(getPlayerGame(game)), 
-               getPlayerY(getPlayerGame(game)), 
+               getPosPlayerX(getPlayerGame(game)),
+               getPosPlayerY(getPlayerGame(game)),
                'j');
         system("clear");
 
