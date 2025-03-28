@@ -132,7 +132,7 @@ int main()
                 }
             break;
         }
-        //printf("toto");
+
     }
 
     freeGame(game);
