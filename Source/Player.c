@@ -7,7 +7,7 @@
 
 struct Player_s{
     int position_x;
-    int position_y;;
+    int position_y;
 };
 
 extern Player* newPlayer() {

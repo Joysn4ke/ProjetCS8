@@ -7,7 +7,7 @@
 
 struct Treasure_s{
     int position_x;
-    int position_y;;
+    int position_y;
 };
 
 extern Treasure* newTreasure() {

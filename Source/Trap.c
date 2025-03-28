@@ -7,7 +7,7 @@
 
 struct Trap_s{
     int position_x;
-    int position_y;;
+    int position_y;
 };
 
 extern Trap* newTrap() {
