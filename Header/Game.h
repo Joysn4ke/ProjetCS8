@@ -7,15 +7,15 @@
 
 typedef struct Game_s Game;
 
-Game* newGame();
-void gameInitialisation(Game* this);
-void freeGame(Game* this);
+extern Game* newGame();
+extern void gameInitialisation(Game* this);
+extern void freeGame(Game* this);
 
 // Getter & Setter
-Map* getMapGame(Game* game);
-Player* getPlayerGame(Game* game);
-Treasure* getTreasureGame(Game* game);
-char** getGridGame(Game* game);
+extern Map* getMapGame(Game* game);
+extern Player* getPlayerGame(Game* game);
+extern Treasure* getTreasureGame(Game* game);
+extern char** getGridGame(Game* game);
 
 
 #endif //GAME_H

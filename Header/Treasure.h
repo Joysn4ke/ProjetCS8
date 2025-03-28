@@ -3,8 +3,8 @@
 
 typedef struct Treasure_s Treasure;
 
-Treasure* newTreasure();
-void treasureInitialisation(Treasure* this, int localX, int localY);
-void freeTreasure(Treasure* this);
+extern Treasure* newTreasure();
+extern void treasureInitialisation(Treasure* this, int localX, int localY);
+extern void freeTreasure(Treasure* this);
 
 #endif //TREASURE_H

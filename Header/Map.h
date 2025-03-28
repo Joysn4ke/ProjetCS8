@@ -3,13 +3,13 @@
 
 typedef struct Map_s Map;
 
-Map* newMap();
-void mapInitialisation(Map* this);
-void freeMap(Map* this);
+extern Map* newMap();
+extern void mapInitialisation(Map* this);
+extern void freeMap(Map* this);
 
 // Getter & Setter
-char** getGridMap(Map* map);
-void setGridCellMap(Map* map, int x, int y, char value);
-char getGridCellMap(Map* map, int x, int y);
+extern char** getGridMap(Map* map);
+extern void setGridCellMap(Map* map, int x, int y, char value);
+extern char getGridCellMap(Map* map, int x, int y);
 
 #endif //MAP_H

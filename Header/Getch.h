@@ -1,9 +1,9 @@
 #ifndef GETCH_H
 #define GETCH_H
 
-void initTermios(int echo);
-void resetTermios(void);
-char getch_(int echo);
-char getch(void);
+extern void initTermios(int echo);
+extern void resetTermios(void);
+extern char getch_(int echo);
+extern char getch(void);
 
 #endif //GETCH_H

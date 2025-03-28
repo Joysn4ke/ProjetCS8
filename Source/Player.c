@@ -10,13 +10,13 @@ struct Player_s{
     int position_y;;
 };
 
-Player* newPlayer() {
+extern Player* newPlayer() {
     Player* this = (Player*)calloc(1, sizeof(Player));
     assert(this != NULL);  //Memory allocation's verification
     return this;
 }
 
-void playerInitialisation(Player* this, int localX, int localY) {
+extern void playerInitialisation(Player* this, int localX, int localY) {
     assert(this != NULL);  //Valid object's verification
     if (0 <= localX && localX < LINE && 0 <= localY && localY < COLUMN) {
         this->position_x = localX;
@@ -27,7 +27,7 @@ void playerInitialisation(Player* this, int localX, int localY) {
     }
 }
 
-void freePlayer(Player* this) {
+extern void freePlayer(Player* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         free(this);
     }
@@ -35,23 +35,23 @@ void freePlayer(Player* this) {
 
 
 // Getter & Setter
-int getPosPlayerX(Player* player) {
+extern int getPosPlayerX(Player* player) {
     assert(player != NULL);
     return player->position_x;
 }
 
-int getPosPlayerY(Player* player) {
+extern int getPosPlayerY(Player* player) {
     assert(player != NULL);
     return player->position_y;
 }
 
-void setPosPlayerX(Player* player, int x) {
+extern void setPosPlayerX(Player* player, int x) {
     assert(player != NULL);
     assert(x >= 0 && x < LINE);
     player->position_x = x;
 }
 
-void setPosPlayerY(Player* player, int y) {
+extern void setPosPlayerY(Player* player, int y) {
     assert(player != NULL);
     assert(y >= 0 && y < COLUMN);
     player->position_y = y;

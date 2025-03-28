@@ -15,7 +15,7 @@ struct Game_s{
     Treasure *treasure;
 };
 
-Game* newGame() {
+extern Game* newGame() {
     Game* this = (Game*)calloc(1, sizeof(Game));
     assert(this != NULL);  //Memory allocation's verification
 
@@ -26,7 +26,7 @@ Game* newGame() {
     return this;
 }
 
-void gameInitialisation(Game* this) {
+extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
 
     srand(time(NULL));
@@ -61,7 +61,7 @@ void gameInitialisation(Game* this) {
                'j');
 }
 
-void freeGame(Game* this) {
+extern void freeGame(Game* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         freeMap(this->map);
         freePlayer(this->player);

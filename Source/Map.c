@@ -11,7 +11,7 @@ struct Map_s{
 };
 
 
-Map* newMap() {
+extern Map* newMap() {
     Map* this = (Map*)calloc(1, sizeof(Map));
     assert(this != NULL);  //Memory allocation's verification
 
@@ -24,7 +24,7 @@ Map* newMap() {
 }
 
 
-void mapInitialisation(Map* this) {
+extern void mapInitialisation(Map* this) {
     assert(this != NULL);  //Valid object's verification
 
     for(int i=0; i < LINE; i++)
@@ -37,7 +37,7 @@ void mapInitialisation(Map* this) {
 }
 
 
-void freeMap(Map* this) {
+extern void freeMap(Map* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         for (int i = 0; i < LINE; i++) {
             free(this->grid[i]);
@@ -50,19 +50,19 @@ void freeMap(Map* this) {
 
 
 // Getter & Setter
-char** getGridMap(Map* map) {
+extern char** getGridMap(Map* map) {
     assert(map != NULL);
     return map->grid;
 }
 
-void setGridCellMap(Map* map, int x, int y, char value) {
+ extern void setGridCellMap(Map* map, int x, int y, char value) {
     assert(map != NULL);
     assert(x >= 0 && x < LINE);
     assert(y >= 0 && y < COLUMN);
     map->grid[x][y] = value;
 }
 
-char getGridCellMap(Map* map, int x, int y) {
+extern char getGridCellMap(Map* map, int x, int y) {
     assert(map != NULL);
     assert(x >= 0 && x < LINE);
     assert(y >= 0 && y < COLUMN);
