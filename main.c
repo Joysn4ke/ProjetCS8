@@ -17,9 +17,6 @@ int main()
 
     Game *game = newGame();
     gameInitialisation(game);
-
-    //grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
-
     gamePrint(game);
     
     while(!fin)
@@ -53,13 +50,6 @@ int main()
         }
 
         system("clear");
-
-        // setGridCellMap(getMapGame(game), 
-        // getPosPlayerX(getPlayerGame(game)),
-        // getPosPlayerY(getPlayerGame(game)),
-        // 'j');
-
-        //grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
         gamePrint(game);
 
         // printf("treasure X : %d\n", getPosTreasureX(getTreasureGame(game)));printf("treasure Y : %d\n", getPosTreasureY(getTreasureGame(game)));
