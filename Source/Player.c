@@ -35,23 +35,23 @@ void freePlayer(Player* this) {
 
 
 // Getter & Setter
-int getPlayerX(Player* player) {
+int getPosPlayerX(Player* player) {
     assert(player != NULL);
     return player->position_x;
 }
 
-int getPlayerY(Player* player) {
+int getPosPlayerY(Player* player) {
     assert(player != NULL);
     return player->position_y;
 }
 
-void setPlayerX(Player* player, int x) {
+void setPosPlayerX(Player* player, int x) {
     assert(player != NULL);
     assert(x >= 0 && x < LINE);
     player->position_x = x;
 }
 
-void setPlayerY(Player* player, int y) {
+void setPosPlayerY(Player* player, int y) {
     assert(player != NULL);
     assert(y >= 0 && y < COLUMN);
     player->position_y = y;

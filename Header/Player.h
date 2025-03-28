@@ -8,9 +8,9 @@ void playerInitialisation(Player* this, int localX, int localY);
 void freePlayer(Player* this);
 
 // Getter & Setter
-int getPlayerX(Player* player);
-int getPlayerY(Player* player);
-void setPlayerX(Player* player, int x);
-void setPlayerY(Player* player, int y);
+int getPosPlayerX(Player* player);
+int getPosPlayerY(Player* player);
+void setPosPlayerX(Player* player, int x);
+void setPosPlayerY(Player* player, int y);
 
 #endif //PLAYER_H
