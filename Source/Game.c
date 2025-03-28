@@ -3,18 +3,20 @@
 #include <stdio.h>
 #include "assert.h"
 
+#include "Common.h"
 #include "Game.h"
+#include "Grille.h"
 #include "Map.h"
 #include "Player.h"
+#include "Trap.h"
 #include "Treasure.h"
-#include "Common.h"
-#include "Grille.h"
 
 
 struct Game_s{
     Map *map;
     Player *player;
     Treasure *treasure;
+    Trap *trap[NBTRAP];
 };
 
 extern Game* newGame() {
@@ -23,7 +25,10 @@ extern Game* newGame() {
 
     this->map = newMap();
     this->player = newPlayer();
-    this->treasure = newTreasure();  //Test Leak Memmory
+    this->treasure = newTreasure();
+    for (int i = 0; i < NBTRAP ; i++) {
+        this->trap[i] = newTrap();
+    }
 
     return this;
 }
@@ -56,6 +61,74 @@ extern void gameInitialisation(Game* this) {
     treasureInitialisation(this->treasure, treasureX, treasureY);
     mapInitialisation(this->map);
 
+    // for (int i = 0; i < NBTRAP ; i++) {  
+    //     treasureInitialisation(this->trap[i], treasureX, treasureY);
+    // }
+
+    // for (int i = 0; i < NBTRAP; i++) {
+    //     // Tableaux pour stocker les coordonnées déjà utilisées
+    //     int usedX[NBTRAP];
+    //     int usedY[NBTRAP];
+    
+    //     // Générer des coordonnées uniques
+    //     //generateUniqueCoordinates(&this->trap[i]->x, &this->trap[i]->y, playerX, playerY, usedX, usedY, i, LINE - 1, COLUMN - 1);
+
+    //     int X = getPosTrapX(this->trap[i]);
+    //     int Y = getPosTrapY(this->trap[i]);
+
+    //     // int *pX = &X;
+    //     // int *pY = &Y;
+
+    //     generateUniqueCoordinates(&X, &Y, playerX, playerY, usedX, usedY, i, LINE - 1, COLUMN - 1);
+    
+    //     //generateUniqueCoordinates(&getPosTrapX(this->trap[i]), &getPosTrapY(this->trap[i]), playerX, playerY, usedX, usedY, i, LINE - 1, COLUMN - 1);
+
+    //     // Mettre à jour les tableaux de coordonnées utilisées
+    //     // usedX[i] = this->trap[i]->x;
+    //     // usedY[i] = this->trap[i]->y;
+
+    //     setPosTrapX(this->trap[i], X);
+    //     setPosTrapX(this->trap[i], Y);
+
+    //     printf("X%d : %d\n", i, getPosTrapX(this->trap[i]));
+    //     printf("Y%d : %d\n", i, getPosTrapY(this->trap[i]));
+
+    //     setGridCellMap(this->map, 
+    //         getPosTrapX(this->trap[i]),
+    //         getPosTrapY(this->trap[i]),
+    //         't');
+
+    //     usedX[i] = getPosTrapX(this->trap[i]);
+    //     usedY[i] = getPosTrapY(this->trap[i]);
+    // }
+
+
+    for (int i = 0; i < NBTRAP; i++) {
+        int X, Y;
+        int usedX[NBTRAP];
+        int usedY[NBTRAP];
+    
+        //Initialize used arrays
+        for (int j = 0; j < i; j++) {
+            usedX[j] = getPosTrapX(this->trap[j]);
+            usedY[j] = getPosTrapY(this->trap[j]);
+        }
+    
+        //Generate unique coordinates
+        generateUniqueCoordinates(&X, &Y, 
+            getPosPlayerX(this->player), 
+            getPosPlayerY(this->player), 
+            usedX, usedY, i, 
+            LINE - 1, COLUMN - 1);
+    
+        //Set trap coordinates correctly
+        setPosTrapX(this->trap[i], X);
+        setPosTrapY(this->trap[i], Y);
+    
+        //Set trap on the grid
+        setGridCellMap(this->map, X, Y, 't');
+    }
+
     
     setGridCellMap(getMapGame(this), 
                getPosPlayerX(this->player),
@@ -68,6 +141,10 @@ extern void freeGame(Game* this) {
         freeMap(this->map);
         freePlayer(this->player);
         freeTreasure(this->treasure);
+
+        for (int i = 0; i < NBTRAP ; i++) {
+            free(this->trap[i]);
+        }
 
         free(this);
     }

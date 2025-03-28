@@ -33,11 +33,7 @@ int main()
     Game *game = newGame();
     gameInitialisation(game);
 
-    setGridCellMap(getMapGame(game),
-               getPosPlayerX(getPlayerGame(game)),
-               getPosPlayerY(getPlayerGame(game)),
-               'j');
-    grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
+    gamePrint(game);
 
     while(!fin)
     {
@@ -99,21 +95,13 @@ int main()
                     printf("\nTu as gagné, wp tu es tombé sur le trésor \n");
                     fin = 1;
                     etat = INIT_A;
-                    }
-
-                else {
+                } else {
                     system("clear");
-                    setGridCellMap(getMapGame(game),
-                           getPosPlayerX(getPlayerGame(game)),
-                           getPosPlayerY(getPlayerGame(game)),
-                           'j');
-
-                    grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
+                    gamePrint(game);
                     etat = ACQUISITION_CLAVIER;
                 }
             break;
         }
-        //printf("toto");
     }
 
     freeGame(game);
