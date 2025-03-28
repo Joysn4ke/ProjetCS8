@@ -23,7 +23,6 @@ typedef enum {
 
 
 
-
 int main()
 {
     char car;
