@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Treasure.h"
+#include "Trap.h"
 
 typedef struct Game_s Game;
 
@@ -18,6 +19,6 @@ extern Map* getMapGame(Game* game);
 extern Player* getPlayerGame(Game* game);
 extern Treasure* getTreasureGame(Game* game);
 extern char** getGridGame(Game* game);
-
+extern Trap* getTrapGame(Game* game);
 
 #endif //GAME_H
