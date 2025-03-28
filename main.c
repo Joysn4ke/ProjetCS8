@@ -18,8 +18,10 @@ int main()
     Game *game = newGame();
     gameInitialisation(game);
 
+
     grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
 
+    
     while(!fin)
     {
         car = getch();
