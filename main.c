@@ -28,17 +28,11 @@ int main()
 {
     char car;
     int fin = 0;
-    int vie = 2;
     Etat etat = INIT_A;
 
     Game *game = newGame();
     gameInitialisation(game);
-
-    setGridCellMap(getMapGame(game),
-               getPosPlayerX(getPlayerGame(game)),
-               getPosPlayerY(getPlayerGame(game)),
-               'j');
-    grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
+    gamePrint(game);
 
     while(!fin)
     {
@@ -56,16 +50,20 @@ int main()
                     case 'l':  //leave
                         fin = 1;
                         break;
-                    case 65: case 'z':     //on se déplace vers le haut
+                    case 65: 
+                    case 'z':     //on se déplace vers le haut
                         etat = DEPLACEMENT_HAUT;
                         break;
-                    case 66: case 's':
+                    case 66: 
+                    case 's':
                         etat = DEPLACEMENT_BAS;   //on se déplace vers le bas
                         break;
-                    case 67: case 'd':
+                    case 67: 
+                    case 'd':
                         etat = DEPLACEMENT_DROITE;    //on se déplace vers la droite
                         break;
-                    case 68: case 'q':
+                    case 68: 
+                    case 'q':
                         etat = DEPLACEMENT_GAUCHE;  //on se déplacde vers la gauche
                         break;
                     default:
@@ -95,47 +93,22 @@ int main()
                 break;
 
             case VERIFICATION_VICTOIRE:
-    if (getPosPlayerX(getPlayerGame(game)) == getPosTreasureX(getTreasureGame(game)) &&
-        getPosPlayerY(getPlayerGame(game)) == getPosTreasureY(getTreasureGame(game))) {
-        printf("\nTu as gagné, wp tu es tombé sur le trésor \n");
-        fin = 1;
-        etat = INIT_A;
-        break;
-    }
+                gamePrint(game);
 
-    int piegeTrouve = 0;
-    for (int i = 0; i < NBTRAP; i++) {
-        if (getPosPlayerX(getPlayerGame(game)) == getPosTrapX(getTrapGame(game)[i]) &&
-            getPosPlayerY(getPlayerGame(game)) == getPosTrapY(getTrapGame(game)[i])) {
-
-            printf("\nTu es tombé sur un trap, tu perds une vie\n");
-            vie  = vie - 1;
-            piegeTrouve = 1;
-
-            if (vie == 0) {
-                printf("\ntu n'as plus de vie !!! LOOOSER\n");
-                fin = 1;
-                etat = INIT_A;
-            } else {
-                printf("\nIl te reste %d vies.\n", vie);
-                etat = ACQUISITION_CLAVIER;
-            }
-            break;  // Sort de la boucle for si un piège est trouvé
-        }
-    }
-
-    if (!piegeTrouve) { // Si aucun piège n'a été trouvé, on rafraîchit la grille normalement
-        system("clear");
-        setGridCellMap(getMapGame(game),
-                       getPosPlayerX(getPlayerGame(game)),
-                       getPosPlayerY(getPlayerGame(game)),
-                       'j');
-
-        grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
-        etat = ACQUISITION_CLAVIER;
-    }
-    break;
-
+                int status = checkGameStatus(game);
+                if (status == 1) { //Win
+                    printf("Tu as gagné, wp tu es tombé sur le trésor \n");
+                    fin = 1;
+                    etat = INIT_A;
+                } else if (status == 2) { //Lose
+                    printf("Tu as perdu\n");
+                    fin = 1;
+                    etat = INIT_A;
+                } else { //Game continue
+                    etat = ACQUISITION_CLAVIER;
+                }
+                break;
+            break;
         }
 
     }
@@ -143,7 +116,4 @@ int main()
     freeGame(game);
     return 0;
 }
-
-
-
 

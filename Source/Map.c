@@ -56,6 +56,11 @@ extern char** getGridMap(Map* map) {
 }
 
 extern void setGridCellMap(Map* map, int x, int y, char value) {
+    // Debug
+    // printf("X : %d\n", x);
+    // printf("Y : %d\n", y);
+    // printf("X : %c\n", value);
+
     assert(map != NULL);
     assert(x >= 0 && x < LINE);
     assert(y >= 0 && y < COLUMN);

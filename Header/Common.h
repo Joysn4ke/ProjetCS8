@@ -13,8 +13,22 @@
 #define NBTRAP 2
 #endif
 
+#ifndef HEALTHPLAYER
+#define HEALTHPLAYER 2
+#endif
 
-void generateUniqueCoordinates(int* x, int* y, int playerX, int playerY, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
+#ifndef NBPLAYER
+#define NBPLAYER 1
+#endif
 
+#ifndef NBPIRATE
+#define NBPIRATE 1
+#endif
+
+#ifndef CHEAT
+#define CHEAT 1
+#endif
+
+void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed);
 
 #endif //COMMON_H
