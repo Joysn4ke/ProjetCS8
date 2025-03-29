@@ -58,3 +58,16 @@ extern void setPosPlayerY(Player* player, int y) {
     assert(y >= 0 && y < COLUMN);
     player->position_y = y;
 }
+
+
+
+extern int getHealthPlayer(Player* player) {
+    assert(player != NULL);
+    return player->health;
+}
+
+extern void setHealthPlayer(Player* player, int localHealth) {
+    assert(player != NULL);
+    assert(localHealth >= 0 && localHealth < HEALTHPLAYER);
+    player->health = localHealth;
+}

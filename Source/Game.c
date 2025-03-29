@@ -50,16 +50,16 @@ extern void gameInitialisation(Game* this) {
         treasureY = rand() % (COLUMN - 0 + 1) + 0;
     } while (treasureX == playerX || treasureY == playerY);
 
-
     // printf("playerX : %d\n", playerX);
     // printf("playerY : %d\n", playerY);
-
     // printf("treasureX : %d\n", treasureX);
     // printf("treasureY : %d\n", treasureY);
 
     mapInitialisation(this->map);
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
+
+    setGridCellMap(this->map, treasureX, treasureY, 'T');   //Set treasure on the grid : TO COMMENT
 
     int X, Y;
     int usedX[NBTRAP + NBPLAYER + NBPIRATE];
@@ -77,8 +77,8 @@ extern void gameInitialisation(Game* this) {
         usedY[NBTRAP] = getPosPlayerY(this->player);
     
         generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
-        TrapInitialisation(this->trap[i], X, Y);            //Set trap coordinates correctly
-        setGridCellMap(this->map, X, Y, 't');               //Set trap on the grid
+        TrapInitialisation(this->trap[i], X, Y);        //Set trap coordinates correctly
+        setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid : TO COMMENT
     }
     
     setGridCellMap(getMapGame(this), 
@@ -103,12 +103,38 @@ extern void freeGame(Game* this) {
 
 
 extern void gamePrint(Game* this) {
-    setGridCellMap(this->map, 
-        getPosPlayerX(this->player),
-        getPosPlayerY(this->player),
-        'j');
-    
+    system("clear");
+    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), 'j');
+    //printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
     grille_print(getGridMap(this->map), COLUMN, LINE);
+    printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
+}
+
+
+extern int checkGameStatus(Game* this) {
+    //Verif if treasure found
+    if (getPosPlayerX(getPlayerGame(this)) == getPosTreasureX(getTreasureGame(this)) &&
+        getPosPlayerY(getPlayerGame(this)) == getPosTreasureY(getTreasureGame(this))) {
+        return 1;
+    }
+    
+    // Vérification si le joueur est tombé sur un piège
+    for (int i = 0; i < NBTRAP; i++) {
+        if (getPosPlayerX(getPlayerGame(this)) == getPosTrapX(getTrapGame(this)[i]) && getPosPlayerY(getPlayerGame(this)) == getPosTrapY(getTrapGame(this)[i])) {
+            
+            printf("\nTu es tombé sur un trap, tu perds une vie\n");
+            setHealthPlayer(this->player, getHealthPlayer(this->player) - 1);
+            
+            if (getHealthPlayer(this->player) == 0) {
+                printf("\nTu n'as plus de vie !!! LOOOSER\n");
+                return 2; //Lose
+            } else {
+                return 0; //Game Continue
+            }
+        }
+    }
+
+    return 0;
 }
 
 

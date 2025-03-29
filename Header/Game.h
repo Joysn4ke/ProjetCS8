@@ -13,6 +13,7 @@ extern void gameInitialisation(Game* this);
 extern void freeGame(Game* this);
 
 extern void gamePrint(Game* this);
+extern int checkGameStatus(Game* this);
 
 // Getter & Setter
 extern Map* getMapGame(Game* game);
