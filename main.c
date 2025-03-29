@@ -27,13 +27,10 @@ int main()
 {
     char car;
     int fin = 0;
-    //int vie = 3;
     Etat etat = INIT_A;
 
     Game *game = newGame();
     gameInitialisation(game);
-
-    //system("clear");
     gamePrint(game);
 
     while(!fin)
@@ -95,44 +92,10 @@ int main()
                 break;
 
             case VERIFICATION_VICTOIRE:
-                // if (getPosPlayerX(getPlayerGame(game)) == getPosTreasureX(getTreasureGame(game)) &&
-                //     getPosPlayerY(getPlayerGame(game)) == getPosTreasureY(getTreasureGame(game))) {
-                //     printf("\nTu as gagné, wp tu es tombé sur le trésor \n");
-                //     fin = 1;
-                //     etat = INIT_A;
-                //     }
-                // else if (getPosPlayerX(getPlayerGame(game)) == getPosTrapX(getTrapGame(game)) &&
-                //     getPosPlayerY(getPlayerGame(game)) == getPosTrapY(getTrapGame(game))) {
-                //     printf("\nTu es tombé sur un trap, tu perds une vie\n");
-                //     vie  = vie - 1;
-                //     if (vie == 0) {
-                //         printf("\ntu n'as plus de vie !!! LOOOSER\n");
-                //         fin = 1;
-                //         etat = INIT_A;
-                //     } else {
-                //         printf("\nIl te reste %d vies.\n", vie);
-                //         system("clear");
-                //         setGridCellMap(getMapGame(game),
-                //                getPosPlayerX(getPlayerGame(game)),
-                //                getPosPlayerY(getPlayerGame(game)),
-                //                'j');
-
-                //         grille_print(getGridMap(getMapGame(game)), COLUMN, LINE);
-                //         etat = ACQUISITION_CLAVIER;
-                //     }
-                // } else {
-                //     system("clear");
-                //     gamePrint(game);
-                //     etat = ACQUISITION_CLAVIER;
-                // }
-                //system("clear");
                 gamePrint(game);
 
                 int status = checkGameStatus(game);
-                
                 if (status == 1) { //Win
-                    // system("clear");
-                    // gamePrint(game);
                     printf("\nTu as gagné, wp tu es tombé sur le trésor \n");
                     fin = 1;
                     etat = INIT_A;
@@ -140,10 +103,6 @@ int main()
                     fin = 1;
                     etat = INIT_A;
                 } else { //Game continue
-                    //printf("\nIl te reste %d vies.\n", getHealthPlayer(getPlayerGame(game)));
-                    //setGridCellMap(getMapGame(game), getPosPlayerX(getPlayerGame(game)), getPosPlayerY(getPlayerGame(game)), 'j');
-                    // system("clear");
-                    // gamePrint(game);
                     etat = ACQUISITION_CLAVIER;
                 }
                 break;

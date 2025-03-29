@@ -39,15 +39,14 @@ extern void gameInitialisation(Game* this) {
 
     srand(time(NULL));
     //rand() % (MAX - MIN + 1) + MIN;
-    int playerX = rand() % (LINE - 0 + 1) + 0;
-    int playerY = rand() % (COLUMN - 0 + 1) + 0;
+    int playerX = rand() % (LINE);
+    int playerY = rand() % (COLUMN);
 
     int treasureX = LINE - 1;
     int treasureY = COLUMN - 1;
-
     do {
-        treasureX = rand() % (LINE - 0 + 1) + 0;
-        treasureY = rand() % (COLUMN - 0 + 1) + 0;
+        treasureX = rand() % (LINE);
+        treasureY = rand() % (COLUMN);
     } while (treasureX == playerX || treasureY == playerY);
 
     // printf("playerX : %d\n", playerX);
