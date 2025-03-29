@@ -1,0 +1,21 @@
+name: Restrict Non-Admin Push
+
+on: [push]
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check user permissions
+        run: |
+          USER=${{ github.actor }}
+          BRANCH=${{ github.ref }}
+          
+          # Vérifier si l'utilisateur est un admin (ajouter ton pseudo GitHub ici)
+          # ADMINS=("Joysn4ke")
+          ADMINS=("TonPseudoGitHub" "AutreAdmin")
+          
+          if [[ ! " ${ADMINS[@]} " =~ " ${USER} " && "${BRANCH}" != "refs/heads/Matthieu" ]]; then
+            echo "🚨 Seuls les admins peuvent pousser en dehors de 'Matthieu' 🚨"
+            exit 1
+          fi
