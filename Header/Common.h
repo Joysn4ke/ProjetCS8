@@ -25,10 +25,6 @@
 #define NBPIRATE 1
 #endif
 
-// void generateUniqueCoordinates(int* x, int* y, int playerX, int playerY, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
-
-//void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
-
 void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed);
 
 #endif //COMMON_H
