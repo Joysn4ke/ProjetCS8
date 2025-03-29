@@ -12,8 +12,8 @@ jobs:
           BRANCH=${{ github.ref }}
           
           # Vérifier si l'utilisateur est un admin (ajouter ton pseudo GitHub ici)
-          # ADMINS=("Joysn4ke")
-          ADMINS=("TonPseudoGitHub" "AutreAdmin")
+          ADMINS=("Joysn4ke")
+          # ADMINS=("TonPseudoGitHub" "AutreAdmin")
           
           if [[ ! " ${ADMINS[@]} " =~ " ${USER} " && "${BRANCH}" != "refs/heads/Matthieu" ]]; then
             echo "🚨 Seuls les admins peuvent pousser en dehors de 'Matthieu' 🚨"
