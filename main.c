@@ -22,6 +22,7 @@ typedef enum {
 } Etat;
 
 //test a
+//test b
 
 int main()
 {
