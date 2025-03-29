@@ -58,7 +58,7 @@ extern void gameInitialisation(Game* this) {
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
 
-    setGridCellMap(this->map, treasureX, treasureY, 'T');   //Set treasure on the grid : TO COMMENT
+    //setGridCellMap(this->map, treasureX, treasureY, 'T');   //Set treasure on the grid : TO COMMENT
 
     int X, Y;
     int usedX[NBTRAP + NBPLAYER + NBPIRATE];
@@ -77,7 +77,7 @@ extern void gameInitialisation(Game* this) {
     
         generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
         TrapInitialisation(this->trap[i], X, Y);        //Set trap coordinates correctly
-        setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid : TO COMMENT
+        //setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid : TO COMMENT
     }
     
     setGridCellMap(getMapGame(this), 
@@ -117,7 +117,7 @@ extern int checkGameStatus(Game* this) {
         return 1;
     }
     
-    // Vérification si le joueur est tombé sur un piège
+    //Verif player on trap
     for (int i = 0; i < NBTRAP; i++) {
         if (getPosPlayerX(getPlayerGame(this)) == getPosTrapX(getTrapGame(this)[i]) && getPosPlayerY(getPlayerGame(this)) == getPosTrapY(getTrapGame(this)[i])) {
             
@@ -130,6 +130,7 @@ extern int checkGameStatus(Game* this) {
             } else {
                 return 0; //Game Continue
             }
+            break;
         }
     }
 
