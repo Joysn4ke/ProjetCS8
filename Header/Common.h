@@ -10,11 +10,25 @@
 #endif
 
 #ifndef NBTRAP
-#define NBTRAP 2
+#define NBTRAP 5
 #endif
 
+#ifndef HEALTHPLAYER
+#define HEALTHPLAYER 3
+#endif
 
-void generateUniqueCoordinates(int* x, int* y, int playerX, int playerY, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
+#ifndef NBPLAYER
+#define NBPLAYER 1
+#endif
 
+#ifndef NBPIRATE
+#define NBPIRATE 1
+#endif
+
+// void generateUniqueCoordinates(int* x, int* y, int playerX, int playerY, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
+
+//void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed, int maxLine, int maxColumn);
+
+void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed);
 
 #endif //COMMON_H

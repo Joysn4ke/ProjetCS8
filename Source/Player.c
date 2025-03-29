@@ -8,6 +8,7 @@
 struct Player_s{
     int position_x;
     int position_y;
+    int health;
 };
 
 extern Player* newPlayer() {
@@ -25,6 +26,7 @@ extern void playerInitialisation(Player* this, int localX, int localY) {
         this->position_x = 0;
         this->position_y = 0;
     }
+    this->health = HEALTHPLAYER;
 }
 
 extern void freePlayer(Player* this) {

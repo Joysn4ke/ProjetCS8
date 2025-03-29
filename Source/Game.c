@@ -35,6 +35,7 @@ extern Game* newGame() {
 
 extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
+    assert(NBTRAP < (LINE - 1) * (COLUMN - 1)); //Make sure that there is not too much trap
 
     srand(time(NULL));
     //rand() % (MAX - MIN + 1) + MIN;
@@ -60,23 +61,28 @@ extern void gameInitialisation(Game* this) {
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
 
+    int X, Y;
+    int usedX[NBTRAP + NBPLAYER + NBPIRATE];
+    int usedY[NBTRAP + NBPLAYER + NBPIRATE];
+
     for (int i = 0; i < NBTRAP; i++) {
-        int X, Y;
-        int usedX[NBTRAP];
-        int usedY[NBTRAP];
+        // int X, Y;
+        // int usedX[NBTRAP + NBPLAYER + NBPIRATE];
+        // int usedY[NBTRAP + NBPLAYER + NBPIRATE];
     
         //Initialize used arrays
         for (int j = 0; j < i; j++) {
             usedX[j] = getPosTrapX(this->trap[j]);
             usedY[j] = getPosTrapY(this->trap[j]);
         }
+
+        usedX[NBTRAP] = getPosPlayerX(this->player);
+        usedY[NBTRAP] = getPosPlayerY(this->player);
     
         //Generate unique coordinates
-        generateUniqueCoordinates(&X, &Y, 
-            getPosPlayerX(this->player), 
-            getPosPlayerY(this->player), 
-            usedX, usedY, i, 
-            LINE - 1, COLUMN - 1);
+        //generateUniqueCoordinates(&X, &Y, getPosPlayerX(this->player), getPosPlayerY(this->player), usedX, usedY, i, LINE - 1, COLUMN - 1);
+
+        generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
     
         //Set trap coordinates correctly
         //setPosTrapX(this->trap[i], X);
@@ -86,7 +92,6 @@ extern void gameInitialisation(Game* this) {
         //Set trap on the grid
         setGridCellMap(this->map, X, Y, 't');
     }
-
     
     setGridCellMap(getMapGame(this), 
                getPosPlayerX(this->player),

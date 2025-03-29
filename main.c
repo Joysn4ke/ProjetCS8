@@ -51,16 +51,20 @@ int main()
                     case 'l':  //leave
                         fin = 1;
                         break;
-                    case 65: case 'z':     //on se déplace vers le haut
+                    case 65: 
+                    case 'z':     //on se déplace vers le haut
                         etat = DEPLACEMENT_HAUT;
                         break;
-                    case 66: case 's':
+                    case 66: 
+                    case 's':
                         etat = DEPLACEMENT_BAS;   //on se déplace vers le bas
                         break;
-                    case 67: case 'd':
+                    case 67: 
+                    case 'd':
                         etat = DEPLACEMENT_DROITE;    //on se déplace vers la droite
                         break;
-                    case 68: case 'q':
+                    case 68: 
+                    case 'q':
                         etat = DEPLACEMENT_GAUCHE;  //on se déplacde vers la gauche
                         break;
                     default:
