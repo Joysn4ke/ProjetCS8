@@ -21,8 +21,6 @@ typedef enum {
     VERIFICATION_VICTOIRE
 } Etat;
 
-//test a
-//test b
 
 int main()
 {
