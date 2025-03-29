@@ -56,3 +56,14 @@ extern void setPosTrapY(Trap* Trap, int y) {
     assert(y >= 0 && y < COLUMN);
     Trap->position_y = y;
 }
+
+
+extern void setNullPosTrapX(Trap* Trap) {
+    assert(Trap != NULL);
+    Trap->position_x = -1;
+}
+
+extern void setNullPosTrapY(Trap* Trap) {
+    assert(Trap != NULL);
+    Trap->position_y = -1;
+}

@@ -95,10 +95,11 @@ int main()
 
                 int status = checkGameStatus(game);
                 if (status == 1) { //Win
-                    printf("\nTu as gagné, wp tu es tombé sur le trésor \n");
+                    printf("Tu as gagné, wp tu es tombé sur le trésor \n");
                     fin = 1;
                     etat = INIT_A;
                 } else if (status == 2) { //Lose
+                    printf("Tu as perdu\n");
                     fin = 1;
                     etat = INIT_A;
                 } else { //Game continue
@@ -112,5 +113,4 @@ int main()
     freeGame(game);
     return 0;
 }
-
 
