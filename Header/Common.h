@@ -14,7 +14,7 @@
 #endif
 
 #ifndef HEALTHPLAYER
-#define HEALTHPLAYER 3
+#define HEALTHPLAYER 2
 #endif
 
 #ifndef NBPLAYER
@@ -23,6 +23,10 @@
 
 #ifndef NBPIRATE
 #define NBPIRATE 1
+#endif
+
+#ifndef CHEAT
+#define CHEAT 1
 #endif
 
 void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed);

@@ -13,4 +13,7 @@ extern int getPosTrapY(Trap* Trap);
 extern void setPosTrapX(Trap* Trap, int x);
 extern void setPosTrapY(Trap* Trap, int y);
 
+extern void setNullPosTrapX(Trap* Trap);
+extern void setNullPosTrapY(Trap* Trap);
+
 #endif //TRAP_H
