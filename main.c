@@ -23,6 +23,7 @@ typedef enum {
 
 
 
+
 int main()
 {
     char car;
@@ -109,6 +110,7 @@ int main()
                 break;
             break;
         }
+
     }
 
     freeGame(game);
