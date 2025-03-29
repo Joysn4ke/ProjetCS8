@@ -3,20 +3,20 @@
 #include "assert.h"
 
 #include "Common.h"
-#include "Treasure.h"
+#include "Trap.h"
 
-struct Treasure_s{
+struct Trap_s{
     int position_x;
     int position_y;
 };
 
-extern Treasure* newTreasure() {
-    Treasure* this = (Treasure*)calloc(1, sizeof(Treasure));
+extern Trap* newTrap() {
+    Trap* this = (Trap*)calloc(1, sizeof(Trap));
     assert(this != NULL);  //Memory allocation's verification
     return this;
 }
 
-extern void treasureInitialisation(Treasure* this, int localX, int localY) {
+extern void TrapInitialisation(Trap* this, int localX, int localY) {
     assert(this != NULL);  //Valid object's verification
     if (0 <= localX && localX < LINE && 0 <= localY && localY < COLUMN) {
         this->position_x = localX;
@@ -27,31 +27,32 @@ extern void treasureInitialisation(Treasure* this, int localX, int localY) {
     }
 }
 
-extern void freeTreasure(Treasure* this) {
+extern void freeTrap(Trap* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         free(this);
     }
 }
 
+
 // Getter & Setter
-extern int getPosTreasureX(Treasure* Treasure) {
-    assert(Treasure != NULL);
-    return Treasure->position_x;
+extern int getPosTrapX(Trap* Trap) {
+    assert(Trap != NULL);
+    return Trap->position_x;
 }
 
-extern int getPosTreasureY(Treasure* Treasure) {
-    assert(Treasure != NULL);
-    return Treasure->position_y;
+extern int getPosTrapY(Trap* Trap) {
+    assert(Trap != NULL);
+    return Trap->position_y;
 }
 
-extern void setPosTreasureX(Treasure* Treasure, int x) {
-    assert(Treasure != NULL);
+extern void setPosTrapX(Trap* Trap, int x) {
+    assert(Trap != NULL);
     assert(x >= 0 && x < LINE);
-    Treasure->position_x = x;
+    Trap->position_x = x;
 }
 
-extern void setPosTreasureY(Treasure* Treasure, int y) {
-    assert(Treasure != NULL);
+extern void setPosTrapY(Trap* Trap, int y) {
+    assert(Trap != NULL);
     assert(y >= 0 && y < COLUMN);
-    Treasure->position_y = y;
+    Trap->position_y = y;
 }

@@ -7,7 +7,8 @@
 
 struct Player_s{
     int position_x;
-    int position_y;;
+    int position_y;
+    int health;
 };
 
 extern Player* newPlayer() {
@@ -25,6 +26,7 @@ extern void playerInitialisation(Player* this, int localX, int localY) {
         this->position_x = 0;
         this->position_y = 0;
     }
+    this->health = HEALTHPLAYER;
 }
 
 extern void freePlayer(Player* this) {
@@ -55,4 +57,17 @@ extern void setPosPlayerY(Player* player, int y) {
     assert(player != NULL);
     assert(y >= 0 && y < COLUMN);
     player->position_y = y;
+}
+
+
+
+extern int getHealthPlayer(Player* player) {
+    assert(player != NULL);
+    return player->health;
+}
+
+extern void setHealthPlayer(Player* player, int localHealth) {
+    assert(player != NULL);
+    assert(localHealth >= 0 && localHealth < HEALTHPLAYER);
+    player->health = localHealth;
 }
