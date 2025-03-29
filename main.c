@@ -22,6 +22,7 @@ typedef enum {
 } Etat;
 
 
+
 int main()
 {
     char car;

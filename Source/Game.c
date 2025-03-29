@@ -62,6 +62,9 @@ extern void gameInitialisation(Game* this) {
     int usedX[NBTRAP + NBPLAYER + NBPIRATE];
     int usedY[NBTRAP + NBPLAYER + NBPIRATE];
 
+    usedX[NBTRAP] = playerX;
+    usedY[NBTRAP] = playerY;
+
     //Trap coordinates generation
     for (int i = 0; i < NBTRAP; i++) {
         //Initialize used arrays
@@ -70,8 +73,8 @@ extern void gameInitialisation(Game* this) {
             usedY[j] = getPosTrapY(this->trap[j]);
         }
 
-        usedX[NBTRAP] = getPosPlayerX(this->player);
-        usedY[NBTRAP] = getPosPlayerY(this->player);
+        // usedX[NBTRAP] = getPosPlayerX(this->player);
+        // usedY[NBTRAP] = getPosPlayerY(this->player);
     
         generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
         TrapInitialisation(this->trap[i], X, Y);        //Set trap coordinates correctly
