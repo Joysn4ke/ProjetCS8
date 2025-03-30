@@ -5,7 +5,6 @@
 
 #include "Common.h"
 #include "Game.h"
-#include "Grille.h"
 #include "Map.h"
 #include "Player.h"
 #include "Trap.h"

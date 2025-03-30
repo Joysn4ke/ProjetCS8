@@ -6,7 +6,6 @@
 
 #include "Common.h"
 #include "Map.h"
-#include "Grille.h"
 
 struct Map_s{
     char **grid;
