@@ -2,69 +2,52 @@
 #include <stdio.h>
 
 #include "Game.h"
-#include "Grille.h"
 #include "Getch.h"
-#include "Treasure.h"
-#include "Map.h"
-#include "Player.h"
 #include "Common.h"
-#include "Trap.h"
-
+#include "StateMachine.h"
 
 int main() {
-    char car;
-    int fin = 0;
-    Etat etat = INIT_A;
-
-    Game *game = newGame();
-    gameInitialisation(game);
-    gamePrint(game);
-
-    while (!fin) {
-        switch(etat) {
-            case INIT_A:
-                etat = ACQUISITION_CLAVIER;
+    char key;
+    int status;
+    Event currentEvent;
+    
+    Game *game = newGame(); //Création du jeu
+    StateMachine_init(game); // Initialisation de la machine à états
+    StateMachine_handleEvent(E_START); //Démarrer le jeu
+    
+    // Boucle principale
+    while (!StateMachine_isGameFinished()) {
+        switch (StateMachine_getCurrentState()) {
+            case S_ACQUISITION_CLAVIER:
+                key = getch();
+                currentEvent = StateMachine_getEventFromKey(key);
+                StateMachine_handleEvent(currentEvent);
                 break;
-
-            case ACQUISITION_CLAVIER:
-                car = getch();
-                setGridCellMap(getMapGame(game), getPosPlayerX(getPlayerGame(game)), getPosPlayerY(getPlayerGame(game)), ' ');
-
-                switch(car) {
-                    case 'l':  // leave
-                        fin = 1;
-                        etat = INIT_A;
-                        break;
-                    case 'z':
-                    case 65:   // on se déplace vers le haut
-                        run(&etat, E_DEPLACER_HAUT, game);
-                        break;
-                    case 's':
-                    case 66:   // on se déplace vers le bas
-                        run(&etat, E_DEPLACER_BAS, game);
-                        break;
-                    case 'd':
-                    case 67:   // on se déplace vers la droite
-                        run(&etat, E_DEPLACER_DROITE, game);
-                        break;
-                    case 'q':
-                    case 68:   // on se déplace vers la gauche
-                        run(&etat, E_DEPLACER_GAUCHE, game);
-                        break;
-                    default:
-                        break;
+                
+            case S_DEPLACEMENT:
+                StateMachine_handleEvent(E_MOVE_DONE);
+                break;
+                
+            case S_VERIFICATION_VICTOIRE:
+                status = checkGameStatus(game);
+                if (status == 1) { // Win
+                    StateMachine_handleEvent(E_VICTORY);
+                } else if (status == 2) { // Lose
+                    StateMachine_handleEvent(E_DEFEAT);
+                } else { // Game continue
+                    StateMachine_handleEvent(E_CONTINUE);
                 }
                 break;
-
-            case VERIFICATION_VICTOIRE:
-                run(&etat, E_VICTOIRE, game);
+                
+            case S_GAME_OVER:
+                // La machine à états devrait avoir marqué le jeu comme terminé
                 break;
-
+                
             default:
-                break;
+                fprintf(stderr, "État non géré: %d\n", StateMachine_getCurrentState());
+                return 1;
         }
     }
-
-    freeGame(game);
+    
     return 0;
 }
