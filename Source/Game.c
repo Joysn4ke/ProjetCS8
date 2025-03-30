@@ -389,55 +389,56 @@ extern char** getGridGame(Game* game) {
     return getGridMap(game->map);
 }
 
-static const Transition transition_table[] = {
-    [INIT_A] = {ACQUISITION_CLAVIER, A_NOP},
-    [ACQUISITION_CLAVIER] = {ACQUISITION_CLAVIER, A_NOP},
-    [DEPLACEMENT_GAUCHE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_DROITE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_HAUT] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_BAS] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [VERIFICATION_VICTOIRE] = {ACQUISITION_CLAVIER, A_VERIFIER_VICTOIRE},
-};
+
+// static const Transition transition_table[] = {
+//     [INIT_A] = {ACQUISITION_CLAVIER, A_NOP},
+//     [ACQUISITION_CLAVIER] = {ACQUISITION_CLAVIER, A_NOP},
+//     [DEPLACEMENT_GAUCHE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
+//     [DEPLACEMENT_DROITE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
+//     [DEPLACEMENT_HAUT] = {VERIFICATION_VICTOIRE, A_DEPLACER},
+//     [DEPLACEMENT_BAS] = {VERIFICATION_VICTOIRE, A_DEPLACER},
+//     [VERIFICATION_VICTOIRE] = {ACQUISITION_CLAVIER, A_VERIFIER_VICTOIRE},
+// };
 
 
 
-extern void run(Etat* etat, Evenement evenement, Game* game) {
-    assert(*etat != INIT_A);
+// extern void run(Etat* etat, Evenement evenement, Game* game) {
+//     assert(*etat != INIT_A);
 
-    Etat destination = transition_table[*etat].etat_destination;
-    Action action = transition_table[*etat].action;
+//     Etat destination = transition_table[*etat].etat_destination;
+//     Action action = transition_table[*etat].action;
 
-    switch(action) {
-        case A_NOP:
-            break;
-        case A_DEPLACER:
-            if (evenement == E_DEPLACER_GAUCHE) {
-                setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) - 1);
-            } else if (evenement == E_DEPLACER_DROITE) {
-                setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) + 1);
-            } else if (evenement == E_DEPLACER_HAUT) {
-                setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) - 1);
-            } else if (evenement == E_DEPLACER_BAS) {
-                setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) + 1);
-            }
-            break;
-        case A_VERIFIER_VICTOIRE:
-            gamePrint(game);
-            int status = checkGameStatus(game);
-            if (status == 1) { // Win
-                printf("Tu as gagné, wp tu es tombé sur le trésor \n");
-                *etat = INIT_A;
-            } else if (status == 2) { // Lose
-                printf("Tu as perdu\n");
-                *etat = INIT_A;
-            }
-            break;
-        default:
-            assert(0);
-            break;
-    }
+//     switch(action) {
+//         case A_NOP:
+//             break;
+//         case A_DEPLACER:
+//             if (evenement == E_DEPLACER_GAUCHE) {
+//                 setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) - 1);
+//             } else if (evenement == E_DEPLACER_DROITE) {
+//                 setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) + 1);
+//             } else if (evenement == E_DEPLACER_HAUT) {
+//                 setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) - 1);
+//             } else if (evenement == E_DEPLACER_BAS) {
+//                 setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) + 1);
+//             }
+//             break;
+//         case A_VERIFIER_VICTOIRE:
+//             gamePrint(game);
+//             int status = checkGameStatus(game);
+//             if (status == 1) { // Win
+//                 printf("Tu as gagné, wp tu es tombé sur le trésor \n");
+//                 *etat = INIT_A;
+//             } else if (status == 2) { // Lose
+//                 printf("Tu as perdu\n");
+//                 *etat = INIT_A;
+//             }
+//             break;
+//         default:
+//             assert(0);
+//             break;
+//     }
 
-    if(destination != INIT_A) {
-        *etat = destination;
-    }
-}
+//     if(destination != INIT_A) {
+//         *etat = destination;
+//     }
+// }
