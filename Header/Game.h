@@ -49,6 +49,8 @@ typedef enum {
 } GameAction;
 
 
+typedef struct TransitionAction_s TransitionAction;
+
 typedef struct Game_s Game;
 
 extern Game* newGame();
