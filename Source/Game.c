@@ -10,11 +10,6 @@
 #include "Trap.h"
 #include "Treasure.h"
 
-// typedef struct {
-//     GameAction action;
-//     GameState destinationState;
-// } TransitionAction;
-
 struct TransitionAction_s {
     GameAction action;
     GameState destinationState;
@@ -95,56 +90,6 @@ TransitionAction getTransition(GameState state, GameEvent event) {
     return transitionMatrixConst[state][event];
 }
 
-// // Initialize the transition matrix for the game
-// static void initTransitionMatrix(Game* this) {
-//     // Default initialization
-//     for (int i = 0; i < STATE_NB; i++) {
-//         for (int j = 0; j < EVENT_NB; j++) {
-//             this->transitionMatrix[i][j].action = A_NOP;
-//             this->transitionMatrix[i][j].destinationState = S_FORGET;
-//         }
-//     }
-    
-//     // Define specific transitions
-    
-//     // From S_INIT
-//     this->transitionMatrix[S_INIT][E_START].action = A_INIT_GAME;
-//     this->transitionMatrix[S_INIT][E_START].destinationState = S_ACQUISITION_CLAVIER;
-    
-//     // From S_ACQUISITION_CLAVIER
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_UP].action = A_MOVE_UP;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_UP].destinationState = S_DEPLACEMENT;
-    
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_DOWN].action = A_MOVE_DOWN;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_DOWN].destinationState = S_DEPLACEMENT;
-    
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_LEFT].action = A_MOVE_LEFT;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_LEFT].destinationState = S_DEPLACEMENT;
-    
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_RIGHT].action = A_MOVE_RIGHT;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_RIGHT].destinationState = S_DEPLACEMENT;
-    
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_QUIT].action = A_FREE_GAME;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_KEY_QUIT].destinationState = S_GAME_OVER;
-    
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_OTHER_KEY].action = A_NOP;
-//     this->transitionMatrix[S_ACQUISITION_CLAVIER][E_OTHER_KEY].destinationState = S_ACQUISITION_CLAVIER;
-    
-//     // From S_DEPLACEMENT
-//     this->transitionMatrix[S_DEPLACEMENT][E_MOVE_DONE].action = A_PRINT_GAME;
-//     this->transitionMatrix[S_DEPLACEMENT][E_MOVE_DONE].destinationState = S_VERIFICATION_VICTOIRE;
-    
-//     // From S_VERIFICATION_VICTOIRE
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_VICTORY].action = A_PRINT_VICTORY;
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_VICTORY].destinationState = S_GAME_OVER;
-    
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_DEFEAT].action = A_PRINT_DEFEAT;
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_DEFEAT].destinationState = S_GAME_OVER;
-    
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_CONTINUE].action = A_NOP;
-//     this->transitionMatrix[S_VERIFICATION_VICTOIRE][E_CONTINUE].destinationState = S_ACQUISITION_CLAVIER;
-// }
-
 
 extern Game* newGame() {
     Game* this = (Game*)calloc(1, sizeof(Game));
@@ -167,10 +112,9 @@ extern void gameInitialisation(Game* this) {
     // Initialize state machine related fields
     this->currentState = S_INIT;
     this->gameFinished = 0;
-    //initTransitionMatrix(this);
     gameInitStateMachine(this);
 
-
+    //Init of random coordinates
     srand(time(NULL));
     //rand() % (MAX - MIN + 1) + MIN;
     int playerX = rand() % (LINE);
@@ -206,12 +150,9 @@ extern void gameInitialisation(Game* this) {
             usedX[j] = getPosTrapX(this->trap[j]);
             usedY[j] = getPosTrapY(this->trap[j]);
         }
-
-        // usedX[NBTRAP] = getPosPlayerX(this->player);
-        // usedY[NBTRAP] = getPosPlayerY(this->player);
     
         generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
-        TrapInitialisation(this->trap[i], X, Y);        //Set trap coordinates correctly
+        TrapInitialisation(this->trap[i], X, Y);            //Set trap coordinates correctly
         if (CHEAT) setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid
     }
 
@@ -241,7 +182,6 @@ extern void freeGame(Game* this) {
 extern void gamePrint(Game* this) {
     system("clear");
     setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), 'j');
-    //printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
     grille_print(getGridMap(this->map), COLUMN, LINE);
     printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
 }
@@ -278,10 +218,10 @@ extern int checkGameStatus(Game* this) {
 }
 
 
-// Implementation of action functions
+//Implementation of action functions
 static void actionNop(Game* this) {
     assert(this != NULL);
-    // Does nothing
+    //Does nothing
 }
 
 static void actionInitGame(Game* this) {
@@ -323,8 +263,8 @@ static void actionPrintGame(Game* this) {
 
 static void actionCheckStatus(Game* this) {
     assert(this != NULL);
-    // This action is used in combination with the code in main.c
-    // to check the game status
+    //This action is used in combination with the code in main.c
+    //to check the game status
 }
 
 static void actionPrintVictory(Game* this) {
@@ -347,8 +287,6 @@ extern void gameInitStateMachine(Game* this) {
     assert(this != NULL);
     this->currentState = S_INIT;
     this->gameFinished = 0;
-    //initTransitionMatrix(this);
-    //this->transitionMatrix = transitionMatrixConst;
     
     //Copy the transition matrix
     for (int i = 0; i < STATE_NB; i++) {
@@ -365,7 +303,6 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
     
     assert(this->currentState != S_DEATH);
     
-    //transition = this->transitionMatrix[this->currentState][event];
     transition  = getTransition(this->currentState, event);
     newState = transition.destinationState;
     
