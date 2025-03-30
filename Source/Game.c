@@ -109,9 +109,7 @@ extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
     assert(NBTRAP < (LINE - 1) * (COLUMN - 1)); //Make sure that there is not too much trap
 
-    // Initialize state machine related fields
-    this->currentState = S_INIT;
-    this->gameFinished = 0;
+    //Initialize state machine related fields
     gameInitStateMachine(this);
 
     //Init of random coordinates
