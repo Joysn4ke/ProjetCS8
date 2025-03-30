@@ -1,6 +1,3 @@
-//
-// Created by matthieu on 28/03/25.
-//
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>

@@ -1,8 +1,8 @@
-#ifndef GRILLE_H
-#define GRILLE_H
+// #ifndef GRILLE_H
+// #define GRILLE_H
 
-#include <stdint.h> // uint8_t
+// #include <stdint.h> // uint8_t
 
-extern void grille_print (char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne);
+// extern void grille_print (char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne);
 
-#endif //GRILLE_H
+// #endif //GRILLE_H
