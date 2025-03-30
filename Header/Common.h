@@ -10,11 +10,11 @@
 #endif
 
 #ifndef NBTRAP
-#define NBTRAP 2
+#define NBTRAP 3
 #endif
 
 #ifndef HEALTHPLAYER
-#define HEALTHPLAYER 2
+#define HEALTHPLAYER NBTRAP
 #endif
 
 #ifndef NBPLAYER
