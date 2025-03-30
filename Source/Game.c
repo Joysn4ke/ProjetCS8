@@ -5,20 +5,90 @@
 
 #include "Common.h"
 #include "Game.h"
-#include "Grille.h"
 #include "Map.h"
 #include "Player.h"
 #include "Trap.h"
 #include "Treasure.h"
 
+struct TransitionAction_s {
+    GameAction action;
+    GameState destinationState;
+};
 
-struct Game_s{
+struct Game_s {
     Map *map;
     Player *player;
     Treasure *treasure;
     Trap *trap[NBTRAP];
+
+    // State machine elements
+    GameState currentState;
+    int gameFinished;
+    TransitionAction transitionMatrix[STATE_NB][EVENT_NB];
 };
 
+
+//Action function declarations
+static void actionNop(Game* this);
+static void actionInitGame(Game* this);
+static void actionMoveUp(Game* this);
+static void actionMoveDown(Game* this);
+static void actionMoveLeft(Game* this);
+static void actionMoveRight(Game* this);
+static void actionPrintGame(Game* this);
+static void actionCheckStatus(Game* this);
+static void actionPrintVictory(Game* this);
+static void actionPrintDefeat(Game* this);
+static void actionFreeGame(Game* this);
+
+//Function pointer typedef for actions
+typedef void (*ActionPtr)(Game*);
+
+//Array of action functions
+static const ActionPtr actionsTab[ACTION_NB] = {
+    &actionNop,
+    &actionInitGame,
+    &actionMoveUp,
+    &actionMoveDown,
+    &actionMoveLeft,
+    &actionMoveRight,
+    &actionPrintGame,
+    &actionCheckStatus,
+    &actionPrintVictory,
+    &actionPrintDefeat,
+    &actionFreeGame
+};
+
+
+const TransitionAction transitionMatrixConst[STATE_NB][EVENT_NB] = {
+    //S_INIT
+    [S_INIT][E_START] = {A_INIT_GAME, S_ACQUISITION_CLAVIER},
+
+    //S_ACQUISITION_CLAVIER
+    [S_ACQUISITION_CLAVIER][E_KEY_UP] = {A_MOVE_UP, S_DEPLACEMENT},
+    [S_ACQUISITION_CLAVIER][E_KEY_DOWN] = {A_MOVE_DOWN, S_DEPLACEMENT},
+    [S_ACQUISITION_CLAVIER][E_KEY_LEFT] = {A_MOVE_LEFT, S_DEPLACEMENT},
+    [S_ACQUISITION_CLAVIER][E_KEY_RIGHT] = {A_MOVE_RIGHT, S_DEPLACEMENT},
+    [S_ACQUISITION_CLAVIER][E_KEY_QUIT] = {A_FREE_GAME, S_GAME_OVER},
+    [S_ACQUISITION_CLAVIER][E_OTHER_KEY] = {A_NOP, S_ACQUISITION_CLAVIER},
+
+    //S_DEPLACEMENT
+    [S_DEPLACEMENT][E_MOVE_DONE] = {A_PRINT_GAME, S_VERIFICATION_VICTOIRE},
+
+    //S_VERIFICATION_VICTOIRE
+    [S_VERIFICATION_VICTOIRE][E_VICTORY] = {A_PRINT_VICTORY, S_GAME_OVER},
+    [S_VERIFICATION_VICTOIRE][E_DEFEAT] = {A_PRINT_DEFEAT, S_GAME_OVER},
+    [S_VERIFICATION_VICTOIRE][E_CONTINUE] = {A_NOP, S_ACQUISITION_CLAVIER},
+
+    //S_GAME_OVER (toutes les transitions mènent à S_FORGET ou sont NOP par défaut)
+};
+
+TransitionAction getTransition(GameState state, GameEvent event) {
+    if (state >= STATE_NB || event >= EVENT_NB) {
+        return (TransitionAction){A_NOP, S_FORGET}; //Valeur par défaut pour toute transition invalide
+    }
+    return transitionMatrixConst[state][event];
+}
 
 
 extern Game* newGame() {
@@ -39,6 +109,10 @@ extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
     assert(NBTRAP < (LINE - 1) * (COLUMN - 1)); //Make sure that there is not too much trap
 
+    //Initialize state machine related fields
+    gameInitStateMachine(this);
+
+    //Init of random coordinates
     srand(time(NULL));
     //rand() % (MAX - MIN + 1) + MIN;
     int playerX = rand() % (LINE);
@@ -74,12 +148,9 @@ extern void gameInitialisation(Game* this) {
             usedX[j] = getPosTrapX(this->trap[j]);
             usedY[j] = getPosTrapY(this->trap[j]);
         }
-
-        // usedX[NBTRAP] = getPosPlayerX(this->player);
-        // usedY[NBTRAP] = getPosPlayerY(this->player);
     
         generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
-        TrapInitialisation(this->trap[i], X, Y);        //Set trap coordinates correctly
+        TrapInitialisation(this->trap[i], X, Y);            //Set trap coordinates correctly
         if (CHEAT) setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid
     }
 
@@ -109,7 +180,6 @@ extern void freeGame(Game* this) {
 extern void gamePrint(Game* this) {
     system("clear");
     setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), 'j');
-    //printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
     grille_print(getGridMap(this->map), COLUMN, LINE);
     printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
 }
@@ -119,7 +189,7 @@ extern int checkGameStatus(Game* this) {
     //Verif if treasure found
     if (getPosPlayerX(getPlayerGame(this)) == getPosTreasureX(getTreasureGame(this)) &&
         getPosPlayerY(getPlayerGame(this)) == getPosTreasureY(getTreasureGame(this))) {
-        return 1;
+        return 1; //Win
     }
     
     //Verif player on trap
@@ -143,6 +213,132 @@ extern int checkGameStatus(Game* this) {
     }
 
     return 0;
+}
+
+
+//Implementation of action functions
+static void actionNop(Game* this) {
+    assert(this != NULL);
+    //Does nothing
+}
+
+static void actionInitGame(Game* this) {
+    gameInitialisation(this);
+    gamePrint(this);
+}
+
+static void actionMoveUp(Game* this) {
+    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
+    if (getPosPlayerX(this->player) > 0) {
+        setPosPlayerX(this->player, getPosPlayerX(this->player) - 1);
+    }
+}
+
+static void actionMoveDown(Game* this) {
+    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
+    if (getPosPlayerX(this->player) < LINE - 1) {
+        setPosPlayerX(this->player, getPosPlayerX(this->player) + 1);
+    }
+}
+
+static void actionMoveLeft(Game* this) {
+    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
+    if (getPosPlayerY(this->player) > 0) {
+        setPosPlayerY(this->player, getPosPlayerY(this->player) - 1);
+    }
+}
+
+static void actionMoveRight(Game* this) {
+    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
+    if (getPosPlayerY(this->player) < COLUMN - 1) {
+        setPosPlayerY(this->player, getPosPlayerY(this->player) + 1);
+    }
+}
+
+static void actionPrintGame(Game* this) {
+    gamePrint(this);
+}
+
+static void actionCheckStatus(Game* this) {
+    assert(this != NULL);
+    //This action is used in combination with the code in main.c
+    //to check the game status
+}
+
+static void actionPrintVictory(Game* this) {
+    printf("Tu as gagné, wp tu es tombé sur le trésor \n");
+    this->gameFinished = 1;
+}
+
+static void actionPrintDefeat(Game* this) {
+    printf("Tu as perdu\n");
+    this->gameFinished = 1;
+}
+
+static void actionFreeGame(Game* this) {
+    this->gameFinished = 1;
+}
+
+
+// State Machine Functions (Incorporated into Game)
+extern void gameInitStateMachine(Game* this) {
+    assert(this != NULL);
+    this->currentState = S_INIT;
+    this->gameFinished = 0;
+    
+    //Copy the transition matrix
+    for (int i = 0; i < STATE_NB; i++) {
+        for (int j = 0; j < EVENT_NB; j++) {
+            this->transitionMatrix[i][j] = transitionMatrixConst[i][j];
+        }
+    }
+}
+
+extern void gameHandleEvent(Game* this, GameEvent event) {
+    assert(this != NULL);
+    TransitionAction transition;
+    GameState newState;
+    
+    assert(this->currentState != S_DEATH);
+    
+    transition  = getTransition(this->currentState, event);
+    newState = transition.destinationState;
+    
+    if (newState != S_FORGET) {
+        actionsTab[transition.action](this); //Execute the action
+        this->currentState = newState;
+    }
+}
+
+extern GameEvent gameGetEventFromKey(char key) {
+    switch(key) {
+        case 'l':
+            return E_KEY_QUIT;
+        case 65: 
+        case 'z':
+            return E_KEY_UP;
+        case 66: 
+        case 's':
+            return E_KEY_DOWN;
+        case 67: 
+        case 'd':
+            return E_KEY_RIGHT;
+        case 68: 
+        case 'q':
+            return E_KEY_LEFT;
+        default:
+            return E_OTHER_KEY;
+    }
+}
+
+extern int gameIsFinished(Game* this) {
+    assert(this != NULL);
+    return this->gameFinished;
+}
+
+extern GameState gameGetCurrentState(Game* this) {
+    assert(this != NULL);
+    return this->currentState;
 }
 
 
@@ -172,55 +368,4 @@ extern char** getGridGame(Game* game) {
     return getGridMap(game->map);
 }
 
-static const Transition transition_table[] = {
-    [INIT_A] = {ACQUISITION_CLAVIER, A_NOP},
-    [ACQUISITION_CLAVIER] = {ACQUISITION_CLAVIER, A_NOP},
-    [DEPLACEMENT_GAUCHE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_DROITE] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_HAUT] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [DEPLACEMENT_BAS] = {VERIFICATION_VICTOIRE, A_DEPLACER},
-    [VERIFICATION_VICTOIRE] = {ACQUISITION_CLAVIER, A_VERIFIER_VICTOIRE},
-};
 
-
-
-extern void run(Etat* etat, Evenement evenement, Game* game) {
-    assert(*etat != INIT_A);
-
-    Etat destination = transition_table[*etat].etat_destination;
-    Action action = transition_table[*etat].action;
-
-    switch(action) {
-        case A_NOP:
-            break;
-        case A_DEPLACER:
-            if (evenement == E_DEPLACER_GAUCHE) {
-                setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) - 1);
-            } else if (evenement == E_DEPLACER_DROITE) {
-                setPosPlayerY(getPlayerGame(game), getPosPlayerY(getPlayerGame(game)) + 1);
-            } else if (evenement == E_DEPLACER_HAUT) {
-                setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) - 1);
-            } else if (evenement == E_DEPLACER_BAS) {
-                setPosPlayerX(getPlayerGame(game), getPosPlayerX(getPlayerGame(game)) + 1);
-            }
-            break;
-        case A_VERIFIER_VICTOIRE:
-            gamePrint(game);
-            int status = checkGameStatus(game);
-            if (status == 1) { // Win
-                printf("Tu as gagné, wp tu es tombé sur le trésor \n");
-                *etat = INIT_A;
-            } else if (status == 2) { // Lose
-                printf("Tu as perdu\n");
-                *etat = INIT_A;
-            }
-            break;
-        default:
-            assert(0);
-            break;
-    }
-
-    if(destination != INIT_A) {
-        *etat = destination;
-    }
-}
