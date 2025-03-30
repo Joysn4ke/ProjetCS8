@@ -189,7 +189,7 @@ extern int checkGameStatus(Game* this) {
     //Verif if treasure found
     if (getPosPlayerX(getPlayerGame(this)) == getPosTreasureX(getTreasureGame(this)) &&
         getPosPlayerY(getPlayerGame(this)) == getPosTreasureY(getTreasureGame(this))) {
-        return 1;
+        return 1; //Win
     }
     
     //Verif player on trap

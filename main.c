@@ -10,12 +10,12 @@ int main() {
     int status;
     GameEvent currentEvent;
     
-    Game *game = newGame(); //Create the game includes state machine initialization
+    Game *game = newGame();
     gameInitialisation(game);
     gamePrint(game);
     gameHandleEvent(game, E_START); //Start the game
     
-    // Main loop
+    //Main loop
     while (!gameIsFinished(game)) {
         switch (gameGetCurrentState(game)) {
             case S_ACQUISITION_CLAVIER:
@@ -40,7 +40,7 @@ int main() {
                 break;
                 
             case S_GAME_OVER:
-                // The state machine should have marked the game as finished
+                //The state machine should have marked the game as finished
                 break;
                 
             default:
