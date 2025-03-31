@@ -16,7 +16,6 @@ struct TransitionAction_s {
     GameState destinationState;
 };
 
-
 struct Game_s {
     Map *map;
     Player *player;
@@ -381,8 +380,7 @@ static void actionPrintGame(Game* this) {
 
 static void actionCheckStatus(Game* this) {
     assert(this != NULL);
-    //This action is used in combination with the code in main.c
-    //to check the game status
+    //This action is used in combination with the code in main.c to check the game status
 }
 
 static void actionPrintVictory(Game* this) {
