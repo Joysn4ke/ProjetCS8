@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Treasure.h"
+#include "Pirate.h"
 #include "Trap.h"
 
 // Define state machine elements
@@ -59,18 +60,20 @@ extern void freeGame(Game* this);
 
 extern void gamePrint(Game* this);
 extern int checkGameStatus(Game* this);
+extern void movePirate(Game* this);
 
-// Incorporated StateMachine functions
+//Incorporated StateMachine functions
 extern void gameInitStateMachine(Game* this);
 extern void gameHandleEvent(Game* this, GameEvent event);
-extern GameEvent gameGetEventFromKey(char key);
 extern int gameIsFinished(Game* this);
+extern GameEvent gameGetEventFromKey(char key);
 extern GameState gameGetCurrentState(Game* this);
 
-// Getter & Setter
+//Getter & Setter
 extern Map* getMapGame(Game* game);
 extern Player* getPlayerGame(Game* game);
 extern Treasure* getTreasureGame(Game* game);
+extern Pirate* getPirateGame(Game* game);
 extern char** getGridGame(Game* game);
 extern Trap** getTrapGame(Game* game);
 

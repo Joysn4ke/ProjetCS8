@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Trap.h"
 #include "Treasure.h"
+#include "Pirate.h"
 
 struct TransitionAction_s {
     GameAction action;
@@ -19,9 +20,10 @@ struct Game_s {
     Map *map;
     Player *player;
     Treasure *treasure;
+    Pirate *pirate;
     Trap *trap[NBTRAP];
 
-    // State machine elements
+    //State machine elements
     GameState currentState;
     int gameFinished;
     TransitionAction transitionMatrix[STATE_NB][EVENT_NB];
@@ -98,6 +100,7 @@ extern Game* newGame() {
     this->map = newMap();
     this->player = newPlayer();
     this->treasure = newTreasure();
+    this->pirate = newPirate();
     for (int i = 0; i < NBTRAP ; i++) {
         this->trap[i] = newTrap();
     }
@@ -105,56 +108,60 @@ extern Game* newGame() {
     return this;
 }
 
+
 extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
+    assert(HEALTHPLAYER > 0);  //Verif health's player
+    assert(NBPLAYER > 0);  //Verif nb player
+    assert(LINE > 3 && COLUMN > 3);  //Verif grid size
     assert(NBTRAP < (LINE - 1) * (COLUMN - 1)); //Make sure that there is not too much trap
 
     //Initialize state machine related fields
     gameInitStateMachine(this);
 
-    //Init of random coordinates
+    //Initialize new seed
     srand(time(NULL));
-    //rand() % (MAX - MIN + 1) + MIN;
-    int playerX = rand() % (LINE);
-    int playerY = rand() % (COLUMN);
 
-    int treasureX = LINE - 1;
-    int treasureY = COLUMN - 1;
-    do {
-        treasureX = rand() % (LINE);
-        treasureY = rand() % (COLUMN);
-    } while (treasureX == playerX || treasureY == playerY);
-
+    //Arrays to track used coordinates
+    int usedX[TOTAL_ENTITY + 1];
+    int usedY[TOTAL_ENTITY + 1];
+    int usedCount = 0;
+    
+    //Initialize player coordinates
+    int playerX, playerY;
+    generateUniqueCoordinates(&playerX, &playerY, usedX, usedY, usedCount++);
+    
+    //Initialize treasure coordinates
+    int treasureX, treasureY;
+    generateUniqueCoordinates(&treasureX, &treasureY, usedX, usedY, usedCount++);
+    
+    //Initialize pirate coordinates
+    int pirateX, pirateY;
+    generateUniqueCoordinates(&pirateX, &pirateY, usedX, usedY, usedCount++);
+    
     // printf("playerX : %d\n", playerX);
     // printf("playerY : %d\n", playerY);
     // printf("treasureX : %d\n", treasureX);
     // printf("treasureY : %d\n", treasureY);
+    // printf("pirateX : %d\n", pirateX);
+    // printf("pirateY : %d\n", pirateY);
 
     mapInitialisation(this->map);
     playerInitialisation(this->player, playerX, playerY);
     treasureInitialisation(this->treasure, treasureX, treasureY);
-
-    int X, Y;
-    int usedX[NBTRAP + NBPLAYER + NBPIRATE];
-    int usedY[NBTRAP + NBPLAYER + NBPIRATE];
-
-    usedX[NBTRAP] = playerX;
-    usedY[NBTRAP] = playerY;
-
-    //Trap coordinates generation
-    for (int i = 0; i < NBTRAP; i++) {
-        //Initialize used arrays
-        for (int j = 0; j < i; j++) {
-            usedX[j] = getPosTrapX(this->trap[j]);
-            usedY[j] = getPosTrapY(this->trap[j]);
-        }
-    
-        generateUniqueCoordinates(&X, &Y, usedX, usedY, i);
-        TrapInitialisation(this->trap[i], X, Y);            //Set trap coordinates correctly
-        if (CHEAT) setGridCellMap(this->map, X, Y, 't');           //Set trap on the grid
-    }
+    pirateInitialisation(this->pirate, pirateX, pirateY);
 
     if (CHEAT) setGridCellMap(this->map, treasureX, treasureY, 'T');    //Set treasure on the grid
+    setGridCellMap(this->map, pirateX, pirateY, 'P');    //Set pirate on the grid
+    setGridCellMap(this->map, playerX, playerY, 'j');    //Set pirate on the grid
+
+    //Trap coordinates generation
+    int X, Y;
+    for (int i = 0; i < NBTRAP; i++) {
+        generateUniqueCoordinates(&X, &Y, usedX, usedY, usedCount++);
+        TrapInitialisation(this->trap[i], X, Y);            //Set trap coordinates correctly
+        if (CHEAT) setGridCellMap(this->map, X, Y, 't');    //Set trap on the grid
+    }
     
     setGridCellMap(getMapGame(this), 
                getPosPlayerX(this->player),
@@ -167,6 +174,7 @@ extern void freeGame(Game* this) {
         freeMap(this->map);
         freePlayer(this->player);
         freeTreasure(this->treasure);
+        freePirate(this->pirate);
 
         for (int i = 0; i < NBTRAP ; i++) {
             free(this->trap[i]);
@@ -179,9 +187,28 @@ extern void freeGame(Game* this) {
 
 extern void gamePrint(Game* this) {
     system("clear");
+
+    if (CHEAT) {
+        setGridCellMap(this->map, getPosTreasureX(this->treasure), getPosTreasureY(this->treasure), 'T');
+        for (int i = 0; i < NBTRAP; i++) {
+            if (getPosTrapX(this->trap[i]) != -1 && getPosTrapY(this->trap[i]) != -1) {
+                setGridCellMap(this->map, getPosTrapX(this->trap[i]), getPosTrapY(this->trap[i]), 't');    //Set trap on the grid
+            }
+        }
+    }
+
     setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), 'j');
+    setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), 'P');
+
     grille_print(getGridMap(this->map), COLUMN, LINE);
     printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
+
+    // printf("playerX : %d\n", getPosPlayerX(this->player));
+    // printf("playerY : %d\n", getPosPlayerY(this->player));
+    // printf("treasureX : %d\n", getPosTreasureX(this->treasure));
+    // printf("treasureY : %d\n", getPosTreasureY(this->treasure));
+    // printf("pirateX : %d\n", getPosPirateX(this->pirate));
+    // printf("pirateY : %d\n", getPosPirateY(this->pirate));
 }
 
 
@@ -191,10 +218,16 @@ extern int checkGameStatus(Game* this) {
         getPosPlayerY(getPlayerGame(this)) == getPosTreasureY(getTreasureGame(this))) {
         return 1; //Win
     }
+
+    if (getPosPlayerX(getPlayerGame(this)) == getPosPirateX(getPirateGame(this)) &&
+        getPosPlayerY(getPlayerGame(this)) == getPosPirateY(getPirateGame(this))) {
+        printf("Le pirate t'as rattrapé\n");
+        return 2; //Lose
+    }
     
     //Verif player on trap
     for (int i = 0; i < NBTRAP; i++) {
-        if (getPosPlayerX(getPlayerGame(this)) == getPosTrapX(getTrapGame(this)[i]) && getPosPlayerY(getPlayerGame(this)) == getPosTrapY(getTrapGame(this)[i])) {
+        if (getPosPlayerX(this->player) == getPosTrapX(getTrapGame(this)[i]) && getPosPlayerY(getPlayerGame(this)) == getPosTrapY(getTrapGame(this)[i])) {
             
             printf("Tu es tombé sur un trap, tu perds une vie\n");
             setHealthPlayer(this->player, getHealthPlayer(this->player) - 1);
@@ -216,6 +249,80 @@ extern int checkGameStatus(Game* this) {
 }
 
 
+
+extern void movePirate(Game* this) {
+    assert(this != NULL);
+    
+    //Get current positions
+    int pirateX = getPosPirateX(this->pirate);
+    int pirateY = getPosPirateY(this->pirate);
+    int playerX = getPosPlayerX(this->player);
+    int playerY = getPosPlayerY(this->player);
+    
+    setGridCellMap(this->map, pirateX, pirateY, ' ');  //Clear pirate's current position on map
+    
+    int newPirateX = pirateX;
+    int newPirateY = pirateY;
+    
+    if (pirateX == playerX) { //Case 1: Pirate on same row as player
+        //Move toward player vertically
+        int moveY = (playerY > pirateY) ? 1 : -1;
+        newPirateY = pirateY + moveY;
+    } else if (pirateY == playerY) { //Case 2: Pirate on same column as player
+        //Move toward player horizontally
+        int moveX = (playerX > pirateX) ? 1 : -1;
+        newPirateX = pirateX + moveX;
+    } else { //Case 3: Random movement
+        //Possible directions: {x, y}
+        int possibleMoves[4][2] = {
+            {1, 0},   // Right
+            {-1, 0},  // Left
+            {0, 1},   // Down
+            {0, -1}   // Up
+        };
+        
+        //Track valid moves
+        int validMoves[4] = {0};
+        int validMoveCount = 0;
+        
+        //Check each direction
+        for (int i = 0; i < 4; i++) {
+            int newX = pirateX + possibleMoves[i][0];
+            int newY = pirateY + possibleMoves[i][1];
+            
+            //Check if within bounds
+            if (newX >= 0 && newX < LINE && newY >= 0 && newY < COLUMN) {
+                validMoves[i] = 1;
+                validMoveCount++;
+            }
+        }
+        
+        //No valid moves available
+        if (validMoveCount == 0) {
+            return;
+        }
+        
+        //Choose random valid move
+        int moveIndex;
+        do {
+            moveIndex = rand() % 4;
+        } while (validMoves[moveIndex] == 0);
+        
+        //Apply chosen move
+        newPirateX = pirateX + possibleMoves[moveIndex][0];
+        newPirateY = pirateY + possibleMoves[moveIndex][1];
+    }
+    
+    //Final boundary check before applying movement
+    if (newPirateX >= 0 && newPirateX < LINE && newPirateY >= 0 && newPirateY < COLUMN) {
+        setPosPirateX(this->pirate, newPirateX);
+        setPosPirateY(this->pirate, newPirateY);
+    }
+    
+    setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
+}
+
+
 //Implementation of action functions
 static void actionNop(Game* this) {
     assert(this != NULL);
@@ -228,30 +335,42 @@ static void actionInitGame(Game* this) {
 }
 
 static void actionMoveUp(Game* this) {
-    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
     if (getPosPlayerX(this->player) > 0) {
+        setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) - 1);
+    }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
     }
 }
 
 static void actionMoveDown(Game* this) {
-    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
     if (getPosPlayerX(this->player) < LINE - 1) {
+        setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) + 1);
+    }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
     }
 }
 
 static void actionMoveLeft(Game* this) {
-    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
     if (getPosPlayerY(this->player) > 0) {
+        setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) - 1);
+    }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
     }
 }
 
 static void actionMoveRight(Game* this) {
-    setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
     if (getPosPlayerY(this->player) < COLUMN - 1) {
+        setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) + 1);
+    }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
     }
 }
 
@@ -261,8 +380,7 @@ static void actionPrintGame(Game* this) {
 
 static void actionCheckStatus(Game* this) {
     assert(this != NULL);
-    //This action is used in combination with the code in main.c
-    //to check the game status
+    //This action is used in combination with the code in main.c to check the game status
 }
 
 static void actionPrintVictory(Game* this) {
@@ -363,9 +481,13 @@ extern Treasure* getTreasureGame(Game* game) {
     return game->treasure;
 }
 
+extern Pirate* getPirateGame(Game* game) {
+    assert(game != NULL);
+    return game->pirate;
+}
+
 extern char** getGridGame(Game* game) {
     assert(game != NULL);
     return getGridMap(game->map);
 }
-
 
