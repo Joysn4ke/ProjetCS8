@@ -110,9 +110,10 @@ extern Game* newGame() {
 }
 
 
-
 extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
+    assert(HEALTHPLAYER > 0);  //Verif health's player
+    assert(NBPLAYER > 0);  //Verif nb player
     assert(LINE > 3 && COLUMN > 3);  //Verif grid size
     assert(NBTRAP < (LINE - 1) * (COLUMN - 1)); //Make sure that there is not too much trap
 
@@ -217,6 +218,12 @@ extern int checkGameStatus(Game* this) {
     if (getPosPlayerX(getPlayerGame(this)) == getPosTreasureX(getTreasureGame(this)) &&
         getPosPlayerY(getPlayerGame(this)) == getPosTreasureY(getTreasureGame(this))) {
         return 1; //Win
+    }
+
+    if (getPosPlayerX(getPlayerGame(this)) == getPosPirateX(getPirateGame(this)) &&
+        getPosPlayerY(getPlayerGame(this)) == getPosPirateY(getPirateGame(this))) {
+        printf("Le pirate t'as rattrapé\n");
+        return 2; //Lose
     }
     
     //Verif player on trap
@@ -329,34 +336,42 @@ static void actionInitGame(Game* this) {
 }
 
 static void actionMoveUp(Game* this) {
-    movePirate(this);
     if (getPosPlayerX(this->player) > 0) {
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) - 1);
     }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
+    }
 }
 
 static void actionMoveDown(Game* this) {
-    movePirate(this);
     if (getPosPlayerX(this->player) < LINE - 1) {
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) + 1);
     }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
+    }
 }
 
 static void actionMoveLeft(Game* this) {
-    movePirate(this);
     if (getPosPlayerY(this->player) > 0) {
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) - 1);
     }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
+    }
 }
 
 static void actionMoveRight(Game* this) {
-    movePirate(this);
     if (getPosPlayerY(this->player) < COLUMN - 1) {
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) + 1);
+    }
+    if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
+        movePirate(this);
     }
 }
 
@@ -466,6 +481,11 @@ extern Trap** getTrapGame(Game* game) {
 extern Treasure* getTreasureGame(Game* game) {
     assert(game != NULL);
     return game->treasure;
+}
+
+extern Pirate* getPirateGame(Game* game) {
+    assert(game != NULL);
+    return game->pirate;
 }
 
 extern char** getGridGame(Game* game) {
