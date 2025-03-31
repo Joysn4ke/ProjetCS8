@@ -6,7 +6,7 @@
 #endif
 
 #ifndef COLUMN
-#define COLUMN 10
+#define COLUMN LINE
 #endif
 
 #ifndef NBTRAP
@@ -25,10 +25,14 @@
 #define NBPIRATE 1
 #endif
 
+#ifndef TOTAL_ENTITY
+#define TOTAL_ENTITY (NBTRAP + NBPLAYER + NBPIRATE)
+#endif
+
 #ifndef CHEAT
 #define CHEAT 1
 #endif
 
-void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int nbUsed);
+void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int usedCount);
 
 #endif //COMMON_H
