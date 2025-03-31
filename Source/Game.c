@@ -203,6 +203,7 @@ extern void gamePrint(Game* this) {
     grille_print(getGridMap(this->map), COLUMN, LINE);
     printf("\nIl te reste %d vies.\n", getHealthPlayer(this->player));
 
+    //Debug
     // printf("playerX : %d\n", getPosPlayerX(this->player));
     // printf("playerY : %d\n", getPosPlayerY(this->player));
     // printf("treasureX : %d\n", getPosTreasureX(this->treasure));
@@ -235,7 +236,7 @@ extern int checkGameStatus(Game* this) {
             setNullPosTrapX(getTrapGame(this)[i]);
             setNullPosTrapY(getTrapGame(this)[i]);
             
-            if (getHealthPlayer(this->player) == 0) {
+            if (getHealthPlayer(this->player) <= 0) {
                 printf("Tu n'as plus de vie\n");
                 return 2; //Lose
             } else {

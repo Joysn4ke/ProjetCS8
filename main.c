@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h> //sleep
 
 #include "Getch.h"
 #include "Game.h"
@@ -50,6 +51,8 @@ int main() {
     }
     
     freeGame(game);
+    sleep(2);
+    system("clear");
     return 0;
 }
 
