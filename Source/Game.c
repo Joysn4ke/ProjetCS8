@@ -242,62 +242,148 @@ extern int checkGameStatus(Game* this) {
     return 0;
 }
 
+// extern void movePirate(Game* this) {
+//     assert(this != NULL);
+//     int move = 0;
+
+//     if (getPosPlayerX(this->player) == getPosPirateX(this->pirate)) {
+//         setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
+
+//         if (getPosPlayerY(this->player) - getPosPirateY(this->pirate) > 0) {
+//             move = 1;
+//         } else if (getPosPlayerY(this->player) - getPosPirateY(this->pirate) < 0) {
+//             move = -1;
+//         }
+//         setPosPirateY(this->pirate, getPosPirateY(this->pirate) + move);
+//     } else if (getPosPlayerY(this->player) == getPosPirateY(this->pirate)) {
+//         setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
+
+//         if (getPosPlayerX(this->player) - getPosPirateX(this->pirate) > 0) {
+//             move = 1;
+//         } else if (getPosPlayerX(this->player) - getPosPirateX(this->pirate) < 0) {
+//             move = -1;
+//         }
+//         setPosPirateX(this->pirate, getPosPirateX(this->pirate) + move);
+//     } else {
+//         int bool = rand() % (2);    //1 or 0
+
+//         if (getPosPirateX(this->pirate) > 0 && getPosPirateY(this->pirate) > 0 && getPosPirateX(this->pirate) < LINE - 1 && getPosPirateY(this->pirate) < COLUMN - 1) { //Border exclude
+//             move = (rand() % 2) * 2 - 1; //1 or -1
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) + move);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) + move);
+//             }
+//         } else if (getPosPirateX(this->pirate) == 0 && getPosPirateY(this->pirate) == 0) { //Left top corner
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) + 1);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) + 1);
+//             }
+//         } else if (getPosPirateX(this->pirate) == 0 && getPosPirateY(this->pirate) == COLUMN - 1) { //Right top corner
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) + 1);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) - 1);
+//             }
+//         } else if (getPosPirateX(this->pirate) == LINE - 1 && getPosPirateY(this->pirate) == COLUMN - 1) { //Left bottom corner
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) - 1);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) - 1);
+//             }
+//         } else if (getPosPirateX(this->pirate) == LINE - 1 && getPosPirateY(this->pirate) == 0) { //Right bottom corner
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) - 1);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) + 1);
+//             }
+//         } else if (getPosPirateX(this->pirate) == 0  && getPosPirateY(this->pirate) > 0) {
+//             if (bool) {
+//                 setPosPirateX(this->pirate, getPosPirateX(this->pirate) - 1);
+//             }  else {
+//                 setPosPirateY(this->pirate, getPosPirateY(this->pirate) + 1);
+//             }
+//         }
+
+//         setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
+
+//         // printf("bool %d\n", bool);
+//         // printf("move %d\n", move);
+//     }
+// }
+
+
 extern void movePirate(Game* this) {
     assert(this != NULL);
-    int move = 0;
-
     
-    if (getPosPlayerX(this->player) == getPosPirateX(this->pirate)) {
-        setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
-
-        if (getPosPlayerY(this->player) - getPosPirateY(this->pirate) > 0) {
-            move = 1;
-        } else if (getPosPlayerY(this->player) - getPosPirateY(this->pirate) < 0) {
-            move = -1;
+    //Get current positions
+    int pirateX = getPosPirateX(this->pirate);
+    int pirateY = getPosPirateY(this->pirate);
+    int playerX = getPosPlayerX(this->player);
+    int playerY = getPosPlayerY(this->player);
+    
+    setGridCellMap(this->map, pirateX, pirateY, ' ');  //Clear pirate's current position on map
+    
+    int newPirateX = pirateX;
+    int newPirateY = pirateY;
+    
+    if (pirateX == playerX) { //Case 1: Pirate on same row as player
+        //Move toward player vertically
+        int moveY = (playerY > pirateY) ? 1 : -1;
+        newPirateY = pirateY + moveY;
+    } else if (pirateY == playerY) { //Case 2: Pirate on same column as player
+        //Move toward player horizontally
+        int moveX = (playerX > pirateX) ? 1 : -1;
+        newPirateX = pirateX + moveX;
+    } else { //Case 3: Random movement
+        //Possible directions: {x, y}
+        int possibleMoves[4][2] = {
+            {1, 0},   // Right
+            {-1, 0},  // Left
+            {0, 1},   // Down
+            {0, -1}   // Up
+        };
+        
+        //Track valid moves
+        int validMoves[4] = {0};
+        int validMoveCount = 0;
+        
+        //Check each direction
+        for (int i = 0; i < 4; i++) {
+            int newX = pirateX + possibleMoves[i][0];
+            int newY = pirateY + possibleMoves[i][1];
+            
+            //Check if within bounds
+            if (newX >= 0 && newX < LINE && newY >= 0 && newY < COLUMN) {
+                validMoves[i] = 1;
+                validMoveCount++;
+            }
         }
-        setPosPirateY(this->pirate, getPosPirateY(this->pirate) + move);
-    } else if (getPosPlayerY(this->player) == getPosPirateY(this->pirate)) {
-        setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
-
-        if (getPosPlayerX(this->player) - getPosPirateX(this->pirate) > 0) {
-            move = 1;
-        } else if (getPosPlayerX(this->player) - getPosPirateX(this->pirate) < 0) {
-            move = -1;
+        
+        //No valid moves available
+        if (validMoveCount == 0) {
+            return;
         }
-        setPosPirateX(this->pirate, getPosPirateX(this->pirate) + move);
-    } else {
-        // if (getPosPirateX(this->pirate) > 0 && getPosPirateY(this->pirate) > 0) {
-        //     move = 1;
-        // } else if (getPosPirateX(this->pirate) < LINE - 1 && getPosPirateY(this->pirate) < COLUMN - 1) {
-        //     move = -1;
-        // } else {
-        //     move = (rand() % 2) * 2 - 1; //1 or -1
-        // }
-
-        int bool = rand() % (2);
-
-        if (getPosPirateX(this->pirate) > 0 && getPosPirateY(this->pirate) > 0 && getPosPirateX(this->pirate) < LINE - 1 && getPosPirateY(this->pirate) < COLUMN - 1) {
-            move = (rand() % 2) * 2 - 1; //1 or -1
-        } else if (getPosPirateX(this->pirate) == 0 || getPosPirateY(this->pirate) == 0) {
-            move = 1;
-            bool = 1;
-        }
-        else if (getPosPirateX(this->pirate) == LINE - 1 || getPosPirateY(this->pirate) == COLUMN - 1) {
-            move = -1;
-            bool = 0;
-        }
-
-        setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
-
-        // printf("bool %d\n", bool);
-        // printf("move %d\n", move);
-
-        if (bool) {
-            setPosPirateX(this->pirate, getPosPirateX(this->pirate) + move);
-        }  else {
-            setPosPirateY(this->pirate, getPosPirateY(this->pirate) + move);
-        }
+        
+        //Choose random valid move
+        int moveIndex;
+        do {
+            moveIndex = rand() % 4;
+        } while (validMoves[moveIndex] == 0);
+        
+        //Apply chosen move
+        newPirateX = pirateX + possibleMoves[moveIndex][0];
+        newPirateY = pirateY + possibleMoves[moveIndex][1];
     }
+    
+    //Final boundary check before applying movement
+    if (newPirateX >= 0 && newPirateX < LINE && newPirateY >= 0 && newPirateY < COLUMN) {
+        setPosPirateX(this->pirate, newPirateX);
+        setPosPirateY(this->pirate, newPirateY);
+    }
+    
+    setGridCellMap(this->map, getPosPirateX(this->pirate), getPosPirateY(this->pirate), ' ');
 }
 
 
@@ -313,32 +399,32 @@ static void actionInitGame(Game* this) {
 }
 
 static void actionMoveUp(Game* this) {
+    movePirate(this);
     if (getPosPlayerX(this->player) > 0) {
-        movePirate(this);
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) - 1);
     }
 }
 
 static void actionMoveDown(Game* this) {
+    movePirate(this);
     if (getPosPlayerX(this->player) < LINE - 1) {
-        movePirate(this);
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerX(this->player, getPosPlayerX(this->player) + 1);
     }
 }
 
 static void actionMoveLeft(Game* this) {
+    movePirate(this);
     if (getPosPlayerY(this->player) > 0) {
-        movePirate(this);
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) - 1);
     }
 }
 
 static void actionMoveRight(Game* this) {
+    movePirate(this);
     if (getPosPlayerY(this->player) < COLUMN - 1) {
-        movePirate(this);
         setGridCellMap(this->map, getPosPlayerX(this->player), getPosPlayerY(this->player), ' ');
         setPosPlayerY(this->player, getPosPlayerY(this->player) + 1);
     }

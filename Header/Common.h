@@ -6,7 +6,7 @@
 #endif
 
 #ifndef COLUMN
-#define COLUMN LINE
+#define COLUMN 7
 #endif
 
 #ifndef NBTRAP
