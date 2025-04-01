@@ -60,7 +60,7 @@ extern void freeGame(Game* this);
 
 extern void gamePrint(Game* this);
 extern int checkGameStatus(Game* this);
-extern void movePirate(Game* this);
+extern void movePirate(Game* this, int bool);
 
 //Incorporated StateMachine functions
 extern void gameInitStateMachine(Game* this);

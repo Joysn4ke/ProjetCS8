@@ -222,8 +222,18 @@ extern int checkGameStatus(Game* this) {
 
     if (getPosPlayerX(getPlayerGame(this)) == getPosPirateX(getPirateGame(this)) &&
         getPosPlayerY(getPlayerGame(this)) == getPosPirateY(getPirateGame(this))) {
-        printf("Le pirate t'as rattrapé\n");
-        return 2; //Lose
+        // printf("Le pirate t'as rattrapé\n");
+        // return 2; //Lose
+
+        printf("Le pirate t'as rattrapé, tu perds une vie\n");
+        setHealthPlayer(this->player, getHealthPlayer(this->player) - 1);
+        movePirate(this, 0);
+        // if (getHealthPlayer(this->player) <= 0) {
+        //     printf("Tu n'as plus de vie\n");
+        //     return 2; //Lose
+        // } else {
+        //     return 0; //Game Continue
+        // }
     }
     
     //Verif player on trap
@@ -236,14 +246,19 @@ extern int checkGameStatus(Game* this) {
             setNullPosTrapX(getTrapGame(this)[i]);
             setNullPosTrapY(getTrapGame(this)[i]);
             
-            if (getHealthPlayer(this->player) <= 0) {
-                printf("Tu n'as plus de vie\n");
-                return 2; //Lose
-            } else {
-                return 0; //Game Continue
-            }
+            // if (getHealthPlayer(this->player) <= 0) {
+            //     printf("Tu n'as plus de vie\n");
+            //     return 2; //Lose
+            // } else {
+            //     return 0; //Game Continue
+            // }
             break;
         }
+    }
+
+    if (getHealthPlayer(this->player) <= 0) {
+        printf("Tu n'as plus de vie\n");
+        return 2; //Lose
     }
 
     return 0;
@@ -251,7 +266,7 @@ extern int checkGameStatus(Game* this) {
 
 
 
-extern void movePirate(Game* this) {
+extern void movePirate(Game* this, int bool) {
     assert(this != NULL);
     
     //Get current positions
@@ -265,11 +280,11 @@ extern void movePirate(Game* this) {
     int newPirateX = pirateX;
     int newPirateY = pirateY;
     
-    if (pirateX == playerX) { //Case 1: Pirate on same row as player
+    if (pirateX == playerX && bool) { //Case 1: Pirate on same row as player
         //Move toward player vertically
         int moveY = (playerY > pirateY) ? 1 : -1;
         newPirateY = pirateY + moveY;
-    } else if (pirateY == playerY) { //Case 2: Pirate on same column as player
+    } else if (pirateY == playerY && bool) { //Case 2: Pirate on same column as player
         //Move toward player horizontally
         int moveX = (playerX > pirateX) ? 1 : -1;
         newPirateX = pirateX + moveX;
@@ -341,7 +356,7 @@ static void actionMoveUp(Game* this) {
         setPosPlayerX(this->player, getPosPlayerX(this->player) - 1);
     }
     if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
-        movePirate(this);
+        movePirate(this, 1);
     }
 }
 
@@ -351,7 +366,7 @@ static void actionMoveDown(Game* this) {
         setPosPlayerX(this->player, getPosPlayerX(this->player) + 1);
     }
     if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
-        movePirate(this);
+        movePirate(this, 1);
     }
 }
 
@@ -361,7 +376,7 @@ static void actionMoveLeft(Game* this) {
         setPosPlayerY(this->player, getPosPlayerY(this->player) - 1);
     }
     if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
-        movePirate(this);
+        movePirate(this, 1);
     }
 }
 
@@ -371,7 +386,7 @@ static void actionMoveRight(Game* this) {
         setPosPlayerY(this->player, getPosPlayerY(this->player) + 1);
     }
     if (!(getPosPlayerX(this->player) == getPosPirateX(this->pirate) && getPosPlayerY(this->player) == getPosPirateY(this->pirate))) {
-        movePirate(this);
+        movePirate(this, 1);
     }
 }
 

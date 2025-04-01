@@ -51,8 +51,8 @@ int main() {
     }
     
     freeGame(game);
-    sleep(2);
-    system("clear");
+    // sleep(2);
+    // system("clear");
     return 0;
 }
 
