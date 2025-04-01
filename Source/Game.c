@@ -222,18 +222,10 @@ extern int checkGameStatus(Game* this) {
 
     if (getPosPlayerX(getPlayerGame(this)) == getPosPirateX(getPirateGame(this)) &&
         getPosPlayerY(getPlayerGame(this)) == getPosPirateY(getPirateGame(this))) {
-        // printf("Le pirate t'as rattrapé\n");
-        // return 2; //Lose
 
         printf("Le pirate t'as rattrapé, tu perds une vie\n");
         setHealthPlayer(this->player, getHealthPlayer(this->player) - 1);
         movePirate(this, 0);
-        // if (getHealthPlayer(this->player) <= 0) {
-        //     printf("Tu n'as plus de vie\n");
-        //     return 2; //Lose
-        // } else {
-        //     return 0; //Game Continue
-        // }
     }
     
     //Verif player on trap
@@ -245,13 +237,6 @@ extern int checkGameStatus(Game* this) {
 
             setNullPosTrapX(getTrapGame(this)[i]);
             setNullPosTrapY(getTrapGame(this)[i]);
-            
-            // if (getHealthPlayer(this->player) <= 0) {
-            //     printf("Tu n'as plus de vie\n");
-            //     return 2; //Lose
-            // } else {
-            //     return 0; //Game Continue
-            // }
             break;
         }
     }
