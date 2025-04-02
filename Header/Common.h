@@ -30,7 +30,7 @@
 #endif
 
 #ifndef CHEAT
-#define CHEAT 1
+#define CHEAT 0
 #endif
 
 /**
