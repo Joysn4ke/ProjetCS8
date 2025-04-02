@@ -1,0 +1,198 @@
+\doxysection{Source/\+Trap.c File Reference}
+\hypertarget{Trap_8c}{}\label{Trap_8c}\index{Source/Trap.c@{Source/Trap.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}assert.\+h"{}}\newline
+{\ttfamily \#include "{}Common.\+h"{}}\newline
+{\ttfamily \#include "{}Trap.\+h"{}}\newline
+Include dependency graph for Trap.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Trap_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTrap__s}{Trap\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Represents a trap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Trap_8c_a634587f3de5b531967882da65cf42ee0}{new\+Trap}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Trap object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_ab1bd9766a309ab0c2facea523cdc7f4a}{Trap\+Initialisation}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}this, int localX, int localY)
+\begin{DoxyCompactList}\small\item\em Initializes a Trap object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_a7e5a8834c26bd3d5782124fda18fbe2a}{free\+Trap}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Trap object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Trap_8c_ab1caa0ea7f0b0065fea05c3510a8beeb}{get\+Pos\+TrapX}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}})
+\begin{DoxyCompactList}\small\item\em Gets the trap\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Trap_8c_a90add7a645fa1996f66c77c6470c25db}{get\+Pos\+TrapY}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}})
+\begin{DoxyCompactList}\small\item\em Gets the trap\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_a85fa64f9a7dc85e687bd851a4305a476}{set\+Pos\+TrapX}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}}, int x)
+\begin{DoxyCompactList}\small\item\em Sets the trap\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_a5afb0837d29a0d96bbc5d87d331702a5}{set\+Pos\+TrapY}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}}, int y)
+\begin{DoxyCompactList}\small\item\em Sets the trap\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_ada1116f9aa32de743c4e90f8f36ebc68}{set\+Null\+Pos\+TrapX}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}})
+\begin{DoxyCompactList}\small\item\em Sets the trap\textquotesingle{}s X position to an invalid value (-\/1) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Trap_8c_a4f358b2a34e798f037b5a9b960d010cd}{set\+Null\+Pos\+TrapY}} (\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}})
+\begin{DoxyCompactList}\small\item\em Sets the trap\textquotesingle{}s Y position to an invalid value (-\/1) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Trap_8c_a7e5a8834c26bd3d5782124fda18fbe2a}\label{Trap_8c_a7e5a8834c26bd3d5782124fda18fbe2a} 
+\index{Trap.c@{Trap.c}!freeTrap@{freeTrap}}
+\index{freeTrap@{freeTrap}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{freeTrap()}{freeTrap()}}
+{\footnotesize\ttfamily void free\+Trap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Trap object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Trap to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Trap_8c_ab1caa0ea7f0b0065fea05c3510a8beeb}\label{Trap_8c_ab1caa0ea7f0b0065fea05c3510a8beeb} 
+\index{Trap.c@{Trap.c}!getPosTrapX@{getPosTrapX}}
+\index{getPosTrapX@{getPosTrapX}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{getPosTrapX()}{getPosTrapX()}}
+{\footnotesize\ttfamily int get\+Pos\+TrapX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the trap\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X coordinate of the trap 
+\end{DoxyReturn}
+\Hypertarget{Trap_8c_a90add7a645fa1996f66c77c6470c25db}\label{Trap_8c_a90add7a645fa1996f66c77c6470c25db} 
+\index{Trap.c@{Trap.c}!getPosTrapY@{getPosTrapY}}
+\index{getPosTrapY@{getPosTrapY}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{getPosTrapY()}{getPosTrapY()}}
+{\footnotesize\ttfamily int get\+Pos\+TrapY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the trap\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y coordinate of the trap 
+\end{DoxyReturn}
+\Hypertarget{Trap_8c_a634587f3de5b531967882da65cf42ee0}\label{Trap_8c_a634587f3de5b531967882da65cf42ee0} 
+\index{Trap.c@{Trap.c}!newTrap@{newTrap}}
+\index{newTrap@{newTrap}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{newTrap()}{newTrap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*} new\+Trap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Trap object. 
+
+Allocates memory for a new Trap.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Trap 
+\end{DoxyReturn}
+\Hypertarget{Trap_8c_ada1116f9aa32de743c4e90f8f36ebc68}\label{Trap_8c_ada1116f9aa32de743c4e90f8f36ebc68} 
+\index{Trap.c@{Trap.c}!setNullPosTrapX@{setNullPosTrapX}}
+\index{setNullPosTrapX@{setNullPosTrapX}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{setNullPosTrapX()}{setNullPosTrapX()}}
+{\footnotesize\ttfamily void set\+Null\+Pos\+TrapX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the trap\textquotesingle{}s X position to an invalid value (-\/1) 
+
+Used to mark a trap as triggered/disabled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Trap_8c_a4f358b2a34e798f037b5a9b960d010cd}\label{Trap_8c_a4f358b2a34e798f037b5a9b960d010cd} 
+\index{Trap.c@{Trap.c}!setNullPosTrapY@{setNullPosTrapY}}
+\index{setNullPosTrapY@{setNullPosTrapY}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{setNullPosTrapY()}{setNullPosTrapY()}}
+{\footnotesize\ttfamily void set\+Null\+Pos\+TrapY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the trap\textquotesingle{}s Y position to an invalid value (-\/1) 
+
+Used to mark a trap as triggered/disabled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Trap_8c_a85fa64f9a7dc85e687bd851a4305a476}\label{Trap_8c_a85fa64f9a7dc85e687bd851a4305a476} 
+\index{Trap.c@{Trap.c}!setPosTrapX@{setPosTrapX}}
+\index{setPosTrapX@{setPosTrapX}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{setPosTrapX()}{setPosTrapX()}}
+{\footnotesize\ttfamily void set\+Pos\+TrapX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the trap\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+{\em x} & New X coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Trap_8c_a5afb0837d29a0d96bbc5d87d331702a5}\label{Trap_8c_a5afb0837d29a0d96bbc5d87d331702a5} 
+\index{Trap.c@{Trap.c}!setPosTrapY@{setPosTrapY}}
+\index{setPosTrapY@{setPosTrapY}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{setPosTrapY()}{setPosTrapY()}}
+{\footnotesize\ttfamily void set\+Pos\+TrapY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{Trap,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the trap\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Trap} & Pointer to the Trap \\
+\hline
+{\em y} & New Y coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Trap_8c_ab1bd9766a309ab0c2facea523cdc7f4a}\label{Trap_8c_ab1bd9766a309ab0c2facea523cdc7f4a} 
+\index{Trap.c@{Trap.c}!TrapInitialisation@{TrapInitialisation}}
+\index{TrapInitialisation@{TrapInitialisation}!Trap.c@{Trap.c}}
+\doxysubsubsection{\texorpdfstring{TrapInitialisation()}{TrapInitialisation()}}
+{\footnotesize\ttfamily void Trap\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{localX,  }\item[{int}]{localY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Trap object. 
+
+Sets the trap\textquotesingle{}s position on the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Trap to initialize \\
+\hline
+{\em localX} & Initial X position \\
+\hline
+{\em localY} & Initial Y position \\
+\hline
+\end{DoxyParams}

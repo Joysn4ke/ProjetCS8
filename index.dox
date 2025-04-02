@@ -1,0 +1,24 @@
+/**
+ * @mainpage The Project: "In Search of the Cursed Island’s Treasure"
+ *
+ * @section intro Introduction
+ * This project involves developing a simple game in C, leveraging modular programming, 
+ * state machines, and Makefiles. The player controls an adventurer navigating a 10x10 
+ * grid to find a hidden treasure while avoiding traps and pirates.
+ *
+ * @section features Key Features
+ * - **Gameplay:** The game runs in the terminal, using `z`, `q`, `s`, and `d` keys for movement.
+ * - **Initial Mechanics (Increment 1):** The player starts at a fixed position, and the treasure 
+ *   is placed randomly. The game is won when the player reaches the treasure.
+ *
+ * @section increments Further Increments
+ * - **Increment 2:** The player has health points and loses them upon stepping on traps.
+ * - **Increment 3:** A pirate is introduced, chasing the player if visible and moving randomly otherwise.
+ *
+ * @section objectives Educational Objectives
+ * - Writing a structured Makefile.
+ * - Implementing a modular C program.
+ * - Designing and coding a state machine to manage game logic.
+ *
+ * This project serves as an advanced C programming exercise, reinforcing key software development concepts.
+ */
