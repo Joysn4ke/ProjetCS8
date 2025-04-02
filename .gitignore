@@ -1,4 +1,4 @@
-# Ignore les fichiers de compilation et les répertoires
+#Ignore les fichiers de compilation et les répertoires
 *.o
 *.out
 *.a
@@ -8,37 +8,37 @@
 *.elf
 *.d
 
-# Ignore les fichiers de sauvegarde
+#Ignore les fichiers de sauvegarde
 *~
 *.bak
 *.swp
 
-# Ignore les fichiers de configuration locaux
+#Ignore les fichiers de configuration locaux
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 
-# Ignore les répertoires de dépendances
+#Ignore les répertoires de dépendances
 node_modules/
 vendor/
 
-# Ignore les fichiers de configuration spécifiques à l'IDE
+#Ignore les fichiers de configuration spécifiques à l'IDE
 *.iml
 
-# Ignore les fichiers système
+#Ignore les fichiers système
 .DS_Store
 Thumbs.db
 
-# Ignore les répertoires de build
+#Ignore les répertoires de build
 build/
 bin/
 obj/
 
-# Ignore les fichiers de logs
+#Ignore les fichiers de logs
 *.log
 
-# Ignore les fichiers générés par des outils comme CMake, Makefile, etc.
+#Ignore les fichiers générés par des outils comme CMake, Makefile, etc.
 CMakeCache.txt
 Makefile
 game

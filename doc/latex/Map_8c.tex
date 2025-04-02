@@ -1,0 +1,171 @@
+\doxysection{Source/\+Map.c File Reference}
+\hypertarget{Map_8c}{}\label{Map_8c}\index{Source/Map.c@{Source/Map.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}assert.\+h"{}}\newline
+{\ttfamily \#include "{}Common.\+h"{}}\newline
+{\ttfamily \#include "{}Map.\+h"{}}\newline
+Include dependency graph for Map.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Map_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMap__s}{Map\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Represents the game map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Map_8c_a76d932999d93212d8aebe9c126c873f6}{new\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Map object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Map_8c_ac1bac3b54dc6aa7c96cf51aa618df3cc}{map\+Initialisation}} (\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Initializes a Map object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Map_8c_af4d2da439890afac69288a6f1717fb08}{free\+Map}} (\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Map object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Map_8c_a3074e83dff8d61d0874625ec46029867}{grille\+\_\+print}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tab\+\_\+grille, uint8\+\_\+t nb\+\_\+colonne, uint8\+\_\+t nb\+\_\+ligne)
+\begin{DoxyCompactList}\small\item\em Prints the game grid to the console. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Map_8c_a9a97ad01d239b5a6202c8b0eb3e2a976}{get\+Grid\+Map}} (\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}map)
+\begin{DoxyCompactList}\small\item\em Gets the grid of a Map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Map_8c_a38b7df11231d5e2568e05f83888a88cf}{set\+Grid\+Cell\+Map}} (\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}map, int x, int y, char value)
+\begin{DoxyCompactList}\small\item\em Sets the value of a cell in the map grid. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{Map_8c_a7bcf09f4dd5307e4c9c1e7ca3e1ba195}{get\+Grid\+Cell\+Map}} (\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}map, int x, int y)
+\begin{DoxyCompactList}\small\item\em Gets the value of a cell in the map grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Map_8c_af4d2da439890afac69288a6f1717fb08}\label{Map_8c_af4d2da439890afac69288a6f1717fb08} 
+\index{Map.c@{Map.c}!freeMap@{freeMap}}
+\index{freeMap@{freeMap}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{freeMap()}{freeMap()}}
+{\footnotesize\ttfamily void free\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Map object. 
+
+Releases all resources associated with the given Map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Map to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Map_8c_a7bcf09f4dd5307e4c9c1e7ca3e1ba195}\label{Map_8c_a7bcf09f4dd5307e4c9c1e7ca3e1ba195} 
+\index{Map.c@{Map.c}!getGridCellMap@{getGridCellMap}}
+\index{getGridCellMap@{getGridCellMap}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{getGridCellMap()}{getGridCellMap()}}
+{\footnotesize\ttfamily char get\+Grid\+Cell\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}}]{map,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the value of a cell in the map grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Pointer to the Map \\
+\hline
+{\em x} & X coordinate of the cell \\
+\hline
+{\em y} & Y coordinate of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Character at the specified position 
+\end{DoxyReturn}
+\Hypertarget{Map_8c_a9a97ad01d239b5a6202c8b0eb3e2a976}\label{Map_8c_a9a97ad01d239b5a6202c8b0eb3e2a976} 
+\index{Map.c@{Map.c}!getGridMap@{getGridMap}}
+\index{getGridMap@{getGridMap}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{getGridMap()}{getGridMap()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} get\+Grid\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the grid of a Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Pointer to the Map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2D char array representing the grid 
+\end{DoxyReturn}
+\Hypertarget{Map_8c_a3074e83dff8d61d0874625ec46029867}\label{Map_8c_a3074e83dff8d61d0874625ec46029867} 
+\index{Map.c@{Map.c}!grille\_print@{grille\_print}}
+\index{grille\_print@{grille\_print}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{grille\_print()}{grille\_print()}}
+{\footnotesize\ttfamily void grille\+\_\+print (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tab\+\_\+grille,  }\item[{uint8\+\_\+t}]{nb\+\_\+colonne,  }\item[{uint8\+\_\+t}]{nb\+\_\+ligne }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Prints the game grid to the console. 
+
+Displays the game map with cell borders and contents.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\+\_\+grille} & The 2D grid to display \\
+\hline
+{\em nb\+\_\+colonne} & Number of columns in the grid \\
+\hline
+{\em nb\+\_\+ligne} & Number of rows in the grid \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Map_8c_ac1bac3b54dc6aa7c96cf51aa618df3cc}\label{Map_8c_ac1bac3b54dc6aa7c96cf51aa618df3cc} 
+\index{Map.c@{Map.c}!mapInitialisation@{mapInitialisation}}
+\index{mapInitialisation@{mapInitialisation}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{mapInitialisation()}{mapInitialisation()}}
+{\footnotesize\ttfamily void map\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Map object. 
+
+Sets all cells in the map grid to empty spaces.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Map to initialize \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Map_8c_a76d932999d93212d8aebe9c126c873f6}\label{Map_8c_a76d932999d93212d8aebe9c126c873f6} 
+\index{Map.c@{Map.c}!newMap@{newMap}}
+\index{newMap@{newMap}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{newMap()}{newMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*} new\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Map object. 
+
+Allocates memory for a new Map and its internal grid based on LINE and COLUMN dimensions.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Map 
+\end{DoxyReturn}
+\Hypertarget{Map_8c_a38b7df11231d5e2568e05f83888a88cf}\label{Map_8c_a38b7df11231d5e2568e05f83888a88cf} 
+\index{Map.c@{Map.c}!setGridCellMap@{setGridCellMap}}
+\index{setGridCellMap@{setGridCellMap}!Map.c@{Map.c}}
+\doxysubsubsection{\texorpdfstring{setGridCellMap()}{setGridCellMap()}}
+{\footnotesize\ttfamily void set\+Grid\+Cell\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*}}]{map,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the value of a cell in the map grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Pointer to the Map \\
+\hline
+{\em x} & X coordinate of the cell \\
+\hline
+{\em y} & Y coordinate of the cell \\
+\hline
+{\em value} & Character value to set \\
+\hline
+\end{DoxyParams}

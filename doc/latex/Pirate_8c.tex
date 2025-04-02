@@ -1,0 +1,161 @@
+\doxysection{Source/\+Pirate.c File Reference}
+\hypertarget{Pirate_8c}{}\label{Pirate_8c}\index{Source/Pirate.c@{Source/Pirate.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}assert.\+h"{}}\newline
+{\ttfamily \#include "{}Common.\+h"{}}\newline
+{\ttfamily \#include "{}Pirate.\+h"{}}\newline
+Include dependency graph for Pirate.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Pirate_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPirate__s}{Pirate\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Represents the pirate enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Pirate_8c_a09974424e799b90a68564452f10fcb41}{new\+Pirate}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Pirate object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Pirate_8c_a7334abdf03f52ff9d0162eadb8fc403d}{pirate\+Initialisation}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this, int localX, int localY)
+\begin{DoxyCompactList}\small\item\em Initializes a Pirate object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Pirate_8c_a3f388388ff69b94e3aae458604410a92}{free\+Pirate}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Pirate object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Pirate_8c_a83637ae6a700b5d722da323a440ddf24}{get\+Pos\+PirateX}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Gets the pirate\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Pirate_8c_a33216f4deb144fbe588d2115443087d6}{get\+Pos\+PirateY}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Gets the pirate\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Pirate_8c_aba613e8fe65a73b95dcf6979450e5340}{set\+Pos\+PirateX}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this, int x)
+\begin{DoxyCompactList}\small\item\em Sets the pirate\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Pirate_8c_a8b506e071e8746a4d7599078e77464ba}{set\+Pos\+PirateY}} (\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}this, int y)
+\begin{DoxyCompactList}\small\item\em Sets the pirate\textquotesingle{}s Y position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Pirate_8c_a3f388388ff69b94e3aae458604410a92}\label{Pirate_8c_a3f388388ff69b94e3aae458604410a92} 
+\index{Pirate.c@{Pirate.c}!freePirate@{freePirate}}
+\index{freePirate@{freePirate}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{freePirate()}{freePirate()}}
+{\footnotesize\ttfamily void free\+Pirate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Pirate object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Pirate_8c_a83637ae6a700b5d722da323a440ddf24}\label{Pirate_8c_a83637ae6a700b5d722da323a440ddf24} 
+\index{Pirate.c@{Pirate.c}!getPosPirateX@{getPosPirateX}}
+\index{getPosPirateX@{getPosPirateX}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{getPosPirateX()}{getPosPirateX()}}
+{\footnotesize\ttfamily int get\+Pos\+PirateX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the pirate\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X coordinate of the pirate 
+\end{DoxyReturn}
+\Hypertarget{Pirate_8c_a33216f4deb144fbe588d2115443087d6}\label{Pirate_8c_a33216f4deb144fbe588d2115443087d6} 
+\index{Pirate.c@{Pirate.c}!getPosPirateY@{getPosPirateY}}
+\index{getPosPirateY@{getPosPirateY}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{getPosPirateY()}{getPosPirateY()}}
+{\footnotesize\ttfamily int get\+Pos\+PirateY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the pirate\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y coordinate of the pirate 
+\end{DoxyReturn}
+\Hypertarget{Pirate_8c_a09974424e799b90a68564452f10fcb41}\label{Pirate_8c_a09974424e799b90a68564452f10fcb41} 
+\index{Pirate.c@{Pirate.c}!newPirate@{newPirate}}
+\index{newPirate@{newPirate}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{newPirate()}{newPirate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*} new\+Pirate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Pirate object. 
+
+Allocates memory for a new Pirate.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Pirate 
+\end{DoxyReturn}
+\Hypertarget{Pirate_8c_a7334abdf03f52ff9d0162eadb8fc403d}\label{Pirate_8c_a7334abdf03f52ff9d0162eadb8fc403d} 
+\index{Pirate.c@{Pirate.c}!pirateInitialisation@{pirateInitialisation}}
+\index{pirateInitialisation@{pirateInitialisation}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{pirateInitialisation()}{pirateInitialisation()}}
+{\footnotesize\ttfamily void pirate\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{localX,  }\item[{int}]{localY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Pirate object. 
+
+Sets the pirate\textquotesingle{}s initial position on the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate to initialize \\
+\hline
+{\em localX} & Initial X position \\
+\hline
+{\em localY} & Initial Y position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Pirate_8c_aba613e8fe65a73b95dcf6979450e5340}\label{Pirate_8c_aba613e8fe65a73b95dcf6979450e5340} 
+\index{Pirate.c@{Pirate.c}!setPosPirateX@{setPosPirateX}}
+\index{setPosPirateX@{setPosPirateX}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{setPosPirateX()}{setPosPirateX()}}
+{\footnotesize\ttfamily void set\+Pos\+PirateX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the pirate\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate \\
+\hline
+{\em x} & New X coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Pirate_8c_a8b506e071e8746a4d7599078e77464ba}\label{Pirate_8c_a8b506e071e8746a4d7599078e77464ba} 
+\index{Pirate.c@{Pirate.c}!setPosPirateY@{setPosPirateY}}
+\index{setPosPirateY@{setPosPirateY}!Pirate.c@{Pirate.c}}
+\doxysubsubsection{\texorpdfstring{setPosPirateY()}{setPosPirateY()}}
+{\footnotesize\ttfamily void set\+Pos\+PirateY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the pirate\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Pirate \\
+\hline
+{\em y} & New Y coordinate \\
+\hline
+\end{DoxyParams}

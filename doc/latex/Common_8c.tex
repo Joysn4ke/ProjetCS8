@@ -1,0 +1,47 @@
+\doxysection{Source/\+Common.c File Reference}
+\hypertarget{Common_8c}{}\label{Common_8c}\index{Source/Common.c@{Source/Common.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}assert.\+h"{}}\newline
+{\ttfamily \#include "{}Common.\+h"{}}\newline
+Include dependency graph for Common.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Common_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{Common_8c_a7af378ef531a6913526f65fc1943f01d}{generate\+Unique\+Coordinates}} (int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y, int \texorpdfstring{$\ast$}{*}usedX, int \texorpdfstring{$\ast$}{*}usedY, int used\+Count)
+\begin{DoxyCompactList}\small\item\em Generates unique coordinates for entity placement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Common_8c_a7af378ef531a6913526f65fc1943f01d}\label{Common_8c_a7af378ef531a6913526f65fc1943f01d} 
+\index{Common.c@{Common.c}!generateUniqueCoordinates@{generateUniqueCoordinates}}
+\index{generateUniqueCoordinates@{generateUniqueCoordinates}!Common.c@{Common.c}}
+\doxysubsubsection{\texorpdfstring{generateUniqueCoordinates()}{generateUniqueCoordinates()}}
+{\footnotesize\ttfamily void generate\+Unique\+Coordinates (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{x,  }\item[{int \texorpdfstring{$\ast$}{*}}]{y,  }\item[{int \texorpdfstring{$\ast$}{*}}]{usedX,  }\item[{int \texorpdfstring{$\ast$}{*}}]{usedY,  }\item[{int}]{used\+Count }\end{DoxyParamCaption})}
+
+
+
+Generates unique coordinates for entity placement. 
+
+This function generates random coordinates that haven\textquotesingle{}t been used before for placing entities on the game map.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em x} & Pointer to store the generated X coordinate \\
+\hline
+\mbox{\texttt{ out}}  & {\em y} & Pointer to store the generated Y coordinate \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em usedX} & Array of X coordinates already in use \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em usedY} & Array of Y coordinates already in use \\
+\hline
+\mbox{\texttt{ in}}  & {\em used\+Count} & Number of coordinates already in use \\
+\hline
+\end{DoxyParams}

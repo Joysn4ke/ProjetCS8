@@ -1,0 +1,164 @@
+\doxysection{Header/\+Treasure.h File Reference}
+\hypertarget{Treasure_8h}{}\label{Treasure_8h}\index{Header/Treasure.h@{Header/Treasure.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Treasure_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structTreasure__s}{Treasure\+\_\+s}} \mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Treasure_8h_a2a61806a567d3164ff384badb725ff10}{new\+Treasure}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Treasure object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Treasure_8h_ab2801dcbeb3d4f53e9cc935665a2bfd6}{treasure\+Initialisation}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}this, int localX, int localY)
+\begin{DoxyCompactList}\small\item\em Initializes a Treasure object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Treasure_8h_a48848084fd6a0d81391bc074499ed35e}{free\+Treasure}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Treasure object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Treasure_8h_a14f99fed0684e1e2a1c1b778e8517ab5}{get\+Pos\+TreasureX}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}})
+\begin{DoxyCompactList}\small\item\em Gets the treasure\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Treasure_8h_a1934ee4a462cdc11354daeda264ee202}{get\+Pos\+TreasureY}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}})
+\begin{DoxyCompactList}\small\item\em Gets the treasure\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Treasure_8h_a653aaeacd38bdfa3c4bbad07deff5ca3}{set\+Pos\+TreasureX}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}}, int x)
+\begin{DoxyCompactList}\small\item\em Sets the treasure\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Treasure_8h_a011db2be7e7f485ad0e188d42e395b16}{set\+Pos\+TreasureY}} (\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}}, int y)
+\begin{DoxyCompactList}\small\item\em Sets the treasure\textquotesingle{}s Y position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}\label{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893} 
+\index{Treasure.h@{Treasure.h}!Treasure@{Treasure}}
+\index{Treasure@{Treasure}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{Treasure}{Treasure}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structTreasure__s}{Treasure\+\_\+s}} \mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Treasure_8h_a48848084fd6a0d81391bc074499ed35e}\label{Treasure_8h_a48848084fd6a0d81391bc074499ed35e} 
+\index{Treasure.h@{Treasure.h}!freeTreasure@{freeTreasure}}
+\index{freeTreasure@{freeTreasure}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{freeTreasure()}{freeTreasure()}}
+{\footnotesize\ttfamily void free\+Treasure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Treasure object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Treasure to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Treasure_8h_a14f99fed0684e1e2a1c1b778e8517ab5}\label{Treasure_8h_a14f99fed0684e1e2a1c1b778e8517ab5} 
+\index{Treasure.h@{Treasure.h}!getPosTreasureX@{getPosTreasureX}}
+\index{getPosTreasureX@{getPosTreasureX}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{getPosTreasureX()}{getPosTreasureX()}}
+{\footnotesize\ttfamily int get\+Pos\+TreasureX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{Treasure }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the treasure\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Treasure} & Pointer to the Treasure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X coordinate of the treasure 
+\end{DoxyReturn}
+\Hypertarget{Treasure_8h_a1934ee4a462cdc11354daeda264ee202}\label{Treasure_8h_a1934ee4a462cdc11354daeda264ee202} 
+\index{Treasure.h@{Treasure.h}!getPosTreasureY@{getPosTreasureY}}
+\index{getPosTreasureY@{getPosTreasureY}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{getPosTreasureY()}{getPosTreasureY()}}
+{\footnotesize\ttfamily int get\+Pos\+TreasureY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{Treasure }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the treasure\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Treasure} & Pointer to the Treasure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y coordinate of the treasure 
+\end{DoxyReturn}
+\Hypertarget{Treasure_8h_a2a61806a567d3164ff384badb725ff10}\label{Treasure_8h_a2a61806a567d3164ff384badb725ff10} 
+\index{Treasure.h@{Treasure.h}!newTreasure@{newTreasure}}
+\index{newTreasure@{newTreasure}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{newTreasure()}{newTreasure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*} new\+Treasure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Treasure object. 
+
+Allocates memory for a new Treasure.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Treasure 
+\end{DoxyReturn}
+\Hypertarget{Treasure_8h_a653aaeacd38bdfa3c4bbad07deff5ca3}\label{Treasure_8h_a653aaeacd38bdfa3c4bbad07deff5ca3} 
+\index{Treasure.h@{Treasure.h}!setPosTreasureX@{setPosTreasureX}}
+\index{setPosTreasureX@{setPosTreasureX}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{setPosTreasureX()}{setPosTreasureX()}}
+{\footnotesize\ttfamily void set\+Pos\+TreasureX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{Treasure,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the treasure\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Treasure} & Pointer to the Treasure \\
+\hline
+{\em x} & New X coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Treasure_8h_a011db2be7e7f485ad0e188d42e395b16}\label{Treasure_8h_a011db2be7e7f485ad0e188d42e395b16} 
+\index{Treasure.h@{Treasure.h}!setPosTreasureY@{setPosTreasureY}}
+\index{setPosTreasureY@{setPosTreasureY}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{setPosTreasureY()}{setPosTreasureY()}}
+{\footnotesize\ttfamily void set\+Pos\+TreasureY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{Treasure,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the treasure\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Treasure} & Pointer to the Treasure \\
+\hline
+{\em y} & New Y coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Treasure_8h_ab2801dcbeb3d4f53e9cc935665a2bfd6}\label{Treasure_8h_ab2801dcbeb3d4f53e9cc935665a2bfd6} 
+\index{Treasure.h@{Treasure.h}!treasureInitialisation@{treasureInitialisation}}
+\index{treasureInitialisation@{treasureInitialisation}!Treasure.h@{Treasure.h}}
+\doxysubsubsection{\texorpdfstring{treasureInitialisation()}{treasureInitialisation()}}
+{\footnotesize\ttfamily void treasure\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{localX,  }\item[{int}]{localY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Treasure object. 
+
+Sets the treasure\textquotesingle{}s position on the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Treasure to initialize \\
+\hline
+{\em localX} & Initial X position \\
+\hline
+{\em localY} & Initial Y position \\
+\hline
+\end{DoxyParams}
