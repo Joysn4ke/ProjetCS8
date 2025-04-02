@@ -1,0 +1,96 @@
+\doxysection{Game\+\_\+s Struct Reference}
+\hypertarget{structGame__s}{}\label{structGame__s}\index{Game\_s@{Game\_s}}
+
+
+Main game structure.  
+
+
+
+
+Collaboration diagram for Game\+\_\+s\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structGame__s__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGame__s_a4821626aca5f086aa142e090f0f7512c}{map}}
+\item 
+\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGame__s_a7d39da10ed98a4223c579831eb08586c}{player}}
+\item 
+\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGame__s_a4393df3e4f3ac5cad2b8ddbe4026a440}{treasure}}
+\item 
+\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGame__s_ad982c5ac1120aced640c6b38730eb543}{pirate}}
+\item 
+\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGame__s_af803bcc9fca11d9c45049c6222eac4a9}{trap}} \mbox{[}\mbox{\hyperlink{Common_8h_a2ac687a9c2f7fce8313c25683756032d}{NBTRAP}}\mbox{]}
+\item 
+\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{structGame__s_af18c69cd83d037f1bb6a8daffc4ddd62}{current\+State}}
+\item 
+int \mbox{\hyperlink{structGame__s_a717ef23d749e5123ff5ac761e08468aa}{game\+Finished}}
+\item 
+\mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} \mbox{\hyperlink{structGame__s_a238483b69757be51a0a2d8a3febeddb5}{transition\+Matrix}} \mbox{[}\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad98965ae84e3a3e1b6d032a321bc879e}{STATE\+\_\+\+NB}}\mbox{]}\mbox{[}\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a6a415103f9e28c7003f41753a0230a54}{EVENT\+\_\+\+NB}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main game structure. 
+
+Contains all game entities and state machine elements. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structGame__s_af18c69cd83d037f1bb6a8daffc4ddd62}\label{structGame__s_af18c69cd83d037f1bb6a8daffc4ddd62} 
+\index{Game\_s@{Game\_s}!currentState@{currentState}}
+\index{currentState@{currentState}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{currentState}{currentState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} Game\+\_\+s\+::current\+State}
+
+\Hypertarget{structGame__s_a717ef23d749e5123ff5ac761e08468aa}\label{structGame__s_a717ef23d749e5123ff5ac761e08468aa} 
+\index{Game\_s@{Game\_s}!gameFinished@{gameFinished}}
+\index{gameFinished@{gameFinished}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{gameFinished}{gameFinished}}
+{\footnotesize\ttfamily int Game\+\_\+s\+::game\+Finished}
+
+\Hypertarget{structGame__s_a4821626aca5f086aa142e090f0f7512c}\label{structGame__s_a4821626aca5f086aa142e090f0f7512c} 
+\index{Game\_s@{Game\_s}!map@{map}}
+\index{map@{map}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}}\texorpdfstring{$\ast$}{*} Game\+\_\+s\+::map}
+
+\Hypertarget{structGame__s_ad982c5ac1120aced640c6b38730eb543}\label{structGame__s_ad982c5ac1120aced640c6b38730eb543} 
+\index{Game\_s@{Game\_s}!pirate@{pirate}}
+\index{pirate@{pirate}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{pirate}{pirate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}}\texorpdfstring{$\ast$}{*} Game\+\_\+s\+::pirate}
+
+\Hypertarget{structGame__s_a7d39da10ed98a4223c579831eb08586c}\label{structGame__s_a7d39da10ed98a4223c579831eb08586c} 
+\index{Game\_s@{Game\_s}!player@{player}}
+\index{player@{player}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}}\texorpdfstring{$\ast$}{*} Game\+\_\+s\+::player}
+
+\Hypertarget{structGame__s_a238483b69757be51a0a2d8a3febeddb5}\label{structGame__s_a238483b69757be51a0a2d8a3febeddb5} 
+\index{Game\_s@{Game\_s}!transitionMatrix@{transitionMatrix}}
+\index{transitionMatrix@{transitionMatrix}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{transitionMatrix}{transitionMatrix}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} Game\+\_\+s\+::transition\+Matrix\mbox{[}\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad98965ae84e3a3e1b6d032a321bc879e}{STATE\+\_\+\+NB}}\mbox{]}\mbox{[}\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a6a415103f9e28c7003f41753a0230a54}{EVENT\+\_\+\+NB}}\mbox{]}}
+
+\Hypertarget{structGame__s_af803bcc9fca11d9c45049c6222eac4a9}\label{structGame__s_af803bcc9fca11d9c45049c6222eac4a9} 
+\index{Game\_s@{Game\_s}!trap@{trap}}
+\index{trap@{trap}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{trap}{trap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}}\texorpdfstring{$\ast$}{*} Game\+\_\+s\+::trap\mbox{[}\mbox{\hyperlink{Common_8h_a2ac687a9c2f7fce8313c25683756032d}{NBTRAP}}\mbox{]}}
+
+\Hypertarget{structGame__s_a4393df3e4f3ac5cad2b8ddbe4026a440}\label{structGame__s_a4393df3e4f3ac5cad2b8ddbe4026a440} 
+\index{Game\_s@{Game\_s}!treasure@{treasure}}
+\index{treasure@{treasure}!Game\_s@{Game\_s}}
+\doxysubsubsection{\texorpdfstring{treasure}{treasure}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}}\texorpdfstring{$\ast$}{*} Game\+\_\+s\+::treasure}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\mbox{\hyperlink{Game_8c}{Game.\+c}}\end{DoxyCompactItemize}

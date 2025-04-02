@@ -33,6 +33,18 @@
 #define CHEAT 1
 #endif
 
+/**
+ * @brief Generates unique coordinates for entity placement
+ * 
+ * This function generates random coordinates that haven't been used before
+ * for placing entities on the game map.
+ * 
+ * @param[out] x Pointer to store the generated X coordinate
+ * @param[out] y Pointer to store the generated Y coordinate
+ * @param[in,out] usedX Array of X coordinates already in use
+ * @param[in,out] usedY Array of Y coordinates already in use
+ * @param[in] usedCount Number of coordinates already in use
+ */
 void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int usedCount);
 
 #endif //COMMON_H

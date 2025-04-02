@@ -1,0 +1,44 @@
+\doxysection{Common.\+h}
+\hypertarget{Common_8h_source}{}\label{Common_8h_source}\index{Header/Common.h@{Header/Common.h}}
+\mbox{\hyperlink{Common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COMMON\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COMMON\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ LINE}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LINE\ 10}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ COLUMN}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ COLUMN\ LINE}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ NBTRAP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ NBTRAP\ (LINE\ -\/\ 1)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ HEALTHPLAYER}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ HEALTHPLAYER\ NBTRAP\ +\ 1}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ NBPLAYER}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NBPLAYER\ 1}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifndef\ NBPIRATE}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ NBPIRATE\ 1}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ TOTAL\_ENTITY}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ TOTAL\_ENTITY\ (NBTRAP\ +\ NBPLAYER\ +\ NBPIRATE)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifndef\ CHEAT}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ CHEAT\ 1}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Common_8h_a7af378ef531a6913526f65fc1943f01d}{generateUniqueCoordinates}}(\textcolor{keywordtype}{int}*\ x,\ \textcolor{keywordtype}{int}*\ y,\ \textcolor{keywordtype}{int}*\ usedX,\ \textcolor{keywordtype}{int}*\ usedY,\ \textcolor{keywordtype}{int}\ usedCount);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//COMMON\_H}}
+
+\end{DoxyCode}

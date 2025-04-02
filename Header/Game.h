@@ -8,6 +8,11 @@
 #include "Trap.h"
 
 // Define state machine elements
+/**
+ * @brief Game state machine states
+ * 
+ * Defines all possible states for the game state machine.
+ */
 typedef enum {
     S_INIT,
     S_ACQUISITION_CLAVIER,
@@ -19,6 +24,12 @@ typedef enum {
     STATE_NB    //Nombre total d'états
 } GameState;
 
+
+/**
+ * @brief Game events
+ * 
+ * Defines all possible events that can trigger state transitions.
+ */
 typedef enum {
     E_START,
     E_KEY_UP,
@@ -34,6 +45,12 @@ typedef enum {
     EVENT_NB    //Nombre total d'événements
 } GameEvent;
 
+
+/**
+ * @brief Game actions
+ * 
+ * Defines all possible actions that can be triggered during state transitions.
+ */
 typedef enum {
     A_NOP,              //Aucune action
     A_INIT_GAME,        //Initialiser le jeu

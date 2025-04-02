@@ -7,11 +7,25 @@
 #include "Common.h"
 #include "Map.h"
 
+/**
+ * @brief Represents the game map
+ * 
+ * The Map structure contains the grid representation of the game world
+ * where all entities are positioned.
+ */
 struct Map_s{
     char **grid;
 };
 
 
+/**
+ * @brief Creates a new Map object
+ * 
+ * Allocates memory for a new Map and its internal grid based on
+ * LINE and COLUMN dimensions.
+ * 
+ * @return Pointer to the newly created Map
+ */
 extern Map* newMap() {
     Map* this = (Map*)calloc(1, sizeof(Map));
     assert(this != NULL);  //Memory allocation's verification
@@ -25,6 +39,13 @@ extern Map* newMap() {
 }
 
 
+/**
+ * @brief Initializes a Map object
+ * 
+ * Sets all cells in the map grid to empty spaces.
+ * 
+ * @param this Pointer to the Map to initialize
+ */
 extern void mapInitialisation(Map* this) {
     assert(this != NULL);  //Valid object's verification
 
@@ -38,6 +59,13 @@ extern void mapInitialisation(Map* this) {
 }
 
 
+/**
+ * @brief Frees memory used by a Map object
+ * 
+ * Releases all resources associated with the given Map.
+ * 
+ * @param this Pointer to the Map to free
+ */
 extern void freeMap(Map* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         for (int i = 0; i < LINE; i++) {
@@ -50,6 +78,15 @@ extern void freeMap(Map* this) {
 }
 
 
+/**
+ * @brief Prints the game grid to the console
+ * 
+ * Displays the game map with cell borders and contents.
+ * 
+ * @param tab_grille The 2D grid to display
+ * @param nb_colonne Number of columns in the grid
+ * @param nb_ligne Number of rows in the grid
+ */
 extern void grille_print (char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne) {
     for(int j= 0; j<nb_ligne; j++)
     {
@@ -79,11 +116,25 @@ extern void grille_print (char **tab_grille, uint8_t nb_colonne, uint8_t nb_lign
 
 
 // Getter & Setter
+/**
+ * @brief Gets the grid of a Map
+ * 
+ * @param map Pointer to the Map
+ * @return 2D char array representing the grid
+ */
 extern char** getGridMap(Map* map) {
     assert(map != NULL);
     return map->grid;
 }
 
+/**
+ * @brief Sets the value of a cell in the map grid
+ * 
+ * @param map Pointer to the Map
+ * @param x X coordinate of the cell
+ * @param y Y coordinate of the cell
+ * @param value Character value to set
+ */
 extern void setGridCellMap(Map* map, int x, int y, char value) {
     // Debug
     // printf("X : %d\n", x);
@@ -96,6 +147,14 @@ extern void setGridCellMap(Map* map, int x, int y, char value) {
     map->grid[x][y] = value;
 }
 
+/**
+ * @brief Gets the value of a cell in the map grid
+ * 
+ * @param map Pointer to the Map
+ * @param x X coordinate of the cell
+ * @param y Y coordinate of the cell
+ * @return Character at the specified position
+ */
 extern char getGridCellMap(Map* map, int x, int y) {
     assert(map != NULL);
     assert(x >= 0 && x < LINE);

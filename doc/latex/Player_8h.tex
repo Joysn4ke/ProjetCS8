@@ -1,0 +1,203 @@
+\doxysection{Header/\+Player.h File Reference}
+\hypertarget{Player_8h}{}\label{Player_8h}\index{Header/Player.h@{Header/Player.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structPlayer__s}{Player\+\_\+s}} \mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Player_8h_a2165761113a144a844ff5b1ea7081ddc}{new\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Player object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Player_8h_a4cb2d2e243d20f46056f538c0de286eb}{player\+Initialisation}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}this, int localX, int localY)
+\begin{DoxyCompactList}\small\item\em Initializes a Player object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Player_8h_ac0b0fb5c4abb6f8c2de927f5ecbfba4f}{free\+Player}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Player object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Player_8h_a1ff4126bd43098ea6d4daf2b9185cecd}{get\+Pos\+PlayerX}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Player_8h_a7f66f4a56bdccd3b3c88ac5db2c208e0}{get\+Pos\+PlayerY}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Player_8h_ab03281ca035193be1aafa00420adead4}{set\+Pos\+PlayerX}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player, int x)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s X position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Player_8h_a05fc25fa06341ad6214850b20e711eb7}{set\+Pos\+PlayerY}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player, int y)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s Y position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Player_8h_a4290b67d2ce590bbe1c4d4f2798c5187}{get\+Health\+Player}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s health. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Player_8h_a62b50313a47ce6f18bf396a600c1af0b}{set\+Health\+Player}} (\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}player, int local\+Health)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s health. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{Player_8h_a47e6f8d93a79a2576363b43294ea2090}\label{Player_8h_a47e6f8d93a79a2576363b43294ea2090} 
+\index{Player.h@{Player.h}!Player@{Player}}
+\index{Player@{Player}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{Player}{Player}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structPlayer__s}{Player\+\_\+s}} \mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Player_8h_ac0b0fb5c4abb6f8c2de927f5ecbfba4f}\label{Player_8h_ac0b0fb5c4abb6f8c2de927f5ecbfba4f} 
+\index{Player.h@{Player.h}!freePlayer@{freePlayer}}
+\index{freePlayer@{freePlayer}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{freePlayer()}{freePlayer()}}
+{\footnotesize\ttfamily void free\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Player object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Player to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Player_8h_a4290b67d2ce590bbe1c4d4f2798c5187}\label{Player_8h_a4290b67d2ce590bbe1c4d4f2798c5187} 
+\index{Player.h@{Player.h}!getHealthPlayer@{getHealthPlayer}}
+\index{getHealthPlayer@{getHealthPlayer}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{getHealthPlayer()}{getHealthPlayer()}}
+{\footnotesize\ttfamily int get\+Health\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the player\textquotesingle{}s health. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current health value 
+\end{DoxyReturn}
+\Hypertarget{Player_8h_a1ff4126bd43098ea6d4daf2b9185cecd}\label{Player_8h_a1ff4126bd43098ea6d4daf2b9185cecd} 
+\index{Player.h@{Player.h}!getPosPlayerX@{getPosPlayerX}}
+\index{getPosPlayerX@{getPosPlayerX}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{getPosPlayerX()}{getPosPlayerX()}}
+{\footnotesize\ttfamily int get\+Pos\+PlayerX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the player\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X coordinate of the player 
+\end{DoxyReturn}
+\Hypertarget{Player_8h_a7f66f4a56bdccd3b3c88ac5db2c208e0}\label{Player_8h_a7f66f4a56bdccd3b3c88ac5db2c208e0} 
+\index{Player.h@{Player.h}!getPosPlayerY@{getPosPlayerY}}
+\index{getPosPlayerY@{getPosPlayerY}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{getPosPlayerY()}{getPosPlayerY()}}
+{\footnotesize\ttfamily int get\+Pos\+PlayerY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the player\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y coordinate of the player 
+\end{DoxyReturn}
+\Hypertarget{Player_8h_a2165761113a144a844ff5b1ea7081ddc}\label{Player_8h_a2165761113a144a844ff5b1ea7081ddc} 
+\index{Player.h@{Player.h}!newPlayer@{newPlayer}}
+\index{newPlayer@{newPlayer}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{newPlayer()}{newPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*} new\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Player object. 
+
+Allocates memory for a new Player.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Player 
+\end{DoxyReturn}
+\Hypertarget{Player_8h_a4cb2d2e243d20f46056f538c0de286eb}\label{Player_8h_a4cb2d2e243d20f46056f538c0de286eb} 
+\index{Player.h@{Player.h}!playerInitialisation@{playerInitialisation}}
+\index{playerInitialisation@{playerInitialisation}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{playerInitialisation()}{playerInitialisation()}}
+{\footnotesize\ttfamily void player\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int}]{localX,  }\item[{int}]{localY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Player object. 
+
+Sets the player\textquotesingle{}s initial position and health.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Player to initialize \\
+\hline
+{\em localX} & Initial X position \\
+\hline
+{\em localY} & Initial Y position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Player_8h_a62b50313a47ce6f18bf396a600c1af0b}\label{Player_8h_a62b50313a47ce6f18bf396a600c1af0b} 
+\index{Player.h@{Player.h}!setHealthPlayer@{setHealthPlayer}}
+\index{setHealthPlayer@{setHealthPlayer}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{setHealthPlayer()}{setHealthPlayer()}}
+{\footnotesize\ttfamily void set\+Health\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{int}]{local\+Health }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the player\textquotesingle{}s health. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+{\em local\+Health} & New health value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Player_8h_ab03281ca035193be1aafa00420adead4}\label{Player_8h_ab03281ca035193be1aafa00420adead4} 
+\index{Player.h@{Player.h}!setPosPlayerX@{setPosPlayerX}}
+\index{setPosPlayerX@{setPosPlayerX}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{setPosPlayerX()}{setPosPlayerX()}}
+{\footnotesize\ttfamily void set\+Pos\+PlayerX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the player\textquotesingle{}s X position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+{\em x} & New X coordinate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Player_8h_a05fc25fa06341ad6214850b20e711eb7}\label{Player_8h_a05fc25fa06341ad6214850b20e711eb7} 
+\index{Player.h@{Player.h}!setPosPlayerY@{setPosPlayerY}}
+\index{setPosPlayerY@{setPosPlayerY}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{setPosPlayerY()}{setPosPlayerY()}}
+{\footnotesize\ttfamily void set\+Pos\+PlayerY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the player\textquotesingle{}s Y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the Player \\
+\hline
+{\em y} & New Y coordinate \\
+\hline
+\end{DoxyParams}

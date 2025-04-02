@@ -11,11 +11,23 @@
 #include "Treasure.h"
 #include "Pirate.h"
 
+
+/**
+ * @brief Transition action pair
+ * 
+ * Associates an action with a destination state for state transitions.
+ */
 struct TransitionAction_s {
     GameAction action;
     GameState destinationState;
 };
 
+
+/**
+ * @brief Main game structure
+ * 
+ * Contains all game entities and state machine elements.
+ */
 struct Game_s {
     Map *map;
     Player *player;
@@ -93,6 +105,14 @@ TransitionAction getTransition(GameState state, GameEvent event) {
 }
 
 
+
+/**
+ * @brief Creates a new Game object
+ * 
+ * Allocates memory for a new Game and all its components.
+ * 
+ * @return Pointer to the newly created Game
+ */
 extern Game* newGame() {
     Game* this = (Game*)calloc(1, sizeof(Game));
     assert(this != NULL);  //Memory allocation's verification
@@ -109,6 +129,13 @@ extern Game* newGame() {
 }
 
 
+/**
+ * @brief Initializes a Game object
+ * 
+ * Sets up the game state, map, and all entities.
+ * 
+ * @param this Pointer to the Game to initialize
+ */
 extern void gameInitialisation(Game* this) {
     assert(this != NULL);  //Valid object's verification
     assert(HEALTHPLAYER > 0);  //Verif health's player
@@ -169,6 +196,14 @@ extern void gameInitialisation(Game* this) {
                'j');
 }
 
+
+/**
+ * @brief Frees memory used by a Game object
+ * 
+ * Releases all resources associated with the given Game.
+ * 
+ * @param this Pointer to the Game to free
+ */
 extern void freeGame(Game* this) {
     if (this != NULL) {  //Check that the object is not NULL before freeing the memory
         freeMap(this->map);
@@ -185,6 +220,13 @@ extern void freeGame(Game* this) {
 }
 
 
+/**
+ * @brief Prints the current game state
+ * 
+ * Displays the game map and player health.
+ * 
+ * @param this Pointer to the Game
+ */
 extern void gamePrint(Game* this) {
     system("clear");
 
@@ -213,6 +255,14 @@ extern void gamePrint(Game* this) {
 }
 
 
+/**
+ * @brief Checks the game status
+ * 
+ * Determines if the player has won, lost, or if the game continues.
+ * 
+ * @param this Pointer to the Game
+ * @return 0 if game continues, 1 if player wins, 2 if player loses
+ */
 extern int checkGameStatus(Game* this) {
     //Verif if treasure found
     if (getPosPlayerX(getPlayerGame(this)) == getPosTreasureX(getTreasureGame(this)) &&
@@ -251,6 +301,14 @@ extern int checkGameStatus(Game* this) {
 
 
 
+/**
+ * @brief Moves the pirate character
+ * 
+ * Determines and executes the pirate's movement based on player position.
+ * 
+ * @param this Pointer to the Game
+ * @param bool If true, move pirate intelligently toward player; if false, move randomly
+ */
 extern void movePirate(Game* this, int bool) {
     assert(this != NULL);
     
@@ -400,6 +458,14 @@ static void actionFreeGame(Game* this) {
 
 
 // State Machine Functions (Incorporated into Game)
+
+/**
+ * @brief Initializes the game state machine
+ * 
+ * Sets up the initial state and transition matrix.
+ * 
+ * @param this Pointer to the Game
+ */
 extern void gameInitStateMachine(Game* this) {
     assert(this != NULL);
     this->currentState = S_INIT;
@@ -413,6 +479,16 @@ extern void gameInitStateMachine(Game* this) {
     }
 }
 
+
+/**
+ * @brief Handles a game event
+ * 
+ * Processes an event through the state machine, executing appropriate actions
+ * and transitioning to the next state.
+ * 
+ * @param this Pointer to the Game
+ * @param event The event to handle
+ */
 extern void gameHandleEvent(Game* this, GameEvent event) {
     assert(this != NULL);
     TransitionAction transition;
@@ -429,6 +505,13 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
     }
 }
 
+
+/**
+ * @brief Converts a keyboard character to a game event
+ * 
+ * @param key The keyboard character
+ * @return Corresponding GameEvent
+ */
 extern GameEvent gameGetEventFromKey(char key) {
     switch(key) {
         case 'l':
@@ -450,11 +533,25 @@ extern GameEvent gameGetEventFromKey(char key) {
     }
 }
 
+
+/**
+ * @brief Checks if the game is finished
+ * 
+ * @param this Pointer to the Game
+ * @return Non-zero if game is finished, 0 otherwise
+ */
 extern int gameIsFinished(Game* this) {
     assert(this != NULL);
     return this->gameFinished;
 }
 
+
+/**
+ * @brief Gets the current game state
+ * 
+ * @param this Pointer to the Game
+ * @return Current GameState
+ */
 extern GameState gameGetCurrentState(Game* this) {
     assert(this != NULL);
     return this->currentState;
@@ -462,31 +559,72 @@ extern GameState gameGetCurrentState(Game* this) {
 
 
 // Getter & Setter
+/**
+ * @brief Gets the map from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return Pointer to the Map
+ */
 extern Map* getMapGame(Game* game) {
     assert(game != NULL);
     return game->map;
 }
 
+
+/**
+ * @brief Gets the player from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return Pointer to the Player
+ */
 extern Player* getPlayerGame(Game* game) {
     assert(game != NULL);
     return game->player;
 }
 
+
+/**
+ * @brief Gets the traps from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return Pointer to the Traps
+ */
 extern Trap** getTrapGame(Game* game) {
     assert(game != NULL);
     return game->trap;
 }
 
+
+/**
+ * @brief Gets the treasure from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return Pointer to the Treasure
+ */
 extern Treasure* getTreasureGame(Game* game) {
     assert(game != NULL);
     return game->treasure;
 }
 
+
+/**
+ * @brief Gets the pirate from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return Pointer to the Pirate
+ */
 extern Pirate* getPirateGame(Game* game) {
     assert(game != NULL);
     return game->pirate;
 }
 
+
+/**
+ * @brief Gets the grid from a Game
+ * 
+ * @param game Pointer to the Game
+ * @return 2D char array representing the grid
+ */
 extern char** getGridGame(Game* game) {
     assert(game != NULL);
     return getGridMap(game->map);

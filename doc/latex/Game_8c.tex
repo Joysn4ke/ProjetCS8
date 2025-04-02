@@ -1,0 +1,432 @@
+\doxysection{Source/\+Game.c File Reference}
+\hypertarget{Game_8c}{}\label{Game_8c}\index{Source/Game.c@{Source/Game.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}assert.\+h"{}}\newline
+{\ttfamily \#include "{}Common.\+h"{}}\newline
+{\ttfamily \#include "{}Game.\+h"{}}\newline
+{\ttfamily \#include "{}Map.\+h"{}}\newline
+{\ttfamily \#include "{}Player.\+h"{}}\newline
+{\ttfamily \#include "{}Trap.\+h"{}}\newline
+{\ttfamily \#include "{}Treasure.\+h"{}}\newline
+{\ttfamily \#include "{}Pirate.\+h"{}}\newline
+Include dependency graph for Game.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Game_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTransitionAction__s}{Transition\+Action\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Transition action pair. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structGame__s}{Game\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Main game structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_a9e506e2989b8b64b4db086a527b15911}{Action\+Ptr}}) (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} \mbox{\hyperlink{Game_8c_a97ca7b1838ba2f17b8ade6996c9685bb}{get\+Transition}} (\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state, \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}} event)
+\item 
+\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_a278a2b7440031ca2787e6c72dfeec2a3}{new\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new Game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_a5c070db3ebdc4d2cff927fd85e9c8914}{game\+Initialisation}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Initializes a Game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_a64ce32be4f4c815f549672242b18a463}{free\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Frees memory used by a Game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_a8831053d598637cdcb8068a066da4fc8}{game\+Print}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Prints the current game state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Game_8c_a8bdcd5d3860d049286ca9635cca04f65}{check\+Game\+Status}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Checks the game status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_a8890568a91e5f60bdd373991e4c6c6e5}{move\+Pirate}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this, int bool)
+\begin{DoxyCompactList}\small\item\em Moves the pirate character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_aa3e078f5c84e1a0ec88ffa26acb83d90}{game\+Init\+State\+Machine}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Initializes the game state machine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8c_a6d3c9b65bfbc1605cb359b541c7a9d73}{game\+Handle\+Event}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this, \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}} event)
+\begin{DoxyCompactList}\small\item\em Handles a game event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}} \mbox{\hyperlink{Game_8c_a755a8c00334be925fbe734bceec43371}{game\+Get\+Event\+From\+Key}} (char key)
+\begin{DoxyCompactList}\small\item\em Converts a keyboard character to a game event. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Game_8c_ae1d91bd5c973f875121ba48a2c451e8d}{game\+Is\+Finished}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Checks if the game is finished. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{Game_8c_ac4fe0f7ac0b1f7035665a78c8353bf03}{game\+Get\+Current\+State}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
+\begin{DoxyCompactList}\small\item\em Gets the current game state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_ad6872869ad864a5362d83dff51c5055c}{get\+Map\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the map from a Game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_af4e6805ba569cf3d98823179829da905}{get\+Player\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the player from a Game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_ab505862f2df2219d6a3162f6217b4b3d}{get\+Trap\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the traps from a Game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_af9ec7248563b1948785d7aa1e9207b44}{get\+Treasure\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the treasure from a Game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_afe5d9f8d044bb6b255a6d6274675f626}{get\+Pirate\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the pirate from a Game. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Game_8c_a9194e8c029f2ede9eb5a599bde474021}{get\+Grid\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets the grid from a Game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} \mbox{\hyperlink{Game_8c_a32c24b6793a44bf51dab3a6f7540867b}{transition\+Matrix\+Const}} \mbox{[}\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad98965ae84e3a3e1b6d032a321bc879e}{STATE\+\_\+\+NB}}\mbox{]}\mbox{[}\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a6a415103f9e28c7003f41753a0230a54}{EVENT\+\_\+\+NB}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{Game_8c_a9e506e2989b8b64b4db086a527b15911}\label{Game_8c_a9e506e2989b8b64b4db086a527b15911} 
+\index{Game.c@{Game.c}!ActionPtr@{ActionPtr}}
+\index{ActionPtr@{ActionPtr}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{ActionPtr}{ActionPtr}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} Action\+Ptr) (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*})}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Game_8c_a8bdcd5d3860d049286ca9635cca04f65}\label{Game_8c_a8bdcd5d3860d049286ca9635cca04f65} 
+\index{Game.c@{Game.c}!checkGameStatus@{checkGameStatus}}
+\index{checkGameStatus@{checkGameStatus}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{checkGameStatus()}{checkGameStatus()}}
+{\footnotesize\ttfamily int check\+Game\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Checks the game status. 
+
+Determines if the player has won, lost, or if the game continues.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if game continues, 1 if player wins, 2 if player loses 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a64ce32be4f4c815f549672242b18a463}\label{Game_8c_a64ce32be4f4c815f549672242b18a463} 
+\index{Game.c@{Game.c}!freeGame@{freeGame}}
+\index{freeGame@{freeGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{freeGame()}{freeGame()}}
+{\footnotesize\ttfamily void free\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Frees memory used by a Game object. 
+
+Releases all resources associated with the given Game.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game to free \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_ac4fe0f7ac0b1f7035665a78c8353bf03}\label{Game_8c_ac4fe0f7ac0b1f7035665a78c8353bf03} 
+\index{Game.c@{Game.c}!gameGetCurrentState@{gameGetCurrentState}}
+\index{gameGetCurrentState@{gameGetCurrentState}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameGetCurrentState()}{gameGetCurrentState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} game\+Get\+Current\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the current game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current Game\+State 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a755a8c00334be925fbe734bceec43371}\label{Game_8c_a755a8c00334be925fbe734bceec43371} 
+\index{Game.c@{Game.c}!gameGetEventFromKey@{gameGetEventFromKey}}
+\index{gameGetEventFromKey@{gameGetEventFromKey}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameGetEventFromKey()}{gameGetEventFromKey()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}} game\+Get\+Event\+From\+Key (\begin{DoxyParamCaption}\item[{char}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Converts a keyboard character to a game event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The keyboard character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding Game\+Event 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a6d3c9b65bfbc1605cb359b541c7a9d73}\label{Game_8c_a6d3c9b65bfbc1605cb359b541c7a9d73} 
+\index{Game.c@{Game.c}!gameHandleEvent@{gameHandleEvent}}
+\index{gameHandleEvent@{gameHandleEvent}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameHandleEvent()}{gameHandleEvent()}}
+{\footnotesize\ttfamily void game\+Handle\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handles a game event. 
+
+Processes an event through the state machine, executing appropriate actions and transitioning to the next state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+{\em event} & The event to handle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_a5c070db3ebdc4d2cff927fd85e9c8914}\label{Game_8c_a5c070db3ebdc4d2cff927fd85e9c8914} 
+\index{Game.c@{Game.c}!gameInitialisation@{gameInitialisation}}
+\index{gameInitialisation@{gameInitialisation}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameInitialisation()}{gameInitialisation()}}
+{\footnotesize\ttfamily void game\+Initialisation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a Game object. 
+
+Sets up the game state, map, and all entities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game to initialize \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_aa3e078f5c84e1a0ec88ffa26acb83d90}\label{Game_8c_aa3e078f5c84e1a0ec88ffa26acb83d90} 
+\index{Game.c@{Game.c}!gameInitStateMachine@{gameInitStateMachine}}
+\index{gameInitStateMachine@{gameInitStateMachine}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameInitStateMachine()}{gameInitStateMachine()}}
+{\footnotesize\ttfamily void game\+Init\+State\+Machine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the game state machine. 
+
+Sets up the initial state and transition matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_ae1d91bd5c973f875121ba48a2c451e8d}\label{Game_8c_ae1d91bd5c973f875121ba48a2c451e8d} 
+\index{Game.c@{Game.c}!gameIsFinished@{gameIsFinished}}
+\index{gameIsFinished@{gameIsFinished}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gameIsFinished()}{gameIsFinished()}}
+{\footnotesize\ttfamily int game\+Is\+Finished (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Checks if the game is finished. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non-\/zero if game is finished, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a8831053d598637cdcb8068a066da4fc8}\label{Game_8c_a8831053d598637cdcb8068a066da4fc8} 
+\index{Game.c@{Game.c}!gamePrint@{gamePrint}}
+\index{gamePrint@{gamePrint}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{gamePrint()}{gamePrint()}}
+{\footnotesize\ttfamily void game\+Print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Prints the current game state. 
+
+Displays the game map and player health.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_a9194e8c029f2ede9eb5a599bde474021}\label{Game_8c_a9194e8c029f2ede9eb5a599bde474021} 
+\index{Game.c@{Game.c}!getGridGame@{getGridGame}}
+\index{getGridGame@{getGridGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getGridGame()}{getGridGame()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} get\+Grid\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the grid from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2D char array representing the grid 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_ad6872869ad864a5362d83dff51c5055c}\label{Game_8c_ad6872869ad864a5362d83dff51c5055c} 
+\index{Game.c@{Game.c}!getMapGame@{getMapGame}}
+\index{getMapGame@{getMapGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getMapGame()}{getMapGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Map_8h_aa926640e3c532d853649857286f74a75}{Map}} \texorpdfstring{$\ast$}{*} get\+Map\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the map from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Map 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_afe5d9f8d044bb6b255a6d6274675f626}\label{Game_8c_afe5d9f8d044bb6b255a6d6274675f626} 
+\index{Game.c@{Game.c}!getPirateGame@{getPirateGame}}
+\index{getPirateGame@{getPirateGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getPirateGame()}{getPirateGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Pirate_8h_a37c1fac1fbd4d7a57208207c5c35a70a}{Pirate}} \texorpdfstring{$\ast$}{*} get\+Pirate\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the pirate from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Pirate 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_af4e6805ba569cf3d98823179829da905}\label{Game_8c_af4e6805ba569cf3d98823179829da905} 
+\index{Game.c@{Game.c}!getPlayerGame@{getPlayerGame}}
+\index{getPlayerGame@{getPlayerGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getPlayerGame()}{getPlayerGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Player_8h_a47e6f8d93a79a2576363b43294ea2090}{Player}} \texorpdfstring{$\ast$}{*} get\+Player\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the player from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Player 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a97ca7b1838ba2f17b8ade6996c9685bb}\label{Game_8c_a97ca7b1838ba2f17b8ade6996c9685bb} 
+\index{Game.c@{Game.c}!getTransition@{getTransition}}
+\index{getTransition@{getTransition}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getTransition()}{getTransition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} get\+Transition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}]{state,  }\item[{\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{Game_8c_ab505862f2df2219d6a3162f6217b4b3d}\label{Game_8c_ab505862f2df2219d6a3162f6217b4b3d} 
+\index{Game.c@{Game.c}!getTrapGame@{getTrapGame}}
+\index{getTrapGame@{getTrapGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getTrapGame()}{getTrapGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Trap_8h_abae0b63552c6e1c62578386562890b13}{Trap}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} get\+Trap\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the traps from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Traps 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_af9ec7248563b1948785d7aa1e9207b44}\label{Game_8c_af9ec7248563b1948785d7aa1e9207b44} 
+\index{Game.c@{Game.c}!getTreasureGame@{getTreasureGame}}
+\index{getTreasureGame@{getTreasureGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{getTreasureGame()}{getTreasureGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Treasure_8h_a2f76cf0e0abae27fd943e9fceaf73893}{Treasure}} \texorpdfstring{$\ast$}{*} get\+Treasure\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the treasure from a Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the Game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Treasure 
+\end{DoxyReturn}
+\Hypertarget{Game_8c_a8890568a91e5f60bdd373991e4c6c6e5}\label{Game_8c_a8890568a91e5f60bdd373991e4c6c6e5} 
+\index{Game.c@{Game.c}!movePirate@{movePirate}}
+\index{movePirate@{movePirate}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{movePirate()}{movePirate()}}
+{\footnotesize\ttfamily void move\+Pirate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{this,  }\item[{int bool}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Moves the pirate character. 
+
+Determines and executes the pirate\textquotesingle{}s movement based on player position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Pointer to the Game \\
+\hline
+{\em bool} & If true, move pirate intelligently toward player; if false, move randomly \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Game_8c_a278a2b7440031ca2787e6c72dfeec2a3}\label{Game_8c_a278a2b7440031ca2787e6c72dfeec2a3} 
+\index{Game.c@{Game.c}!newGame@{newGame}}
+\index{newGame@{newGame}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{newGame()}{newGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*} new\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates a new Game object. 
+
+Allocates memory for a new Game and all its components.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created Game 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{Game_8c_a32c24b6793a44bf51dab3a6f7540867b}\label{Game_8c_a32c24b6793a44bf51dab3a6f7540867b} 
+\index{Game.c@{Game.c}!transitionMatrixConst@{transitionMatrixConst}}
+\index{transitionMatrixConst@{transitionMatrixConst}!Game.c@{Game.c}}
+\doxysubsubsection{\texorpdfstring{transitionMatrixConst}{transitionMatrixConst}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Game_8h_a93ad6b9d71d80781be9d7d018f2a9d5c}{Transition\+Action}} transition\+Matrix\+Const\mbox{[}\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad98965ae84e3a3e1b6d032a321bc879e}{STATE\+\_\+\+NB}}\mbox{]}\mbox{[}\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a6a415103f9e28c7003f41753a0230a54}{EVENT\+\_\+\+NB}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285aabb033d58518dadd28210bc74bef6051}{S\_INIT}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a3828274e80d29eb2ae551cf5fe32ede1}{E\_START}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca5bce1b8e1bbfbb838a3e11c5a9e55ff4}{A\_INIT\_GAME}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374aba8234ef4df783496c5524a60055e553}{E\_KEY\_UP}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafcacdca3627dd81ba6b202e43e0696b4470}{A\_MOVE\_UP}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a5885da6b10c9bdd46dacf91075c83fa2}{S\_DEPLACEMENT}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a739133bba8864356a2245f4c003dcae4}{E\_KEY\_DOWN}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca3fdf065ba6f151d5ecae9bd0a005ecd1}{A\_MOVE\_DOWN}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a5885da6b10c9bdd46dacf91075c83fa2}{S\_DEPLACEMENT}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a1cbbd0cf6680096a129c618f6d340fa4}{E\_KEY\_LEFT}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafcaa993514217c787004a02f927aac79e76}{A\_MOVE\_LEFT}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a5885da6b10c9bdd46dacf91075c83fa2}{S\_DEPLACEMENT}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a17f174442d6bcd85ccc67135e59ae902}{E\_KEY\_RIGHT}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca9c9bb7dd43c71061574b9ed1ade7b7d7}{A\_MOVE\_RIGHT}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a5885da6b10c9bdd46dacf91075c83fa2}{S\_DEPLACEMENT}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374af593ceb0da6738a25748cfdbb45644b4}{E\_KEY\_QUIT}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca512e445909d8a5da04de2cf38ba1f10f}{A\_FREE\_GAME}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a479aee34582016b676417e03d4a4fee9}{S\_GAME\_OVER}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374ad0f1f86f8737ca21ee5d3cf4a82799ec}{E\_OTHER\_KEY}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafcabbecf424004ad6c3317f882a54632462}{A\_NOP}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a5885da6b10c9bdd46dacf91075c83fa2}{S\_DEPLACEMENT}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374af540236c30f0d237f19b1b2ff1818cbc}{E\_MOVE\_DONE}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca139af3f7c75b37efaf393bc1eefb9dd6}{A\_PRINT\_GAME}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab2c4f1aff370352a9f22a0d52699f307}{S\_VERIFICATION\_VICTOIRE}}\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab2c4f1aff370352a9f22a0d52699f307}{S\_VERIFICATION\_VICTOIRE}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374aebf77bf63fc2c41d88b67bb76e0e0568}{E\_VICTORY}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafca9a08cb13cba7a212101300a2c4df5ab3}{A\_PRINT\_VICTORY}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a479aee34582016b676417e03d4a4fee9}{S\_GAME\_OVER}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab2c4f1aff370352a9f22a0d52699f307}{S\_VERIFICATION\_VICTOIRE}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a0c2fb9a84b85f0d26dd35705fc3a6117}{E\_DEFEAT}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafcabed3be7955ce79c74567e499776d70e4}{A\_PRINT\_DEFEAT}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a479aee34582016b676417e03d4a4fee9}{S\_GAME\_OVER}}\},}
+\DoxyCodeLine{\ \ \ \ [\mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285ab2c4f1aff370352a9f22a0d52699f307}{S\_VERIFICATION\_VICTOIRE}}][\mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374a59ef0a2486ae8824c265e14da5824e5e}{E\_CONTINUE}}]\ =\ \{\mbox{\hyperlink{Game_8h_a5827805c542ab9cccf700dc3697cbafcabbecf424004ad6c3317f882a54632462}{A\_NOP}},\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285a55d7a27b6184005cefab62ffaa75c82d}{S\_ACQUISITION\_CLAVIER}}\},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
