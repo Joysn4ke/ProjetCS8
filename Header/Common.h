@@ -14,7 +14,7 @@
 #endif
 
 #ifndef HEALTHPLAYER
-#define HEALTHPLAYER NBTRAP + 1
+#define HEALTHPLAYER (NBTRAP + 1)
 #endif
 
 #ifndef NBPLAYER
@@ -25,12 +25,16 @@
 #define NBPIRATE 1
 #endif
 
+#ifndef NBTREASURE
+#define NBTREASURE 1
+#endif
+
 #ifndef TOTAL_ENTITY
-#define TOTAL_ENTITY (NBTRAP + NBPLAYER + NBPIRATE)
+#define TOTAL_ENTITY (NBTRAP + NBPLAYER + NBPIRATE + NBTREASURE)
 #endif
 
 #ifndef CHEAT
-#define CHEAT 0
+#define CHEAT 1
 #endif
 
 /**

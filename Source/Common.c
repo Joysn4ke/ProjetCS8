@@ -10,11 +10,11 @@ void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int usedC
     int isUnique;
 
     do {
-        // Generate new random coordinates
+        //Generate new random coordinates
         newX = rand() % (LINE);
         newY = rand() % (COLUMN);
 
-        // Verify the uniqueness of the generated coordinates
+        //Verify the uniqueness of the generated coordinates
         isUnique = 1;
         for (int i = 0; i < usedCount; i++) {
             if (newX == usedX[i] && newY == usedY[i]) {
@@ -22,13 +22,13 @@ void generateUniqueCoordinates(int* x, int* y, int* usedX, int* usedY, int usedC
                 break;
             }
         }
-    } while (!isUnique);
+    } while (!isUnique); //!1 = 0
 
-    // Change the value of the new coordinates
+    //Change the value of the new coordinates
     *x = newX;
     *y = newY;
     
-    // Store the new coordinates in the used arrays
+    //Store the new coordinates in the used arrays
     usedX[usedCount] = newX;
     usedY[usedCount] = newY;
 }

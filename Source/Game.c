@@ -150,13 +150,13 @@ extern void gameInitialisation(Game* this) {
     srand(time(NULL));
 
     //Arrays to track used coordinates
-    int usedX[TOTAL_ENTITY + 1];
-    int usedY[TOTAL_ENTITY + 1];
+    int usedX[TOTAL_ENTITY];
+    int usedY[TOTAL_ENTITY];
     int usedCount = 0;
     
     //Initialize player coordinates
     int playerX, playerY;
-    generateUniqueCoordinates(&playerX, &playerY, usedX, usedY, usedCount++);
+    generateUniqueCoordinates(&playerX, &playerY, usedX, usedY, usedCount);
     
     //Initialize treasure coordinates
     int treasureX, treasureY;
@@ -458,7 +458,6 @@ static void actionFreeGame(Game* this) {
 
 
 // State Machine Functions (Incorporated into Game)
-
 /**
  * @brief Initializes the game state machine
  * 
@@ -629,4 +628,3 @@ extern char** getGridGame(Game* game) {
     assert(game != NULL);
     return getGridMap(game->map);
 }
-
