@@ -13,7 +13,7 @@ In "The Cursed Island's Treasure Hunt," you control an adventurer navigating a g
 ## 🎮 Game Features
 
 - **Terminal-based gameplay** with colored grid visualization
-- **Grid-based movement** using keyboard controls (z/q/s/d or arrow keys)
+- **Grid-based movement** using keyboard controls (z/q/s/d)
 - **Health system** - lose health when stepping on traps or encountering the pirate
 - **Enemy** - a pirate that chases you when you're in sight, otherwise moves randomly
 - **Hidden traps** - randomly placed dangers that damage you when stepped on
@@ -64,10 +64,10 @@ make
 
 ## 🎲 How to Play
 
-- Use `z` (or Up arrow) to move up
-- Use `s` (or Down arrow) to move down
-- Use `q` (or Left arrow) to move left
-- Use `d` (or Right arrow) to move right
+- Use `z` to move up
+- Use `s` to move down
+- Use `q` to move left
+- Use `d` to move right
 - Press `l` to quit the game
 
 ### Game Legend

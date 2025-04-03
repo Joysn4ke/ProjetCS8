@@ -1,5 +1,7 @@
 <map id="Header/Getch.h" name="Header/Getch.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,128,31"/>
-<area shape="rect" id="Node000002" href="$main_8c.html" title="Main program for the game, handling the game loop and events." alt="" coords="33,79,100,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,44,69,79,64,79,64,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,5,185,31"/>
+<area shape="rect" id="Node000002" href="$Game_8c.html" title=" " alt="" coords="5,79,125,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,43,77,80,73,77,104,40"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title="Main program for the game, handling the game loop and events." alt="" coords="149,79,216,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,40,175,77,171,80,140,43"/>
 </map>

@@ -79,6 +79,11 @@ extern void gamePrint(Game* this);
 extern int checkGameStatus(Game* this);
 extern void movePirate(Game* this, int bool);
 
+extern void startGame(Game* game);
+extern void acquisitionClavier(Game* game);
+extern void deplacement(Game* game);
+extern void checkWin(Game* game);
+
 //Incorporated StateMachine functions
 extern void gameInitStateMachine(Game* this);
 extern void gameHandleEvent(Game* this, GameEvent event);

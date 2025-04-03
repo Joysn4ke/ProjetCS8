@@ -90,6 +90,14 @@ int \mbox{\hyperlink{Game_8h_a8bdcd5d3860d049286ca9635cca04f65}{check\+Game\+Sta
 \begin{DoxyCompactList}\small\item\em Checks the game status. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{Game_8h_a8890568a91e5f60bdd373991e4c6c6e5}{move\+Pirate}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this, int bool)
 \begin{DoxyCompactList}\small\item\em Moves the pirate character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Game_8h_a7f0f70a79139b6c5c75a8fc5ae07ff93}{start\+Game}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\item 
+void \mbox{\hyperlink{Game_8h_a92b1e2155a9f40e75a2b8e4c44b88a3f}{acquisition\+Clavier}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\item 
+void \mbox{\hyperlink{Game_8h_ae8b3b3792331d1220098b3ad695c797a}{deplacement}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\item 
+void \mbox{\hyperlink{Game_8h_a28d531b7c1577a6fbed018f9d604a3e4}{check\+Win}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}game)
+\item 
 void \mbox{\hyperlink{Game_8h_aa3e078f5c84e1a0ec88ffa26acb83d90}{game\+Init\+State\+Machine}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this)
 \begin{DoxyCompactList}\small\item\em Initializes the game state machine. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{Game_8h_a6d3c9b65bfbc1605cb359b541c7a9d73}{game\+Handle\+Event}} (\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}this, \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{Game\+Event}} event)
@@ -297,6 +305,12 @@ STATE\+\_\+\+NB&\\
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{Game_8h_a92b1e2155a9f40e75a2b8e4c44b88a3f}\label{Game_8h_a92b1e2155a9f40e75a2b8e4c44b88a3f} 
+\index{Game.h@{Game.h}!acquisitionClavier@{acquisitionClavier}}
+\index{acquisitionClavier@{acquisitionClavier}!Game.h@{Game.h}}
+\doxysubsubsection{\texorpdfstring{acquisitionClavier()}{acquisitionClavier()}}
+{\footnotesize\ttfamily void acquisition\+Clavier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
 \Hypertarget{Game_8h_a8bdcd5d3860d049286ca9635cca04f65}\label{Game_8h_a8bdcd5d3860d049286ca9635cca04f65} 
 \index{Game.h@{Game.h}!checkGameStatus@{checkGameStatus}}
 \index{checkGameStatus@{checkGameStatus}!Game.h@{Game.h}}
@@ -317,6 +331,18 @@ Determines if the player has won, lost, or if the game continues.
 \begin{DoxyReturn}{Returns}
 0 if game continues, 1 if player wins, 2 if player loses 
 \end{DoxyReturn}
+\Hypertarget{Game_8h_a28d531b7c1577a6fbed018f9d604a3e4}\label{Game_8h_a28d531b7c1577a6fbed018f9d604a3e4} 
+\index{Game.h@{Game.h}!checkWin@{checkWin}}
+\index{checkWin@{checkWin}!Game.h@{Game.h}}
+\doxysubsubsection{\texorpdfstring{checkWin()}{checkWin()}}
+{\footnotesize\ttfamily void check\+Win (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{Game_8h_ae8b3b3792331d1220098b3ad695c797a}\label{Game_8h_ae8b3b3792331d1220098b3ad695c797a} 
+\index{Game.h@{Game.h}!deplacement@{deplacement}}
+\index{deplacement@{deplacement}!Game.h@{Game.h}}
+\doxysubsubsection{\texorpdfstring{deplacement()}{deplacement()}}
+{\footnotesize\ttfamily void deplacement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
 \Hypertarget{Game_8h_a64ce32be4f4c815f549672242b18a463}\label{Game_8h_a64ce32be4f4c815f549672242b18a463} 
 \index{Game.h@{Game.h}!freeGame@{freeGame}}
 \index{freeGame@{freeGame}!Game.h@{Game.h}}
@@ -600,3 +626,9 @@ Allocates memory for a new Game and all its components.
 \begin{DoxyReturn}{Returns}
 Pointer to the newly created Game 
 \end{DoxyReturn}
+\Hypertarget{Game_8h_a7f0f70a79139b6c5c75a8fc5ae07ff93}\label{Game_8h_a7f0f70a79139b6c5c75a8fc5ae07ff93} 
+\index{Game.h@{Game.h}!startGame@{startGame}}
+\index{startGame@{startGame}!Game.h@{Game.h}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily void start\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Game_8h_a03f6521bf1dfb69e2a3ae2d652e2717f}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+

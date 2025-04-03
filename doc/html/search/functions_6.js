@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pirateinitialisation_0',['pirateinitialisation',['../Pirate_8c.html#a7334abdf03f52ff9d0162eadb8fc403d',1,'pirateInitialisation(Pirate *this, int localX, int localY):&#160;Pirate.c'],['../Pirate_8h.html#a7334abdf03f52ff9d0162eadb8fc403d',1,'pirateInitialisation(Pirate *this, int localX, int localY):&#160;Pirate.c']]],
-  ['playerinitialisation_1',['playerinitialisation',['../Player_8c.html#a4cb2d2e243d20f46056f538c0de286eb',1,'playerInitialisation(Player *this, int localX, int localY):&#160;Player.c'],['../Player_8h.html#a4cb2d2e243d20f46056f538c0de286eb',1,'playerInitialisation(Player *this, int localX, int localY):&#160;Player.c']]]
+  ['main_0',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['mapinitialisation_1',['mapinitialisation',['../Map_8c.html#ac1bac3b54dc6aa7c96cf51aa618df3cc',1,'mapInitialisation(Map *this):&#160;Map.c'],['../Map_8h.html#ac1bac3b54dc6aa7c96cf51aa618df3cc',1,'mapInitialisation(Map *this):&#160;Map.c']]],
+  ['movepirate_2',['movepirate',['../Game_8c.html#a8890568a91e5f60bdd373991e4c6c6e5',1,'movePirate(Game *this, int bool):&#160;Game.c'],['../Game_8h.html#a8890568a91e5f60bdd373991e4c6c6e5',1,'movePirate(Game *this, int bool):&#160;Game.c']]]
 ];

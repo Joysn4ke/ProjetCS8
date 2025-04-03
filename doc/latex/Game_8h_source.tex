@@ -68,22 +68,27 @@
 \DoxyCodeLine{00079\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Game_8h_a8bdcd5d3860d049286ca9635cca04f65}{checkGameStatus}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
 \DoxyCodeLine{00080\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a8890568a91e5f60bdd373991e4c6c6e5}{movePirate}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this},\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{bool});}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \textcolor{comment}{//Incorporated\ StateMachine\ functions}}
-\DoxyCodeLine{00083\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_aa3e078f5c84e1a0ec88ffa26acb83d90}{gameInitStateMachine}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00084\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a6d3c9b65bfbc1605cb359b541c7a9d73}{gameHandleEvent}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this},\ \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{GameEvent}}\ event);}
-\DoxyCodeLine{00085\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Game_8h_ae1d91bd5c973f875121ba48a2c451e8d}{gameIsFinished}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00086\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{GameEvent}}\ \mbox{\hyperlink{Game_8h_a755a8c00334be925fbe734bceec43371}{gameGetEventFromKey}}(\textcolor{keywordtype}{char}\ key);}
-\DoxyCodeLine{00087\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \mbox{\hyperlink{Game_8h_ac4fe0f7ac0b1f7035665a78c8353bf03}{gameGetCurrentState}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \textcolor{comment}{//Getter\ \&\ Setter}}
-\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structMap__s}{Map}}*\ \mbox{\hyperlink{Game_8h_ad6872869ad864a5362d83dff51c5055c}{getMapGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structPlayer__s}{Player}}*\ \mbox{\hyperlink{Game_8h_af4e6805ba569cf3d98823179829da905}{getPlayerGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTreasure__s}{Treasure}}*\ \mbox{\hyperlink{Game_8h_af9ec7248563b1948785d7aa1e9207b44}{getTreasureGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00093\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structPirate__s}{Pirate}}*\ \mbox{\hyperlink{Game_8h_afe5d9f8d044bb6b255a6d6274675f626}{getPirateGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}**\ \mbox{\hyperlink{Game_8h_a9194e8c029f2ede9eb5a599bde474021}{getGridGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTrap__s}{Trap}}**\ \mbox{\hyperlink{Game_8h_ab505862f2df2219d6a3162f6217b4b3d}{getTrapGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GAME\_H}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a7f0f70a79139b6c5c75a8fc5ae07ff93}{startGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00083\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a92b1e2155a9f40e75a2b8e4c44b88a3f}{acquisitionClavier}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00084\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_ae8b3b3792331d1220098b3ad695c797a}{deplacement}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00085\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a28d531b7c1577a6fbed018f9d604a3e4}{checkWin}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{//Incorporated\ StateMachine\ functions}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_aa3e078f5c84e1a0ec88ffa26acb83d90}{gameInitStateMachine}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00089\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Game_8h_a6d3c9b65bfbc1605cb359b541c7a9d73}{gameHandleEvent}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this},\ \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{GameEvent}}\ event);}
+\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Game_8h_ae1d91bd5c973f875121ba48a2c451e8d}{gameIsFinished}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{Game_8h_a76c53fd3a1d5f39a14c7e0acfb1ad374}{GameEvent}}\ \mbox{\hyperlink{Game_8h_a755a8c00334be925fbe734bceec43371}{gameGetEventFromKey}}(\textcolor{keywordtype}{char}\ key);}
+\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{Game_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \mbox{\hyperlink{Game_8h_ac4fe0f7ac0b1f7035665a78c8353bf03}{gameGetCurrentState}}(\mbox{\hyperlink{structGame__s}{Game}}*\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//Getter\ \&\ Setter}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structMap__s}{Map}}*\ \mbox{\hyperlink{Game_8h_ad6872869ad864a5362d83dff51c5055c}{getMapGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structPlayer__s}{Player}}*\ \mbox{\hyperlink{Game_8h_af4e6805ba569cf3d98823179829da905}{getPlayerGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00097\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTreasure__s}{Treasure}}*\ \mbox{\hyperlink{Game_8h_af9ec7248563b1948785d7aa1e9207b44}{getTreasureGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structPirate__s}{Pirate}}*\ \mbox{\hyperlink{Game_8h_afe5d9f8d044bb6b255a6d6274675f626}{getPirateGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00099\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}**\ \mbox{\hyperlink{Game_8h_a9194e8c029f2ede9eb5a599bde474021}{getGridGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTrap__s}{Trap}}**\ \mbox{\hyperlink{Game_8h_ab505862f2df2219d6a3162f6217b4b3d}{getTrapGame}}(\mbox{\hyperlink{structGame__s}{Game}}*\ game);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GAME\_H}}
 
 \end{DoxyCode}

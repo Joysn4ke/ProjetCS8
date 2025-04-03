@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['checkgamestatus_0',['checkgamestatus',['../Game_8c.html#a8bdcd5d3860d049286ca9635cca04f65',1,'checkGameStatus(Game *this):&#160;Game.c'],['../Game_8h.html#a8bdcd5d3860d049286ca9635cca04f65',1,'checkGameStatus(Game *this):&#160;Game.c']]]
+  ['acquisitionclavier_0',['acquisitionclavier',['../Game_8c.html#a92b1e2155a9f40e75a2b8e4c44b88a3f',1,'acquisitionClavier(Game *game):&#160;Game.c'],['../Game_8h.html#a92b1e2155a9f40e75a2b8e4c44b88a3f',1,'acquisitionClavier(Game *game):&#160;Game.c']]]
 ];
