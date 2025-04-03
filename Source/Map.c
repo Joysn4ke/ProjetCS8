@@ -7,6 +7,13 @@
 #include "Common.h"
 #include "Map.h"
 
+
+//Code ANSI minimal pour les couleurs
+const char *COULEUR_BORDURE = "\033[36m";  //Cyan pour les bordures
+const char *COULEUR_CONTENU = "\033[33m";  //Jaune pour le contenu
+const char *RESET_COULEUR = "\033[0m";     //Réinitialisation
+
+
 /**
  * @brief Represents the game map
  * 
@@ -88,11 +95,6 @@ extern void freeMap(Map* this) {
  * @param nb_ligne Number of rows in the grid
  */
 extern void grille_print(char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne) {
-    //Code ANSI minimal pour les couleurs
-    const char *COULEUR_BORDURE = "\033[36m";  //Cyan pour les bordures
-    const char *COULEUR_CONTENU = "\033[33m";  //Jaune pour le contenu
-    const char *RESET_COULEUR = "\033[0m";     //Réinitialisation
-    
     //Utilisation de caractères ASCII standard
     for(int j = 0; j < nb_ligne; j++) {
         //Ligne de délimitation supérieure
