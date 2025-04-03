@@ -106,7 +106,6 @@ const TransitionAction transitionMatrixConst[STATE_NB][EVENT_NB] = {
 
 TransitionAction getTransition(GameState state, GameEvent event) {
     if (state >= STATE_NB || event >= EVENT_NB) {
-        //return (TransitionAction){A_NOP, S_FORGET}; //Valeur par défaut pour toute transition invalide
         return (TransitionAction){A_NOP, S_ACQUISITION_CLAVIER}; //Valeur par défaut pour toute transition invalide
     }
     return transitionMatrixConst[state][event];
@@ -522,25 +521,6 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
  * @return Corresponding GameEvent
  */
 extern GameEvent gameGetEventFromKey(char key) {
-    //printf("key %c\n", key);
-    // switch(key) {
-    //     case 'l':
-    //         return E_KEY_QUIT;
-    //     case 'A':
-    //     case 'z':
-    //         return E_KEY_UP;
-    //     case 'B':
-    //     case 's':
-    //         return E_KEY_DOWN;
-    //     case 'C':
-    //     case 'd':
-    //         return E_KEY_RIGHT;
-    //     case 'D':
-    //     case 'q':
-    //         return E_KEY_LEFT;
-    //     default:
-    //         return E_OTHER_KEY;
-    // }
     switch(key) {
         case 'l':
             return E_KEY_QUIT;
@@ -598,7 +578,6 @@ extern void acquisitionClavier(Game* game) {
 
     key = getch();
     currentEvent = gameGetEventFromKey(key);
-    //printf("currentEvent %d\n", currentEvent);
     gameHandleEvent(game, currentEvent);
 }
 
