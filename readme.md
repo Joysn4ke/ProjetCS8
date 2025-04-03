@@ -15,7 +15,7 @@ In "The Cursed Island's Treasure Hunt," you control an adventurer navigating a g
 - **Terminal-based gameplay** with colored grid visualization
 - **Grid-based movement** using keyboard controls (z/q/s/d or arrow keys)
 - **Health system** - lose health when stepping on traps or encountering the pirate
-- **Enemy AI** - a pirate that chases you when you're in sight, otherwise moves randomly
+- **Enemy** - a pirate that chases you when you're in sight, otherwise moves randomly
 - **Hidden traps** - randomly placed dangers that damage you when stepped on
 - **State machine architecture** for robust game logic
 
@@ -52,8 +52,8 @@ The codebase is organized into modular components:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cursed-island-treasure.git
-cd cursed-island-treasure
+git clone https://github.com/Joysn4ke/ProjetCS8.git
+cd ProjetCS8
 
 # Build the game
 make
