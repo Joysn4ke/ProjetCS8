@@ -10,8 +10,6 @@
  * @author [J M]
  * @date [02/04/2024]
  */
-
-
 #include <stdlib.h>
 #include <stdio.h>
 
