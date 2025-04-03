@@ -87,48 +87,22 @@ extern void freeMap(Map* this) {
  * @param nb_colonne Number of columns in the grid
  * @param nb_ligne Number of rows in the grid
  */
-// extern void grille_print (char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne) {
-//     for(int j= 0; j<nb_ligne; j++)
-//     {
-//         //ligne de delimitation
-//         for(int i=0; i<nb_colonne; i++)
-//         {
-//             printf("+---");
-//         }
-//         printf("+\n");
-//         //ligne de contenu
-//         for(int i=0; i<nb_colonne; i++)
-//         {
-//             printf("| ");
-//             printf("%c",tab_grille[j][i]); //contenu
-//             printf(" ");
-//         }
-//         printf("|\n");
-//     }
-//     //ligne de delimitation
-//     for(int i=0; i<nb_colonne; i++)
-//     {
-//         printf("+---");
-//     }
-//     printf("+\n");
-// }
-
 extern void grille_print(char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne) {
-    // Code ANSI minimal pour les couleurs
-    const char *COULEUR_BORDURE = "\033[36m";  // Cyan pour les bordures
-    const char *COULEUR_CONTENU = "\033[33m";  // Jaune pour le contenu
-    const char *RESET_COULEUR = "\033[0m";     // Réinitialisation
+    //Code ANSI minimal pour les couleurs
+    const char *COULEUR_BORDURE = "\033[36m";  //Cyan pour les bordures
+    const char *COULEUR_CONTENU = "\033[33m";  //Jaune pour le contenu
+    const char *RESET_COULEUR = "\033[0m";     //Réinitialisation
     
-    // Utilisation de caractères ASCII standard
+    //Utilisation de caractères ASCII standard
     for(int j = 0; j < nb_ligne; j++) {
-        // Ligne de délimitation supérieure
+        //Ligne de délimitation supérieure
         printf("%s", COULEUR_BORDURE);
         for(int i = 0; i < nb_colonne; i++) {
             printf("+---");
         }
         printf("+%s\n", RESET_COULEUR);
         
-        // Ligne de contenu
+        //Ligne de contenu
         printf("%s|%s ", COULEUR_BORDURE, RESET_COULEUR);
         for(int i = 0; i < nb_colonne; i++) {
             printf("%s%c%s ", COULEUR_CONTENU, tab_grille[j][i], RESET_COULEUR);
@@ -137,7 +111,7 @@ extern void grille_print(char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne
         printf("\n");
     }
     
-    // Ligne de délimitation inférieure
+    //Ligne de délimitation inférieure
     printf("%s", COULEUR_BORDURE);
     for(int i = 0; i < nb_colonne; i++) {
         printf("+---");
@@ -146,7 +120,7 @@ extern void grille_print(char **tab_grille, uint8_t nb_colonne, uint8_t nb_ligne
 }
 
 
-// Getter & Setter
+//Getter & Setter
 /**
  * @brief Gets the grid of a Map
  * 
