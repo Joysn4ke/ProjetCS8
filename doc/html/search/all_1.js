@@ -6,6 +6,8 @@ var searchData=
   ['column_3',['COLUMN',['../Common_8h.html#a1f55eb6587481328c753a5c438275a3e',1,'Common.h']]],
   ['common_2ec_4',['Common.c',['../Common_8c.html',1,'']]],
   ['common_2eh_5',['Common.h',['../Common_8h.html',1,'']]],
-  ['currentstate_6',['currentState',['../structGame__s.html#af18c69cd83d037f1bb6a8daffc4ddd62',1,'Game_s']]],
-  ['cursed_20island’s_20treasure_7',['The Project: &quot;In Search of the Cursed Island’s Treasure&quot;',['../index.html',1,'']]]
+  ['couleur_5fbordure_6',['COULEUR_BORDURE',['../Map_8c.html#ad585f905f0328d17e691a6dcfeedad70',1,'Map.c']]],
+  ['couleur_5fcontenu_7',['COULEUR_CONTENU',['../Map_8c.html#ace8458020e96ad75830e1fa25eab8be9',1,'Map.c']]],
+  ['currentstate_8',['currentState',['../structGame__s.html#af18c69cd83d037f1bb6a8daffc4ddd62',1,'Game_s']]],
+  ['cursed_20island’s_20treasure_9',['The Project: &quot;In Search of the Cursed Island’s Treasure&quot;',['../index.html',1,'']]]
 ];
