@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "gmpt",
   2: "cgimpt",
   3: "cfgimnprst",
-  4: "acdghmpt",
+  4: "acdghmprt",
   5: "agmpt",
   6: "g",
   7: "aes",
