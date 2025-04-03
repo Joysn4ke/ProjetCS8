@@ -521,26 +521,6 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
  * @return Corresponding GameEvent
  */
 extern GameEvent gameGetEventFromKey(char key) {
-    // switch(key) {
-    //     case 'l':
-    //         return E_KEY_QUIT;
-    //         break;
-    //     case 'z':
-    //         return E_KEY_UP;
-    //         break;
-    //     case 's':
-    //         return E_KEY_DOWN;
-    //         break;
-    //     case 'd':
-    //         return E_KEY_RIGHT;
-    //         break;
-    //     case 'q':
-    //         return E_KEY_LEFT;
-    //         break;
-    //     default:
-    //         return E_OTHER_KEY;
-    //         break;
-    // }
     switch(key) {
         case 'l':
             return E_KEY_QUIT;
