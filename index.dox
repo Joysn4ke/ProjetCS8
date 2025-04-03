@@ -26,21 +26,28 @@
  * ​​The state machine diagram represents the different stages and transitions of the game.
  * The diagram below illustrates the game states and associated events.
  *
- * \dot
+  * \dot
  * digraph StateMachine {
  *     rankdir=LR;
  *     S_INIT -> S_ACQUISITION_CLAVIER [label="E_START / A_INIT_GAME"];
+ *     
+ *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_START / A_NOP"];
  *     S_ACQUISITION_CLAVIER -> S_DEPLACEMENT [label="E_KEY_UP / A_MOVE_UP"];
  *     S_ACQUISITION_CLAVIER -> S_DEPLACEMENT [label="E_KEY_DOWN / A_MOVE_DOWN"];
  *     S_ACQUISITION_CLAVIER -> S_DEPLACEMENT [label="E_KEY_LEFT / A_MOVE_LEFT"];
  *     S_ACQUISITION_CLAVIER -> S_DEPLACEMENT [label="E_KEY_RIGHT / A_MOVE_RIGHT"];
  *     S_ACQUISITION_CLAVIER -> S_GAME_OVER [label="E_KEY_QUIT / A_FREE_GAME"];
  *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_OTHER_KEY / A_NOP"];
+ *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_MOVE_DONE / A_NOP"];
+ *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_VICTORY / A_NOP"];
+ *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_DEFEAT / A_NOP"];
+ *     S_ACQUISITION_CLAVIER -> S_ACQUISITION_CLAVIER [label="E_CONTINUE / A_NOP"];
+ *     
  *     S_DEPLACEMENT -> S_VERIFICATION_VICTOIRE [label="E_MOVE_DONE / A_PRINT_GAME"];
+ *     
  *     S_VERIFICATION_VICTOIRE -> S_GAME_OVER [label="E_VICTORY / A_PRINT_VICTORY"];
  *     S_VERIFICATION_VICTOIRE -> S_GAME_OVER [label="E_DEFEAT / A_PRINT_DEFEAT"];
  *     S_VERIFICATION_VICTOIRE -> S_ACQUISITION_CLAVIER [label="E_CONTINUE / A_NOP"];
- *     S_GAME_OVER -> END;
  * }
  * \enddot
  *

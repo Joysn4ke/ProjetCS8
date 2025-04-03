@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "assert.h"
 
+#include "Getch.h"
+
 #include "Common.h"
 #include "Game.h"
 #include "Map.h"
@@ -79,12 +81,17 @@ const TransitionAction transitionMatrixConst[STATE_NB][EVENT_NB] = {
     [S_INIT][E_START] = {A_INIT_GAME, S_ACQUISITION_CLAVIER},
 
     //S_ACQUISITION_CLAVIER
+    [S_ACQUISITION_CLAVIER][E_START] = {A_NOP, S_ACQUISITION_CLAVIER},
     [S_ACQUISITION_CLAVIER][E_KEY_UP] = {A_MOVE_UP, S_DEPLACEMENT},
     [S_ACQUISITION_CLAVIER][E_KEY_DOWN] = {A_MOVE_DOWN, S_DEPLACEMENT},
     [S_ACQUISITION_CLAVIER][E_KEY_LEFT] = {A_MOVE_LEFT, S_DEPLACEMENT},
     [S_ACQUISITION_CLAVIER][E_KEY_RIGHT] = {A_MOVE_RIGHT, S_DEPLACEMENT},
     [S_ACQUISITION_CLAVIER][E_KEY_QUIT] = {A_FREE_GAME, S_GAME_OVER},
     [S_ACQUISITION_CLAVIER][E_OTHER_KEY] = {A_NOP, S_ACQUISITION_CLAVIER},
+    [S_ACQUISITION_CLAVIER][E_MOVE_DONE] = {A_NOP, S_ACQUISITION_CLAVIER},
+    [S_ACQUISITION_CLAVIER][E_VICTORY] = {A_NOP, S_ACQUISITION_CLAVIER},
+    [S_ACQUISITION_CLAVIER][E_DEFEAT] = {A_NOP, S_ACQUISITION_CLAVIER},
+    [S_ACQUISITION_CLAVIER][E_CONTINUE] = {A_NOP, S_ACQUISITION_CLAVIER},
 
     //S_DEPLACEMENT
     [S_DEPLACEMENT][E_MOVE_DONE] = {A_PRINT_GAME, S_VERIFICATION_VICTOIRE},
@@ -99,7 +106,8 @@ const TransitionAction transitionMatrixConst[STATE_NB][EVENT_NB] = {
 
 TransitionAction getTransition(GameState state, GameEvent event) {
     if (state >= STATE_NB || event >= EVENT_NB) {
-        return (TransitionAction){A_NOP, S_FORGET}; //Valeur par défaut pour toute transition invalide
+        //return (TransitionAction){A_NOP, S_FORGET}; //Valeur par défaut pour toute transition invalide
+        return (TransitionAction){A_NOP, S_ACQUISITION_CLAVIER}; //Valeur par défaut pour toute transition invalide
     }
     return transitionMatrixConst[state][event];
 }
@@ -497,6 +505,8 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
     
     transition  = getTransition(this->currentState, event);
     newState = transition.destinationState;
+
+    // printf("newState %d\n", newState);
     
     if (newState != S_FORGET) {
         actionsTab[transition.action](this); //Execute the action
@@ -512,23 +522,44 @@ extern void gameHandleEvent(Game* this, GameEvent event) {
  * @return Corresponding GameEvent
  */
 extern GameEvent gameGetEventFromKey(char key) {
+    //printf("key %c\n", key);
+    // switch(key) {
+    //     case 'l':
+    //         return E_KEY_QUIT;
+    //     case 'A':
+    //     case 'z':
+    //         return E_KEY_UP;
+    //     case 'B':
+    //     case 's':
+    //         return E_KEY_DOWN;
+    //     case 'C':
+    //     case 'd':
+    //         return E_KEY_RIGHT;
+    //     case 'D':
+    //     case 'q':
+    //         return E_KEY_LEFT;
+    //     default:
+    //         return E_OTHER_KEY;
+    // }
     switch(key) {
         case 'l':
             return E_KEY_QUIT;
-        case 65: 
+            break;
         case 'z':
             return E_KEY_UP;
-        case 66: 
+            break;
         case 's':
             return E_KEY_DOWN;
-        case 67: 
+            break;
         case 'd':
             return E_KEY_RIGHT;
-        case 68: 
+            break;
         case 'q':
             return E_KEY_LEFT;
+            break;
         default:
             return E_OTHER_KEY;
+            break;
     }
 }
 
@@ -556,6 +587,36 @@ extern GameState gameGetCurrentState(Game* this) {
     return this->currentState;
 }
 
+
+extern void startGame(Game* game) {
+    gameHandleEvent(game, E_START); //Start the game
+}
+
+extern void acquisitionClavier(Game* game) {
+    char key;
+    GameEvent currentEvent;
+
+    key = getch();
+    currentEvent = gameGetEventFromKey(key);
+    //printf("currentEvent %d\n", currentEvent);
+    gameHandleEvent(game, currentEvent);
+}
+
+extern void deplacement(Game* game) {
+    gameHandleEvent(game, E_MOVE_DONE);
+}
+
+extern void checkWin(Game* game) {
+    int status;
+    status = checkGameStatus(game);
+    if (status == 1) { // Win
+        gameHandleEvent(game, E_VICTORY);
+    } else if (status == 2) { // Lose
+        gameHandleEvent(game, E_DEFEAT);
+    } else { // Game continue
+        gameHandleEvent(game, E_CONTINUE);
+    }
+}
 
 // Getter & Setter
 /**
