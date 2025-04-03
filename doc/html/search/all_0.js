@@ -11,7 +11,8 @@ var searchData=
   ['a_5fprint_5fdefeat_8',['A_PRINT_DEFEAT',['../Game_8h.html#a5827805c542ab9cccf700dc3697cbafcabed3be7955ce79c74567e499776d70e4',1,'Game.h']]],
   ['a_5fprint_5fgame_9',['A_PRINT_GAME',['../Game_8h.html#a5827805c542ab9cccf700dc3697cbafca139af3f7c75b37efaf393bc1eefb9dd6',1,'Game.h']]],
   ['a_5fprint_5fvictory_10',['A_PRINT_VICTORY',['../Game_8h.html#a5827805c542ab9cccf700dc3697cbafca9a08cb13cba7a212101300a2c4df5ab3',1,'Game.h']]],
-  ['action_11',['action',['../structTransitionAction__s.html#afd0e10c868d86aff7b1a1d4cee26e9a9',1,'TransitionAction_s']]],
-  ['action_5fnb_12',['ACTION_NB',['../Game_8h.html#a5827805c542ab9cccf700dc3697cbafcabbeaef92fb60823bbe92355aafeb8f53',1,'Game.h']]],
-  ['actionptr_13',['ActionPtr',['../Game_8c.html#a9e506e2989b8b64b4db086a527b15911',1,'Game.c']]]
+  ['acquisitionclavier_11',['acquisitionclavier',['../Game_8c.html#a92b1e2155a9f40e75a2b8e4c44b88a3f',1,'acquisitionClavier(Game *game):&#160;Game.c'],['../Game_8h.html#a92b1e2155a9f40e75a2b8e4c44b88a3f',1,'acquisitionClavier(Game *game):&#160;Game.c']]],
+  ['action_12',['action',['../structTransitionAction__s.html#afd0e10c868d86aff7b1a1d4cee26e9a9',1,'TransitionAction_s']]],
+  ['action_5fnb_13',['ACTION_NB',['../Game_8h.html#a5827805c542ab9cccf700dc3697cbafcabbeaef92fb60823bbe92355aafeb8f53',1,'Game.h']]],
+  ['actionptr_14',['ActionPtr',['../Game_8c.html#a9e506e2989b8b64b4db086a527b15911',1,'Game.c']]]
 ];
